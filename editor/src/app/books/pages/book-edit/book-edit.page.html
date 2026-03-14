@@ -1,0 +1,232 @@
+<app-author-dialog [(visible)]="authorSelectorVisible" (selected)="onAuthorSelected($event)" />
+<app-editorial-dialog [(visible)]="editorialSelectorVisible" (selected)="onEditorialSelected($event)" />
+
+<form [formGroup]="form" (ngSubmit)="onSave()">
+  <div class="flex flex-column surface-section mx-6 hall min-vh-80">
+    <div class="flex flex-column p-4">
+      <span class="hall-icon text-primary">
+        <i class="fas fa-book"></i>
+      </span>
+      <span class="watermark text-primary">
+        <i class="fas fa-book"></i>
+      </span>
+      <div class="flex flex-row gap-3 justify-content-between">
+        <div class="flex flex-column gap-2">
+          <div class="flex">
+            <p-breadcrumb class="max-w-full" [model]="breadcrumb" [home]="homeBreadcrumb" />
+          </div>
+        </div>
+        <div class="flex flex-row gap-2 align-items-center">
+          <p-button [outlined]="true"
+                    severity="success"
+                    icon="fas fa-pen"
+                    label="Guardar"
+                    size="small"
+                    type="submit" />
+          <p-button [text]="true"
+                    severity="secondary"
+                    icon="fas fa-xmark"
+                    label="Salir"
+                    size="small"
+                    type="button"
+                    [routerLink]="['/books', book().id]" />
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 p-4">
+      <p-tabs value="detail" class="tab-selector">
+        <p-tablist>
+          <p-tab value="detail" class="flex align-items-center gap-2">
+            <i class="fas fa-circle-info"></i>
+            <span>Detalle</span>
+          </p-tab>
+          <p-tab value="edition" class="flex align-items-center gap-2">
+            <i class="fas fa-book-open"></i>
+            <span>Edición</span>
+          </p-tab>
+          <p-tab value="shop" class="flex align-items-center gap-2">
+            <i class="fas fa-shop"></i>
+            <span>Ventas</span>
+          </p-tab>
+        </p-tablist>
+        <p-tabpanels>
+          <p-tabpanel value="detail">
+            <h3 class="flex flex-row gap-2 text-primary-400 text-2xl">
+              <fa-icon icon="circle-info" />
+              <span>Detalle</span>
+            </h3>
+            <div class="col-12 grid align-content-start">
+              <div class="col-12 flex flex-column gap-2 mb-3">
+                <label for="book-title" class="text-primary-600 pl-3">Título</label>
+                <input pInputText
+                       id="book-title"
+                       autocomplete="off"
+                       formControlName="title" />
+                <p-message severity="error" text="El título es obligatorio" [hidden]="!hasError('title', 'empty')" />
+                <p-message severity="error" text="El título debe tener al menos 3 caracteres"
+                           [hidden]="!hasError('title', 'minlength')" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3" formGroupName="author">
+                <label for="book-autor" class="text-primary-600 pl-3">Autor</label>
+                <input type="hidden" formControlName="id" />
+                <p-inputgroup>
+                  <input pInputText
+                         id="book-autor"
+                         autocomplete="off"
+                         [readonly]="true"
+                         (keydown)="onAuthorKeydown($event)"
+                         formControlName="name" />
+                  <p-inputgroup-addon>
+                    <p-button (click)="authorSelectorVisible.set(true)"
+                              [tabindex]="-1"
+                              icon="fas fa-binoculars" severity="primary" variant="text"
+                              pTooltip="Seleccionar autor [ / ]" tooltipPosition="top" />
+                    <p-button (click)="form.patchValue({author: {id: null, name: null}})"
+                              [tabindex]="-1"
+                              icon="fas fa-delete-left" severity="danger" variant="text"
+                              pTooltip="Borrar autor [ Supr ]" tooltipPosition="top" />
+                  </p-inputgroup-addon>
+                </p-inputgroup>
+                <p-message severity="error" text="El autor es obligatorio"
+                           [hidden]="!hasError('author.id', 'required')" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3" formGroupName="editorial">
+                <label for="book-editorial" class="text-primary-600 pl-3">Editorial</label>
+                <input type="hidden" formControlName="id" />
+                <p-inputgroup>
+                  <input pInputText
+                         id="book-editorial"
+                         autocomplete="off"
+                         [readonly]="true"
+                         (keydown)="onEditorialKeydown($event)"
+                         formControlName="name" />
+                  <p-inputgroup-addon>
+                    <p-button (click)="editorialSelectorVisible.set(true)"
+                              [tabindex]="-1"
+                              icon="fas fa-binoculars" severity="primary" variant="text"
+                              pTooltip="Seleccionar editorial" tooltipPosition="top" />
+                    <p-button (click)="form.patchValue({editorial: {id: null, name: null}})"
+                              [tabindex]="-1"
+                              icon="fas fa-delete-left" severity="danger" variant="text"
+                              pTooltip="Borrar editorial [ Supr ]" tooltipPosition="top" />
+                  </p-inputgroup-addon>
+                </p-inputgroup>
+                <p-message severity="error" text="La editorial es obligatoria"
+                           [hidden]="!hasError('editorial.id', 'required')" />
+              </div>
+              <div class="col-12 flex flex-column gap-2 mb-3">
+                <label for="book-desc" class="text-primary-600 pl-3">Descripción</label>
+                <textarea pTextarea id="book-desc" rows="8" formControlName="description"></textarea>
+              </div>
+            </div>
+          </p-tabpanel>
+          <p-tabpanel value="edition">
+            <h3 class="flex flex-row gap-2 text-primary-400 text-2xl">
+              <fa-icon icon="book-open" />
+              <span>Edición</span>
+            </h3>
+            <div class="col-12 grid align-content-start" formGroupName="detail">
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="book-isbn" class="text-primary-600 pl-3">ISBN</label>
+                <p-input-mask mask="999-999999999*"
+                              inputId="book-isbn"
+                              [autoClear]="false"
+                              formControlName="isbn" />
+                <p-message severity="error" text="El ISBN es obligatorio"
+                           [hidden]="!hasError('detail.isbn', 'empty')" />
+                <p-message severity="error" text="El ISBN no es válido"
+                           [hidden]="!hasError('detail.isbn', 'pattern')" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="book-edition" class="text-primary-600 pl-3">Edición</label>
+                <input pInputText
+                       id="book-edition"
+                       autocomplete="off"
+                       class="w-6"
+                       formControlName="edition" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="book-published-at" class="text-primary-600 pl-3">Fecha de publicación</label>
+                <p-date-picker showIcon
+                               inputId="book-published-at"
+                               iconDisplay="input"
+                               [maxDate]="maxDate"
+                               formControlName="publishedAt" />
+                <p-message severity="error" text="La fecha de publicación es obligatoria"
+                           [hidden]="!hasError('detail.publishedAt', 'required')" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="book-language" class="text-primary-600 pl-3">Idioma</label>
+                <input pInputText
+                       id="book-language"
+                       autocomplete="off"
+                       formControlName="language" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="book-pages" class="text-primary-600 pl-3">Número de páginas</label>
+                <p-input-number class="w-6" inputId="book-pages" formControlName="pages" />
+                <p-message severity="error" text="El número de páginas no puede ser menor que 1"
+                           [hidden]="!hasError('detail.pages', 'min')" />
+              </div>
+            </div>
+          </p-tabpanel>
+          <p-tabpanel value="shop">
+            <h3 class="flex flex-row gap-2 text-primary-400 text-2xl">
+              <fa-icon icon="shop" />
+              <span>Ventas</span>
+            </h3>
+            <div class="col-12 grid align-content-start" formGroupName="sale">
+              <div class="col-12 flex flex-row align-items-center gap-2 mb-3">
+                <p-toggle-switch inputId="book-saleable"
+                                 (click)="form.get('sale.price')?.updateValueAndValidity()"
+                                 formControlName="saleable" />
+                <label for="book-saleable" class="pl-3 cursor-pointer">Se puede vender</label>
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="book-price" class="text-primary-600 pl-3">Precio</label>
+                <p-inputgroup class="w-6">
+                  <p-input-number inputId="book-price"
+                                  mode="decimal"
+                                  class="w-6"
+                                  [minFractionDigits]="1"
+                                  [maxFractionDigits]="2"
+                                  suffix=" €"
+                                  formControlName="price" />
+                  <p-inputgroup-addon>
+                    <p-button (click)="form.patchValue({sale: {price: 0}})"
+                              icon="fas fa-delete-left" severity="danger" variant="text"
+                              pTooltip="Borrar precio" tooltipPosition="top" />
+                  </p-inputgroup-addon>
+                </p-inputgroup>
+                <p-message severity="error" text="El precio no puede ser negativo"
+                           [hidden]="!hasError('sale.price', 'min')" />
+                <p-message severity="error" text="El precio es obligatorio si el libro se puede vender"
+                           [hidden]="!hasError('sale.price', 'priceRequired')" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="book-discount" class="text-primary-600 pl-3">Descuento</label>
+                <p-inputgroup class="w-6">
+                  <p-input-number inputId="book-discount"
+                                  mode="decimal"
+                                  [minFractionDigits]="1"
+                                  [maxFractionDigits]="2"
+                                  suffix=" %"
+                                  formControlName="discount" />
+                  <p-inputgroup-addon>
+                    <p-button (click)="form.patchValue({sale: {discount: 0}})"
+                              icon="fas fa-delete-left" severity="danger" variant="text"
+                              pTooltip="Borrar descuento" tooltipPosition="top" />
+                  </p-inputgroup-addon>
+                </p-inputgroup>
+                <p-message severity="error" text="El descuento no puede ser negativo"
+                           [hidden]="!hasError('sale.discount', 'min')" />
+                <p-message severity="error" text="El descuento no puede ser mayor que 100"
+                           [hidden]="!hasError('sale.discount', 'max')" />
+              </div>
+            </div>
+          </p-tabpanel>
+        </p-tabpanels>
+      </p-tabs>
+    </div>
+  </div>
+</form>

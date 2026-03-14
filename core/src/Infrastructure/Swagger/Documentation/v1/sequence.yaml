@@ -1,0 +1,128 @@
+openapi: 3.0.0
+info:
+  title: Sequence API
+  description: Sequence API
+  version: 1.0.0
+
+paths:
+  /sequences/{type}/simulate:
+    get:
+      summary: Simulate a sequence
+      description: Simulate a sequence based on the provided type.
+      tags: [ Sequences ]
+      parameters:
+        - name: type
+          in: path
+          required: true
+          description: The type of sequence to simulate.
+          schema:
+            type: string
+            enum:
+              - membership
+              - sale
+              - borrow
+      responses:
+        '200':
+          description: Simulation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SequenceSimulate'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+
+components:
+  schemas:
+    SequenceSimulate:
+      type: object
+      properties:
+        number:
+          type: string
+          example: "F-15465"
+
+  responses:
+    Success:
+      description: Success
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                type: array
+                items:
+                  type: string
+                example: []
+
+    JWTNotFound:
+      description: JWT not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: JWT not Found
+              code:
+                type: integer
+                example: 401
+
+    ObjectNotFound:
+      description: Object not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Object not found
+              code:
+                type: integer
+                example: 404
+
+    BadRequestError:
+      description: Bad Request Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Bad Request Error
+              code:
+                type: integer
+                example: 400
+
+    ServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Internal Server Error
+              code:
+                type: integer
+                example: 500
+
+    ServiceUnavailable:
+      description: Server Unavailable
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Server Unavailable
+              code:
+                type: integer
+                example: 503

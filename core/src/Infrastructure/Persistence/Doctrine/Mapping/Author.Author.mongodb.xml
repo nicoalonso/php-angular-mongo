@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mongo-mapping xmlns="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
+                                            http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
+    <document name="App\Domain\Author\Author" collection="authors"
+              repository-class="App\Infrastructure\Persistence\Doctrine\Repository\MongoAuthorRepository">
+        <id strategy="NONE" type="string"/>
+        <field field-name="name" type="string"/>
+        <field field-name="realName" type="string"/>
+        <field field-name="genres" type="string"/>
+        <field field-name="biography" type="string"/>
+        <field field-name="nationality" type="string"/>
+        <field field-name="birthDate" type="date_immutable"/>
+        <field field-name="deathDate" type="date_immutable" nullable="true"/>
+        <field field-name="photoUrl" type="string"/>
+        <field field-name="website" type="string"/>
+        <field field-name="createdBy" type="string"/>
+        <field field-name="createdAt" type="date_immutable"/>
+        <field field-name="updatedBy" type="string"/>
+        <field field-name="updatedAt" type="date_immutable"/>
+    </document>
+</doctrine-mongo-mapping>

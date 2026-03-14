@@ -1,0 +1,19 @@
+nelmio_api_doc:
+  documentation:
+    info:
+      title: Library API
+      description: Library API
+      version: v1.0.0
+
+    servers:
+      - url: 'https://library-core.portafolio.loc/library/v1'
+        description: Local server
+
+  areas:
+    default:
+      path_patterns:
+        - ^/api(?!/$)
+
+    v1:
+      path_patterns:
+        - ^/api/v1/(?!/$)

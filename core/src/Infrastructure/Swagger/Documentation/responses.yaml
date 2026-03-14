@@ -1,0 +1,78 @@
+components:
+  responses:
+    Success:
+      description: Success
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                type: array
+                items:
+                  type: string
+                example: []
+
+    JWTNotFound:
+      description: JWT not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: JWT not Found
+              code:
+                type: integer
+                example: 401
+
+    ObjectNotFound:
+      description: Object not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Object not found
+              code:
+                type: integer
+                example: 404
+
+    BadRequestError:
+      description: Bad Request Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Bad Request Error
+              code:
+                type: integer
+                example: 400
+
+    ServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Internal Server Error
+              code:
+                type: integer
+                example: 500
+
+    ServiceUnavailable:
+      description: Server Unavailable
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Server Unavailable
+              code:
+                type: integer
+                example: 503

@@ -1,0 +1,18 @@
+{
+  "title": "Romeo and Juliet",
+  "description": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young star-crossed lovers whose deaths ultimately reconcile their feuding families.",
+  "authorId": "d6e20876-6f65-5181-a656-b34086d68b4f",
+  "editorialId": "d3df0364-5020-5525-b2d3-d779a1c426d6",
+  "detail": {
+    "edition": "First Edition",
+    "isbn": "978-1234567890",
+    "language": "English",
+    "publishedAt": "2024-01-01",
+    "pages": 200
+  },
+  "sale": {
+    "saleable": true,
+    "price": 19.99,
+    "discount": 0.0
+  }
+}

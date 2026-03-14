@@ -1,0 +1,24 @@
+v1_purchases_list:
+  path: purchases
+  controller: App\Infrastructure\Controller\V1\Purchase\PurchaseListController
+  methods: [ GET ]
+
+v1_purchases_create:
+  path: purchases
+  controller: App\Infrastructure\Controller\V1\Purchase\PurchaseCreateController
+  methods: [ POST ]
+
+v1_purchases_read:
+  path: purchases/{purchaseId}
+  controller: App\Infrastructure\Controller\V1\Purchase\PurchaseReadController
+  methods: [ GET ]
+
+v1_purchases_update:
+  path: purchases/{purchaseId}
+  controller: App\Infrastructure\Controller\V1\Purchase\PurchaseUpdateController
+  methods: [ PUT ]
+
+v1_purchases_delete:
+  path: purchases/{purchaseId}
+  controller: App\Infrastructure\Controller\V1\Purchase\PurchaseDeleteController
+  methods: [ DELETE ]

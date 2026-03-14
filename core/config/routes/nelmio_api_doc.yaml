@@ -1,0 +1,4 @@
+api_v1.swagger_ui:
+  path: v1/doc
+  methods: GET
+  defaults: { _controller: nelmio_api_doc.controller.swagger_ui, area: v1 }

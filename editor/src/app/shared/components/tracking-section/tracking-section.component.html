@@ -1,0 +1,24 @@
+<div class="grid">
+  <div class="col-12 md:col-6 flex flex-column gap-4">
+    <div class="flex flex-column gap-2">
+      <span class="font-bold" [ngClass]="color()">Creado por</span>
+      <span class="text-lg">{{ entity().createdBy }}</span>
+    </div>
+    <div class="flex flex-column gap-2">
+      <span class="font-bold" [ngClass]="color()">Creado en</span>
+      <span class="text-lg">{{ entity().createdAt | date:'dd/MM/yyyy, HH:mm:ss' }}</span>
+    </div>
+  </div>
+  @if (entity().updatedBy) {
+    <div class="col-12 md:col-6 flex flex-column gap-4">
+      <div class="flex flex-column gap-2">
+        <span class="font-bold" [ngClass]="color()">Modificado por</span>
+        <span class="text-lg">{{ entity().updatedBy }}</span>
+      </div>
+      <div class="flex flex-column gap-2">
+        <span class="font-bold" [ngClass]="color()">Modificado en</span>
+        <span class="text-lg">{{ entity().updatedAt | date:'dd/MM/yyyy, HH:mm:ss' }}</span>
+      </div>
+    </div>
+  }
+</div>

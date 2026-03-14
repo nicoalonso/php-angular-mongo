@@ -1,0 +1,30 @@
+<p-menubar>
+  <ng-template pTemplate="start">
+    <div class="flex flex-row align-items-center mx-4">
+      <p-button (click)="showMenu.emit()" [text]="true" variant="text">
+        <fa-icon icon="bars"></fa-icon>
+      </p-button>
+      <p-button [text]="true" [link]="true" [routerLink]="['/']" variant="text" label="Biblioteca"></p-button>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <div class="flex flex-row align-items-center mx-4">
+      <p-button (click)="changeTheme()"
+                [pTooltip]="isLightTheme() ? 'Tema Oscuro' : 'Tema Claro'"
+                [tooltipPosition]="'bottom'"
+                [text]="true"
+                variant="text"
+                size="small">
+        <fa-icon icon="circle-half-stroke"></fa-icon>
+      </p-button>
+      <p-button (click)="showUserPanel.emit()"
+                [text]="true"
+                variant="text"
+                pTooltip="Mostrar panel de Usuario"
+                tooltipPosition="bottom"
+                size="small">
+        <fa-icon icon="user"></fa-icon>
+      </p-button>
+    </div>
+  </ng-template>
+</p-menubar>

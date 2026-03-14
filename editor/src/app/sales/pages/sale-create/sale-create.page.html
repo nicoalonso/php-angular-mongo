@@ -1,0 +1,236 @@
+<app-customer-dialog [(visible)]="customerSelectorVisible" (selected)="onSelectCustomer($event)" />
+<app-book-dialog [(visible)]="bookSelectorVisible" [saleable]="true" (selected)="onSelectBook($event)" />
+
+<form [formGroup]="form" (ngSubmit)="onCreate()">
+  <div class="flex flex-column surface-section mx-6 hall min-vh-80">
+    <div class="col-12 p-4 flex flex-column">
+      <span class="hall-icon text-purple-600">
+        <i class="fas fa-cash-register"></i>
+      </span>
+      <span class="watermark text-purple-600">
+        <i class="fas fa-cash-register"></i>
+      </span>
+      <div class="flex flex-row gap-3 justify-content-between">
+        <div class="flex flex-column gap-2">
+          <div class="flex">
+            <p-breadcrumb class="max-w-full" [model]="breadcrumb" [home]="homeBreadcrumb" />
+          </div>
+        </div>
+        <div class="flex flex-row gap-2 align-items-center">
+          <p-button [text]="true"
+                    severity="secondary"
+                    icon="fas fa-xmark"
+                    label="Salir"
+                    size="small"
+                    [routerLink]="['/sales']" />
+        </div>
+      </div>
+    </div>
+    <div class="col-12 flex flex-column gap-4 px-6 py-4">
+      <div class="flex-1 p-4 flex flex-column gap-4">
+        <div class="grid align-content-start">
+          <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3" formGroupName="customer">
+            <label for="sale-customer" class="text-purple-400 pl-3">Cliente</label>
+            <input type="hidden" formControlName="id" />
+            <p-inputgroup>
+              <input pInputText id="sale-customer"
+                     (keydown)="onCustomerKeydown($event)"
+                     [readonly]="true"
+                     formControlName="fullName" />
+              <p-inputgroup-addon>
+                <p-button (click)="customerSelectorVisible.set(true)"
+                          [tabindex]="-1"
+                          icon="fas fa-binoculars" severity="primary" variant="text"
+                          pTooltip="Seleccionar cliente [ / ]" tooltipPosition="top" />
+              </p-inputgroup-addon>
+            </p-inputgroup>
+            <p-message severity="error" text="El cliente es obligatorio"
+                       [hidden]="!hasError('customer.id', 'empty')" />
+          </div>
+          <div class="col-12 lg:col-3 flex flex-column gap-2 mb-3 align-items-center" formGroupName="invoice">
+            <div class="flex flex-column gap-2">
+              <label for="sale-date" class="text-purple-400 pl-3">Fecha</label>
+              <p-date-picker showIcon
+                             inputId="sale-date"
+                             iconDisplay="input"
+                             [maxDate]="maxDate"
+                             formControlName="date" />
+              <p-message severity="error" text="La fecha es obligatoria"
+                         [hidden]="!hasError('invoice.date', 'required')" />
+            </div>
+          </div>
+          <div class="col-12 lg:col-3 flex flex-column gap-2 mb-3">
+            <label for="sale-number" class="text-purple-400 pl-3">Número de factura</label>
+            <input pInputText
+                   id="sale-number"
+                   autocomplete="off"
+                   [value]="sequenceNumber()"
+                   [readonly]="true" />
+            <small id="sale-number-help">El número más probable que se asignará automáticamente a esta factura una vez creada.</small>
+          </div>
+        </div>
+        <div class="grid align-content-start gap-2">
+          <div class="w-full min-vh-40" formArrayName="lines">
+            <p-table [value]="lines.controls" stripedRows>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th class="border-bottom-3 border-purple-600 text-center w-2">Cantidad</th>
+                  <th class="border-bottom-3 border-purple-600 w-4">Libro</th>
+                  <th class="border-bottom-3 border-purple-600 text-center w-2">Precio</th>
+                  <th class="border-bottom-3 border-purple-600 text-center w-1">Descuento</th>
+                  <th class="border-bottom-3 border-purple-600 text-center w-2">Total</th>
+                  <th class="border-bottom-3 border-purple-600 w-auto"></th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-i="rowIndex">
+                <tr [formGroupName]="i">
+                  <td>
+                    <p-input-number formControlName="quantity"
+                                    mode="decimal"
+                                    [minFractionDigits]="0"
+                                    [maxFractionDigits]="2"
+                                    inputStyleClass="text-right pr-7"
+                                    [showButtons]="true"
+                                    [fluid]="true" />
+                  </td>
+                  <td formGroupName="book">
+                    <input type="hidden" formControlName="id" />
+                    <p-inputgroup>
+                      <input pInputText
+                             [readonly]="true"
+                             (keydown)="onBookKeydown($event, i)"
+                             formControlName="title"
+                             class="w-full" />
+                      <p-inputgroup-addon>
+                        <p-button (click)="onSelectClicked(i)"
+                                  [tabindex]="-1"
+                                  icon="fas fa-binoculars" severity="primary" variant="text"
+                                  pTooltip="Seleccionar libro [ / ]" tooltipPosition="top" />
+                      </p-inputgroup-addon>
+                    </p-inputgroup>
+                    <p-message severity="error" text="El libro es obligatorio"
+                               [hidden]="!hasArrayError(lines, i,'book.id', 'empty')" />
+                    <p-message severity="error" text="El libro no esta disponible"
+                               [hidden]="!hasArrayError(lines, i,'book.available', 'unavailable')" />
+                  </td>
+                  <td>
+                    <p-input-number formControlName="price"
+                                    mode="decimal"
+                                    [min]="0"
+                                    [minFractionDigits]="2"
+                                    [maxFractionDigits]="2"
+                                    inputStyleClass="text-right"
+                                    [fluid]="true" />
+                  </td>
+                  <td>
+                    <p-input-number formControlName="discount"
+                                    mode="decimal"
+                                    [min]="0"
+                                    [minFractionDigits]="2"
+                                    [maxFractionDigits]="2"
+                                    inputStyleClass="text-right"
+                                    [fluid]="true" />
+                  </td>
+                  <td>
+                    <p-input-number formControlName="total"
+                                    mode="decimal"
+                                    [minFractionDigits]="2"
+                                    [maxFractionDigits]="2"
+                                    inputStyleClass="text-right"
+                                    [fluid]="true" />
+                  </td>
+                  <td class="text-center">
+                    <p-button (click)="onRemoveLine(i)"
+                              [text]="true"
+                              [tabindex]="-1"
+                              severity="danger" icon="fas fa-xmark" size="small" />
+                  </td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                <tr>
+                  <td [colSpan]="6" class="text-center text-xl h-30vh">No hay ventas</td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="footer">
+                <tr>
+                  <td colspan="6">
+                    <div class="flex flex-row gap-2 justify-content-end">
+                      <p-button [text]="true"
+                                severity="success"
+                                icon="fas fa-plus"
+                                label="Añadir línea"
+                                size="small"
+                                type="button"
+                                (click)="onAddLine()" />
+                    </div>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+          <p-message severity="error" text="No puede haber una venta sin líneas"
+                     [hidden]="!hasError('lines', 'empty')" />
+        </div>
+        <div class="grid justify-content-end pt-2" formGroupName="invoice">
+          <div class="col-12 lg:col-3 flex flex-column align-items-end gap-2 mb-3">
+            <label for="sale-amount" class="text-purple-400 pr-3">Subtotal</label>
+            <div>
+              <p-input-number inputId="sale-amount"
+                              inputStyleClass="text-right"
+                              mode="decimal"
+                              class="w-6"
+                              [minFractionDigits]="2"
+                              [maxFractionDigits]="2"
+                              formControlName="amount" />
+            </div>
+          </div>
+          <div class="col-12 lg:col-3 flex flex-column align-items-end gap-2 mb-3">
+            <label for="sale-tax-percentage" class="text-purple-400 pr-3">IVA</label>
+            <div>
+              <p-input-number inputId="sale-tax-percentage"
+                              inputStyleClass="text-right"
+                              mode="decimal"
+                              class="w-6"
+                              [minFractionDigits]="2"
+                              [maxFractionDigits]="2"
+                              formControlName="taxPercentage" />
+            </div>
+          </div>
+          <div class="col-12 lg:col-3 flex flex-column align-items-end gap-2 mb-3">
+            <label for="sale-taxes" class="text-purple-400 pr-3">Impuestos</label>
+            <div>
+              <p-input-number inputId="sale-taxes"
+                              inputStyleClass="text-right"
+                              mode="decimal"
+                              class="w-6"
+                              [minFractionDigits]="2"
+                              [maxFractionDigits]="2"
+                              formControlName="taxes" />
+            </div>
+          </div>
+          <div class="col-12 lg:col-3 flex flex-column align-items-end gap-2 mb-3">
+            <label for="sale-total" class="text-purple-400 pr-3">Total</label>
+            <div>
+              <p-input-number inputId="sale-total"
+                              inputStyleClass="text-right"
+                              mode="decimal"
+                              class="w-6"
+                              [minFractionDigits]="2"
+                              [maxFractionDigits]="2"
+                              suffix=" €"
+                              formControlName="total" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row gap-4 justify-content-end">
+        <p-button type="submit"
+                  size="small">
+          <fa-icon [icon]="['fas', 'save']"></fa-icon>
+          <span class="ml-2 font-bold">Crear Venta</span>
+        </p-button>
+      </div>
+    </div>
+  </div>
+</form>

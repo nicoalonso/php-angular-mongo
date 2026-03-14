@@ -1,0 +1,204 @@
+<div class="flex flex-column surface-section mx-6 hall min-vh-80">
+  <div class="flex flex-column p-4">
+    <span class="hall-icon text-400">
+      <i class="fas fa-briefcase"></i>
+    </span>
+    <span class="watermark text-400">
+      <i class="fas fa-briefcase"></i>
+    </span>
+    <div class="flex flex-row gap-3 justify-content-between">
+      <div class="flex flex-column gap-2">
+        <div class="flex">
+          <p-breadcrumb class="max-w-full" [model]="breadcrumb" [home]="homeBreadcrumb" />
+        </div>
+        <small>Editado {{ borrow().lastDate | dateAgo }} por <strong>{{ borrow().lastUser }}</strong></small>
+      </div>
+      <div class="flex flex-row gap-2 align-items-center">
+        @if (!borrow().returned) {
+          <p-button [outlined]="true"
+                    severity="info"
+                    icon="fas fa-pen"
+                    label="Retornar"
+                    size="small"
+                    [routerLink]="['/borrows/checkin', borrow().id]" />
+        }
+        <p-button [text]="true"
+                  severity="secondary"
+                  icon="fas fa-xmark"
+                  label="Salir"
+                  size="small"
+                  [routerLink]="['/borrows']" />
+      </div>
+    </div>
+  </div>
+  <div class="flex-1 p-4">
+    <p-tabs value="detail" class="tab-selector">
+      <p-tablist>
+        <p-tab value="detail" class="flex align-items-center gap-2">
+          <i class="fas fa-circle-info"></i>
+          <span>Detalle</span>
+        </p-tab>
+        <p-tab value="books" class="flex align-items-center gap-2">
+          <i class="fas fa-book"></i>
+          <span>Libros</span>
+        </p-tab>
+        <p-tab value="data" class="flex align-items-center gap-2">
+          <i class="fas fa-user-clock"></i>
+          <span>Datos</span>
+        </p-tab>
+      </p-tablist>
+      <p-tabpanels>
+        <p-tabpanel value="detail">
+          <h3 class="flex flex-row gap-2 text-800 text-2xl">
+            <fa-icon icon="person" />
+            <span>Cliente</span>
+          </h3>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-400">Nombre</span>
+              <div>
+                <a class="text-lg text-orange-600 hover:underline"
+                   [routerLink]="['/customers', borrow().customer.id]">
+                  {{ borrow().customer.fullName }}
+                </a>
+              </div>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-400">Número de socio</span>
+              <app-btn-copy title="Número de socio" [text]="borrow().customer.number">
+                <span class="text-lg">{{ borrow().customer.number }}</span>
+              </app-btn-copy>
+            </div>
+          </div>
+          <p-divider />
+          <h3 class="flex flex-row gap-2 text-800 text-2xl">
+            <fa-icon icon="briefcase" />
+            <span>Préstamo</span>
+          </h3>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 lg:col-4 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-400">Fecha del préstamo</span>
+              <span class="text-lg">{{ borrow().borrowDate | date: 'dd/MM/yyyy' }}</span>
+            </div>
+            <div class="col-12 lg:col-4 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-400">Fecha de vencimiento</span>
+              <span class="text-lg" [ngClass]="{
+                'font-bold text-red-600': isDue()
+                }">
+                {{ borrow().dueDate | date: 'dd/MM/yyyy' }}
+              </span>
+            </div>
+            <div class="col-12 lg:col-4 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-400">Fecha de devolución</span>
+              <span class="text-lg">
+                @if (borrow().returnedDate) {
+                  {{ borrow().returnedDate | date: 'dd/MM/yyyy' }}
+                } @else {
+                   --
+                }
+              </span>
+            </div>
+            <div class="col-12 lg:col-4 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-400">Estado</span>
+              <span class="text-lg text-blue-600" [ngClass]="{
+                  'text-blue-600': borrow().returned,
+                  'text-yellow-600': !borrow().returned
+              }">{{ borrow().state }}</span>
+            </div>
+            <div class="col-12 lg:col-4 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-400">Multas</span>
+              @if (borrow().penalty) {
+                <span class="text-lg text-red-600">{{ borrow().penaltyAmount | currency: 'EUR' }}</span>
+              } @else {
+                <span class="text-lg text-green-600">No</span>
+              }
+            </div>
+            <div class="col-12 lg:col-4 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-400">Número</span>
+              <app-btn-copy title="Número de entrada" [text]="borrow().number">
+                <span class="text-lg">{{ borrow().number }}</span>
+              </app-btn-copy>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="books">
+          <h3 class="flex flex-row gap-2 text-800 text-2xl">
+            <fa-icon icon="book" />
+            <span>Libros</span>
+          </h3>
+          <p-table [value]="borrow().lines"
+                   [tableStyle]="{ 'min-width': '100%' }"
+                   styleClass="p-datatable-striped">
+            <ng-template pTemplate="header">
+              <tr>
+                <th class="border-bottom-3 border-400">Libro</th>
+                <th class="border-bottom-3 border-400">ISBN</th>
+                <th class="border-bottom-3 border-400">Estado</th>
+                <th class="border-bottom-3 border-400">Fecha de devolución</th>
+                <th class="border-bottom-3 border-400">Multa</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-line>
+              <tr>
+                <td>
+                  <a class="text-primary hover:underline"
+                     [routerLink]="['/books', line.book.id]">
+                    {{ line.book.title }}
+                  </a>
+                </td>
+                <td>{{ line.book.isbn }}</td>
+                <td [ngClass]="{
+                  'text-blue-600': line.returned,
+                  'text-yellow-600': !line.returned
+                }">
+                  {{ line.state }}
+                </td>
+                <td class="text-center">
+                  @if (line.returnedDate) {
+                    {{ line.returnedDate | date: 'dd/MM/yyyy' }}
+                  } @else {
+                    --
+                  }
+                </td>
+                <td [ngClass]="{
+                  'text-red-600': line.penalty,
+                  'text-green-600': !line.penalty
+                }">
+                  @if (line.penalty) {
+                     {{ line.penaltyAmount | currency: 'EUR' }}
+                  } @else {
+                    No
+                  }
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td [colSpan]="6">No hay libros</td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="footer">
+              <tr>
+                <td colspan="4" class="text-right font-bold">Total libros préstados:</td>
+                <td class="text-right pr-4">{{ borrow().totalBooks | number }}</td>
+              </tr>
+              <tr>
+                <td colspan="4" class="text-right font-bold">Total libros retornados:</td>
+                <td class="text-right pr-4">{{ borrow().totalReturnedBooks | number }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </p-tabpanel>
+        <p-tabpanel value="data">
+          <h3 class="flex flex-row gap-2 text-800 text-2xl">
+            <fa-icon icon="user-clock" />
+            <span>Usuarios y fechas</span>
+          </h3>
+          <div class="col-12">
+            <app-tracking-section [entity]="borrow()" color="text-400" />
+          </div>
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
+  </div>
+</div>

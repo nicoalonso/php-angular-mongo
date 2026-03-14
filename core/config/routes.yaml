@@ -1,0 +1,47 @@
+index:
+  path: /
+  controller: App\Infrastructure\Controller\HomeController
+
+login:
+  path: /login
+  controller: App\Infrastructure\Controller\LoginController
+
+logout:
+  path: /logout
+  controller: App\Infrastructure\Controller\LogoutController
+
+v1_customers:
+  resource: "routes/V1/customers.yaml"
+  prefix: /library/v1
+
+v1_authors:
+  resource: "routes/V1/authors.yaml"
+  prefix: /library/v1
+
+v1_editorials:
+  resource: "routes/V1/editorials.yaml"
+  prefix: /library/v1
+
+v1_books:
+  resource: "routes/V1/books.yaml"
+  prefix: /library/v1
+
+v1_providers:
+  resource: "routes/V1/providers.yaml"
+  prefix: /library/v1
+
+v1_purchases:
+  resource: "routes/V1/purchases.yaml"
+  prefix: /library/v1
+
+v1_sales:
+  resource: "routes/V1/sales.yaml"
+  prefix: /library/v1
+
+v1_borrows:
+  resource: "routes/V1/borrows.yaml"
+  prefix: /library/v1
+
+v1_sequences:
+  resource: "routes/V1/sequences.yaml"
+  prefix: /library/v1

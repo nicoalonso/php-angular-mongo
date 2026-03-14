@@ -1,0 +1,22 @@
+<div class="grid grid-nogutter surface-section mx-6">
+  <div class="col-12 p-4 flex flex-column relative">
+    <span class="watermark text-teal-600">
+      <i class="fas fa-box-open"></i>
+    </span>
+    <div class="border-none border-bottom-3 border-teal-600">
+      <app-list-table name="purchases"
+                      recordsLabel="Entradas"
+                      borderColor="border-teal-600"
+                      [breadcrumb]="breadcrumb"
+                      [service]="service"
+                      [columns]="columns"
+                      [adapter]="adapter"
+                      (itemClicked)="onClick($event)">
+        <p-button (click)="onCreate()" size="small">
+          <fa-icon class="mr-2" icon="plus"></fa-icon>
+          <span>Nueva Entrada</span>
+        </p-button>
+      </app-list-table>
+    </div>
+  </div>
+</div>

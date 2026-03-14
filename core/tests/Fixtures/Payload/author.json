@@ -1,0 +1,11 @@
+{
+  "name": "William Shakespeare",
+  "realName": "William Shakespeare",
+  "genres": "Tragedy, Comedy, History",
+  "biography": "William Shakespeare was an English playwright, poet, and actor.",
+  "nationality": "English",
+  "birthDate": "1564-04-23",
+  "deathDate": "1616-04-23",
+  "photoUrl": "https://example.com/shakespeare.jpg",
+  "website": "https://en.wikipedia.org/wiki/William_Shakespeare"
+}

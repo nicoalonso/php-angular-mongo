@@ -1,0 +1,20 @@
+{
+  "name": "John",
+  "surname": "Doe",
+  "membership": {
+    "active": true
+  },
+  "contact": {
+    "email": "johndoe@gmail.com",
+    "phone1": "+1234567890",
+    "phone2": "+0987654321"
+  },
+  "address": {
+    "street": "123 Main Street",
+    "postalCode": "12345",
+    "city": "Anytown",
+    "province": "Alaska",
+    "country": "EEUU"
+  },
+  "vatNumber": "12345667A"
+}

@@ -1,0 +1,58 @@
+<div class="flex flex-column justify-content-center align-items-center" style="min-height: 70vh">
+  <div class="flex flex-row flex-wrap gap-3 p-5 align-items-center justify-content-center w-full">
+
+    <div class="p-card p-3 border-2 border-400 surface-card flex-1">
+      <div class="p-card-header font-bold text-xl text-600">Trámites</div>
+      <span class="icon text-600">
+          <i class="fas fa-briefcase"></i>
+        </span>
+      <div class="p-card-content">
+        <p class="text-color">Gestionar prestamos y ventas</p>
+        <a class="text-600 mb-2" [routerLink]="['/borrows/create']">Nuevo Préstamo</a>
+        <a class="text-600 mb-2" [routerLink]="['/borrows']">Listado de Prestamos</a>
+        <a class="text-600 mb-2" [routerLink]="['/sales/create']">Nueva Venta</a>
+        <a class="text-600 mb-2" [routerLink]="['/sales']">Listado de Ventas</a>
+      </div>
+    </div>
+
+    <div class="p-card p-3 border-2 border-primary surface-card flex-1">
+      <div class="p-card-header font-bold text-xl text-primary-600">Catálogo</div>
+      <span class="icon text-primary">
+          <i class="fas fa-book"></i>
+        </span>
+      <div class="p-card-content">
+        <p class="text-color">Gestionar el catálogo de Libros</p>
+        <a class="text-primary mb-2" [routerLink]="['/books']">Listado de Libros</a>
+        <a class="text-primary mb-2" [routerLink]="['/authors']">Listado de Autores</a>
+        <a class="text-primary mb-2" [routerLink]="['/editorials']">Listado de Editoriales</a>
+        <a class="text-primary mb-2" [routerLink]="['/books/create']">Nuevo Libro</a>
+      </div>
+    </div>
+
+    <div class="p-card p-3 border-2 border-orange-600 surface-card flex-1">
+      <div class="p-card-header font-bold text-xl text-orange-600">Clientes</div>
+      <span class="icon text-orange-600">
+          <i class="fas fa-people-group"></i>
+        </span>
+      <div class="p-card-content">
+        <p class="text-color">Gestionar clientes</p>
+        <a class="text-orange-600 mb-2" [routerLink]="['/customers']">Listado de Clientes</a>
+        <a class="text-orange-600 mb-2" [routerLink]="['/customers/create']">Nuevo Cliente</a>
+      </div>
+    </div>
+
+    <div class="p-card p-3 border-2 border-teal-600 surface-card flex-1">
+      <div class="p-card-header font-bold text-xl text-teal-600">Compras</div>
+      <span class="icon text-teal-600">
+          <i class="fas fa-box-open"></i>
+        </span>
+      <div class="p-card-content">
+        <p class="text-color">Gestionar entradas</p>
+        <a class="text-teal-600 mb-2" [routerLink]="['/purchases']">Listado de Entradas</a>
+        <a class="text-teal-600 mb-2" [routerLink]="['/providers']">Listado de Proveedores</a>
+        <a class="text-teal-600 mb-2" [routerLink]="['/purchases/create']">Nueva Entrada</a>
+      </div>
+    </div>
+
+  </div>
+</div>

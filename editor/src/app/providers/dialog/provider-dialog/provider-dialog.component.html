@@ -1,0 +1,96 @@
+<p-dialog header="Buscar y seleccionar Libro"
+          [modal]="true" [(visible)]="visible"
+          [style]="{ width: '80vw', height: '60vh' }"
+          [closable]="true"
+          [resizable]="false">
+  <form [formGroup]="form" (ngSubmit)="onSearch()">
+    <section class="flex flex-column gap-2">
+      <div class="flex flex-column gap-4">
+        <div class="flex flex-row gap-2 align-items-center">
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     #nameInput
+                     id="provider-search-name"
+                     autocomplete="off"
+                     formControlName="name" />
+              <label for="provider-search-name">Nombre</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({name: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar nombre" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     id="provider-search-comercial-name"
+                     autocomplete="off"
+                     formControlName="comercialName" />
+              <label for="provider-search-author">Nombre comercial</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({comercialName: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar nombre comercial" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     id="provider-search-web"
+                     autocomplete="off"
+                     formControlName="website" />
+              <label for="provider-search-web">Web</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({website: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar web" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-button label="Buscar"
+                    severity="info"
+                    icon="fas fa-search"
+                    type="submit" />
+        </div>
+        <div class="w-full">
+          <p-table [value]="providers()"
+                   [paginator]="true"
+                   [rows]="5"
+                   [totalRecords]="providers().length"
+                   [loading]="loading()"
+                   selectionMode="single"
+                   [tableStyle]="{ 'min-width': '100%' }"
+                   styleClass="p-datatable-striped">
+            <ng-template pTemplate="header">
+              <tr>
+                <th class="border-bottom-3 border-green-600">Nombre</th>
+                <th class="border-bottom-3 border-green-600">Nombre comercial</th>
+                <th class="border-bottom-3 border-green-600">Web</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-provider let-rowIndex="rowIndex">
+              <tr [pSelectableRow]="provider"
+                  [pSelectableRowIndex]="rowIndex"
+                  (click)="onClickItem(provider, $event)">
+                <td>{{ provider.name }}</td>
+                <td>{{ provider.comercialName }}</td>
+                <td>{{ provider.contact.website }}</td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td [colSpan]="3">No se han encontrado registros.</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </section>
+  </form>
+</p-dialog>

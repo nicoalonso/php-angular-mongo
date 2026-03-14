@@ -1,0 +1,24 @@
+v1_borrows_list:
+  path: borrows
+  controller: App\Infrastructure\Controller\V1\Borrow\BorrowListController
+  methods: [ GET ]
+
+v1_borrows_create:
+  path: borrows
+  controller: App\Infrastructure\Controller\V1\Borrow\BorrowCreateController
+  methods: [ POST ]
+
+v1_borrows_read:
+  path: borrows/{borrowId}
+  controller: App\Infrastructure\Controller\V1\Borrow\BorrowReadController
+  methods: [ GET ]
+
+v1_borrows_check_in:
+  path: borrows/{borrowId}
+  controller: App\Infrastructure\Controller\V1\Borrow\BorrowCheckInController
+  methods: [ PATCH ]
+
+v1_borrows_manual_penalty:
+  path: borrows/manual-penalty
+  controller: App\Infrastructure\Controller\V1\Borrow\BorrowManualPenaltyController
+  methods: [ POST ]

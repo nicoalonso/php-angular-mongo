@@ -1,0 +1,19 @@
+<p-drawer [(visible)]="menuAside"
+          position="left"
+          header="Biblioteca">
+  <div class="flex flex-column gap-2">
+    @if (items().length > 0) {
+      @for (item of items(); track item.label) {
+        <p-menu [model]="[item]" [style]="{ width: '100%' }"></p-menu>
+      }
+    } @else {
+      <p class="text-center">Se requiere iniciar sesión</p>
+    }
+  </div>
+  <ng-template #footer>
+    <p class="flex flex-row gap-2 align-items-center justify-content-center m-0">
+      <img ngSrc="/img/library.png" alt="Taxonomy" priority height="40" width="40" class="mr-2" />
+      <label>{{ version }}</label>
+    </p>
+  </ng-template>
+</p-drawer>

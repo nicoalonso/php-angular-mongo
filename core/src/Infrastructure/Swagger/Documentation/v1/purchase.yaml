@@ -1,0 +1,565 @@
+openapi: 3.0.0
+info:
+  title: Purchase API
+  description: Purchase API
+  version: 1.0.0
+
+paths:
+  /purchases:
+    get:
+      summary: Get all purchases
+      description: 'Get a list of all purchases with optional filters and pagination.'
+      tags: [ Purchases ]
+      operationId: v1ListPurchases
+      parameters:
+        - name: provider
+          description: Filter by provider
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: fromPurchasedAt
+          description: Filter by purchased date (Greater than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: toPurchasedAt
+          description: Filter by purchased date (Less than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: invoiceNumber
+          description: Filter by provider
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: createdBy
+          description: Filter by created user
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: fromCreatedAt
+          description: Filter by created date (Greater than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: toCreatedAt
+          description: Filter by created date (Less than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: page
+          description: Set page
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: limit
+          description: Limit rows per page
+          in: query
+          schema:
+            type: integer
+            minimum: 5
+            maximum: 100
+            default: 10
+        - name: sort
+          description: Sort list by fields
+          in: query
+          examples:
+            SortDesc:
+              value: "-createdAt"
+              summary: Sort desc
+            Multiple:
+              value: "-createdAt,+name"
+              summary: Multiple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'List of Authors'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PurchaseList'
+                  pagination:
+                    $ref: '#/components/schemas/PaginationView'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+    post:
+      summary: Create a new purchase
+      description: 'Create a new purchase with the provided details.'
+      tags: [ Purchases ]
+      operationId: v1CreatePurchase
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchasePayload'
+      responses:
+        '201':
+          description: 'Author created successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/PurchaseList'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+  /purchases/{purchaseId}:
+    get:
+      summary: Get a purchase by ID
+      description: 'Retrieve a purchase by its unique ID.'
+      tags: [ Purchases ]
+      operationId: v1GetPurchaseById
+      parameters:
+        - name: purchaseId
+          description: The unique ID of the purchase
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: 'Purchase details'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Purchase'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+    put:
+      summary: Update a purchase by ID
+      description: 'Update the details of a purchase by its unique ID.'
+      tags: [ Purchases ]
+      operationId: v1UpdatePurchaseById
+      parameters:
+        - name: purchaseId
+          description: The unique ID of the purchase
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchasePayload'
+      responses:
+        '204':
+          description: 'Author updated successfully'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+    delete:
+      summary: Delete a purchase by ID
+      description: 'Delete a purchase by its unique ID.'
+      tags: [ Purchases ]
+      operationId: v1DeletePurchaseById
+      parameters:
+        - name: purchaseId
+          description: The unique ID of the purchase
+          in: path
+          required: true
+          schema:
+              type: string
+              format: uuid
+      responses:
+        '204':
+          description: 'Author deleted successfully'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+           $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+components:
+  schemas:
+    Purchase:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        provider:
+          type: object
+          properties:
+            id:
+              type: string
+              example: 123e4567-e89b-12d3-a456-426614174003
+              format: uuid
+            name:
+              type: string
+              example: Book Supplier Inc.
+        purchaseAt:
+          type: string
+          format: date-time
+          example: 2023-06-01T12:00:00Z
+        invoice:
+          $ref: '#/components/schemas/PurchaseInvoice'
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchaseLine'
+        createdBy:
+          type: string
+          example: admin
+        createdAt:
+          type: string
+          format: date-time
+          example: 2023-06-01T12:00:00Z
+        updatedBy:
+          type: string
+          example: admin
+        updatedAt:
+          type: string
+          format: date-time
+          example: 2023-06-01T12:00:00Z
+
+    PurchaseList:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        provider:
+          type: object
+          properties:
+            id:
+              type: string
+              example: 123e4567-e89b-12d3-a456-426614174003
+              format: uuid
+            name:
+              type: string
+              example: Book Supplier Inc.
+        purchaseAt:
+          type: string
+          format: date-time
+          example: 2023-06-01T12:00:00Z
+        invoice:
+          $ref: '#/components/schemas/PurchaseInvoice'
+        createdBy:
+          type: string
+          example: admin
+        createdAt:
+          type: string
+          format: date-time
+          example: 2023-06-01T12:00:00Z
+        updatedBy:
+          type: string
+          example: admin
+        updatedAt:
+          type: string
+          format: date-time
+          example: 2023-06-01T12:00:00Z
+
+    PurchasePayload:
+      type: object
+      required:
+        - providerId
+        - purchaseAt
+        - invoice
+        - lines
+      properties:
+        providerId:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174003
+          format: uuid
+        purchaseAt:
+          type: string
+          format: date-time
+          example: 2023-06-01T12:00:00Z
+        invoice:
+          $ref: '#/components/schemas/PurchaseInvoice'
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchaseLinePayload'
+
+    PurchaseInvoice:
+      type: object
+      properties:
+        number:
+          type: string
+          example: INV-2023-0001
+        amount:
+          type: number
+          format: float
+          example: 199.99
+        taxes:
+          type: number
+          format: float
+          example: 19.99
+        total:
+          type: number
+          format: float
+          example: 219.98
+
+    PurchaseLine:
+      type: object
+      properties:
+        lineId:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174001
+          format: uuid
+        book:
+          type: object
+          properties:
+            id:
+              type: string
+              example: 123e4567-e89b-12d3-a456-426614174002
+              format: uuid
+            title:
+              type: string
+              example: The Great Gatsby
+            isbn:
+              type: string
+              example: 978-3161484100
+        quantity:
+          type: integer
+          example: 2
+        unitPrice:
+          type: number
+          format: float
+          example: 19.99
+        discountPercentage:
+          type: number
+          format: float
+          example: 5.0
+        total:
+          type: number
+          format: float
+          example: 39.98
+
+    PurchaseLinePayload:
+      type: object
+      required:
+        - lineId
+        - bookId
+        - quantity
+        - unitPrice
+        - discountPercentage
+        - total
+      properties:
+        lineId:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174001
+          format: uuid
+        bookId:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174002
+          format: uuid
+        quantity:
+          type: integer
+          example: 2
+        unitPrice:
+          type: number
+          format: float
+          example: 19.99
+        discountPercentage:
+          type: number
+          format: float
+          example: 5.0
+        total:
+          type: number
+          format: float
+          example: 39.98
+
+    PaginationView:
+      type: object
+      properties:
+        total:
+          type: integer
+          example: 2
+        rowsPerPage:
+          type: integer
+          example: 10
+        page:
+          type: integer
+          example: 1
+        totalPages:
+          type: integer
+          example: 5
+
+  responses:
+    Success:
+      description: Success
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                type: array
+                items:
+                  type: string
+                example: [ ]
+
+    JWTNotFound:
+      description: JWT not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: JWT not Found
+              code:
+                type: integer
+                example: 401
+
+    ObjectNotFound:
+      description: Object not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Object not found
+              code:
+                type: integer
+                example: 404
+
+    BadRequestError:
+      description: Bad Request Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Bad Request Error
+              code:
+                type: integer
+                example: 400
+
+    ServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Internal Server Error
+              code:
+                type: integer
+                example: 500
+
+    ServiceUnavailable:
+      description: Server Unavailable
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Server Unavailable
+              code:
+                type: integer
+                example: 503

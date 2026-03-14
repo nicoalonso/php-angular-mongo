@@ -1,0 +1,96 @@
+<p-dialog header="Buscar y seleccionar Autor"
+          [modal]="true" [(visible)]="visible"
+          [style]="{ width: '80vw', height: '60vh' }"
+          [closable]="true"
+          [resizable]="false">
+  <form [formGroup]="form" (ngSubmit)="onSearch()">
+    <section class="flex flex-column gap-2">
+      <div class="flex flex-column gap-4">
+        <div class="flex flex-row gap-2 align-items-center">
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     #nameInput
+                     id="author-search-name"
+                     autocomplete="off"
+                     formControlName="name" />
+              <label for="author-search-name">Nombre</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({name: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar nombre" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     id="author-search-real-name"
+                     autocomplete="off"
+                     formControlName="realName" />
+              <label for="author-search-real-name">Nombre real</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({realName: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar nombre real" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     id="author-search-nationality"
+                     autocomplete="off"
+                     formControlName="nationality" />
+              <label for="author-search-nationality">Nacionalidad</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({nationality: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar nacionalidad" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-button label="Buscar"
+                    severity="info"
+                    icon="fas fa-search"
+                    type="submit" />
+        </div>
+        <div class="w-full">
+          <p-table [value]="authors()"
+                   [paginator]="true"
+                   [rows]="5"
+                   [totalRecords]="authors().length"
+                   [loading]="loading()"
+                   selectionMode="single"
+                   [tableStyle]="{ 'min-width': '100%' }"
+                   styleClass="p-datatable-striped">
+            <ng-template pTemplate="header">
+              <tr>
+                <th class="border-bottom-3 border-green-600">Nombre</th>
+                <th class="border-bottom-3 border-green-600">Nombre real</th>
+                <th class="border-bottom-3 border-green-600">Nacionalidad</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-author let-rowIndex="rowIndex">
+              <tr [pSelectableRow]="author"
+                  [pSelectableRowIndex]="rowIndex"
+                  (click)="onClickItem(author, $event)">
+                <td>{{ author.name }}</td>
+                <td>{{ author.realName }}</td>
+                <td>{{ author.nationality }}</td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td [colSpan]="3">No se han encontrado registros.</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </section>
+  </form>
+</p-dialog>

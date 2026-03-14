@@ -1,0 +1,9 @@
+<div class="flex flex-row gap-3 align-items-center">
+  <ng-content></ng-content>
+  <p-button [text]="true"
+              severity="secondary"
+              icon="fas fa-copy"
+              size="small"
+              [disabled]="!text()"
+              (click)="copy()" />
+</div>

@@ -1,0 +1,24 @@
+v1_authors_list:
+  path: authors
+  controller: App\Infrastructure\Controller\V1\Author\AuthorListController
+  methods: [ GET ]
+
+v1_authors_create:
+  path: authors
+  controller: App\Infrastructure\Controller\V1\Author\AuthorCreateController
+  methods: [ POST ]
+
+v1_authors_read:
+  path: authors/{authorId}
+  controller: App\Infrastructure\Controller\V1\Author\AuthorReadController
+  methods: [ GET ]
+
+v1_authors_update:
+  path: authors/{authorId}
+  controller: App\Infrastructure\Controller\V1\Author\AuthorUpdateController
+  methods: [ PUT ]
+
+v1_authors_delete:
+  path: authors/{authorId}
+  controller: App\Infrastructure\Controller\V1\Author\AuthorDeleteController
+  methods: [ DELETE ]

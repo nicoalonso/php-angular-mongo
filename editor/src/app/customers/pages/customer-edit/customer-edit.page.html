@@ -1,0 +1,184 @@
+<form [formGroup]="form" (ngSubmit)="onSave()">
+  <div class="flex flex-column surface-section mx-6 hall min-vh-80">
+    <div class="flex flex-column p-4">
+      <span class="hall-icon text-orange-600">
+        <i class="fas fa-people-group"></i>
+      </span>
+        <span class="watermark text-orange-600">
+        <i class="fas fa-people-group"></i>
+      </span>
+      <div class="flex flex-row gap-3 justify-content-between">
+        <div class="flex flex-column gap-2">
+          <div class="flex">
+            <p-breadcrumb class="max-w-full" [model]="breadcrumb" [home]="homeBreadcrumb" />
+          </div>
+        </div>
+        <div class="flex flex-row gap-2 align-items-center">
+          <p-button [outlined]="true"
+                    severity="success"
+                    icon="fas fa-pen"
+                    label="Guardar"
+                    size="small"
+                    type="submit" />
+          <p-button [text]="true"
+                    severity="secondary"
+                    icon="fas fa-xmark"
+                    label="Salir"
+                    size="small"
+                    type="button"
+                    [routerLink]="['/customers', customer().id]" />
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 p-4">
+      <p-tabs value="detail" class="tab-selector">
+        <p-tablist>
+          <p-tab value="detail" class="flex align-items-center gap-2">
+            <i class="fas fa-circle-info"></i>
+            <span>Detalle</span>
+          </p-tab>
+          <p-tab value="address" class="flex align-items-center gap-2">
+            <i class="fas fa-location-dot"></i>
+            <span>Dirección</span>
+          </p-tab>
+          <p-tab value="data" class="flex align-items-center gap-2">
+            <i class="fas fa-user-clock"></i>
+            <span>Datos</span>
+          </p-tab>
+        </p-tablist>
+        <p-tabpanels>
+          <p-tabpanel value="detail">
+            <h3 class="flex flex-row gap-2 text-orange-400 text-2xl">
+              <fa-icon icon="circle-info" />
+              <span>Detalle</span>
+            </h3>
+            <div class="col-12 grid align-content-start">
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="customer-name" class="text-orange-600 pl-3">Nombre</label>
+                <input pInputText
+                       id="customer-name"
+                       autocomplete="off"
+                       formControlName="name" />
+                <p-message severity="error" text="El nombre es obligatorio" [hidden]="!hasError('name', 'empty')" />
+                <p-message severity="error" text="El nombre debe tener al menos 3 caracteres"
+                           [hidden]="!hasError('name', 'minlength')" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="customer-surname" class="text-orange-600 pl-3">Apellidos</label>
+                <input pInputText
+                       id="customer-surname"
+                       autocomplete="off"
+                       formControlName="surname" />
+              </div>
+            </div>
+            <p-divider />
+            <h3 class="flex flex-row gap-2 text-orange-400 text-2xl">
+              <fa-icon icon="id-card" />
+              <span>Membresía</span>
+            </h3>
+            <div class="col-12 grid align-content-start" formGroupName="membership">
+              <div class="col-12 lg:col-4 flex flex-column gap-2">
+                <label for="customer-active">Estado</label>
+                <p-toggleButton onLabel="Activa"
+                                onIcon="fas fa-check-circle"
+                                offLabel="Dado de baja"
+                                offIcon="fas fa-times-circle"
+                                class="w-24"
+                                inputId="customer-active"
+                                formControlName="active" />
+              </div>
+            </div>
+            <p-divider />
+            <h3 class="flex flex-row gap-2 text-orange-400 text-2xl">
+              <fa-icon icon="square-phone" />
+              <span>Contacto</span>
+            </h3>
+            <div class="col-12 grid align-content-start" formGroupName="contact">
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="customer-phone1" class="text-orange-600 pl-3">Teléfono móvil</label>
+                <input pInputText
+                       id="customer-phone1"
+                       autocomplete="off"
+                       formControlName="phone1" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="customer-phone2" class="text-orange-600 pl-3">Teléfono fijo</label>
+                <input pInputText
+                       id="customer-phone2"
+                       autocomplete="off"
+                       formControlName="phone2" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="customer-email" class="text-orange-600 pl-3">Email</label>
+                <input pInputText
+                       id="customer-email"
+                       autocomplete="off"
+                       formControlName="email" />
+                <p-message severity="error" text="El email no es válido"
+                           [hidden]="!hasError('contact.email', 'email')" />
+              </div>
+            </div>
+          </p-tabpanel>
+          <p-tabpanel value="address">
+            <h3 class="flex flex-row gap-2 text-orange-400 text-2xl">
+              <fa-icon icon="location-dot" />
+              <span>Dirección</span>
+            </h3>
+            <div class="col-12 grid align-content-start" formGroupName="address">
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="customer-street" class="text-orange-600 pl-3">Calle</label>
+                <input pInputText
+                       id="customer-street"
+                       autocomplete="off"
+                       formControlName="street" />
+              </div>
+              <div class="col-12 lg:col-3 flex flex-column gap-2 mb-3">
+                <label for="customer-postal-code" class="text-orange-600 pl-3">Código Postal</label>
+                <input pInputText
+                       id="customer-postal-code"
+                       autocomplete="off"
+                       formControlName="postalCode" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="customer-city" class="text-orange-600 pl-3">Localidad</label>
+                <input pInputText
+                       id="customer-city"
+                       autocomplete="off"
+                       formControlName="city" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="customer-province" class="text-orange-600 pl-3">Provincia</label>
+                <input pInputText
+                       id="customer-province"
+                       autocomplete="off"
+                       formControlName="province" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="customer-country" class="text-orange-600 pl-3">Pais</label>
+                <input pInputText
+                       id="customer-country"
+                       autocomplete="off"
+                       formControlName="country" />
+              </div>
+            </div>
+          </p-tabpanel>
+          <p-tabpanel value="data">
+            <h3 class="flex flex-row gap-2 text-orange-400 text-2xl">
+              <fa-icon icon="hand-holding-dollar" />
+              <span>Datos fiscales</span>
+            </h3>
+            <div class="col-12 grid align-content-start">
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="customer-nif" class="text-orange-600 pl-3">NIF</label>
+                <input pInputText
+                       id="customer-nif"
+                       autocomplete="off"
+                       formControlName="vatNumber" />
+              </div>
+            </div>
+          </p-tabpanel>
+        </p-tabpanels>
+      </p-tabs>
+    </div>
+  </div>
+</form>

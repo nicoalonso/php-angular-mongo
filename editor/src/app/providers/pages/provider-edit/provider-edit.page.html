@@ -1,0 +1,164 @@
+<form [formGroup]="form" (ngSubmit)="onSave()">
+  <div class="flex flex-column surface-section mx-6 hall min-vh-80">
+    <div class="flex flex-column p-4">
+      <span class="hall-icon text-indigo-600">
+        <i class="fas fa-truck"></i>
+      </span>
+      <span class="watermark text-indigo-600">
+        <i class="fas fa-truck"></i>
+      </span>
+      <div class="flex flex-row gap-3 justify-content-between">
+        <div class="flex flex-column gap-2">
+          <div class="flex">
+            <p-breadcrumb class="max-w-full" [model]="breadcrumb" [home]="homeBreadcrumb" />
+          </div>
+        </div>
+        <div class="flex flex-row gap-2 align-items-center">
+          <p-button [outlined]="true"
+                    severity="success"
+                    icon="fas fa-pen"
+                    label="Guardar"
+                    size="small"
+                    type="submit" />
+          <p-button [text]="true"
+                    severity="secondary"
+                    icon="fas fa-xmark"
+                    label="Salir"
+                    size="small"
+                    type="button"
+                    [routerLink]="['/providers', provider().id]" />
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 p-4">
+      <p-tabs value="detail" class="tab-selector">
+        <p-tablist>
+          <p-tab value="detail" class="flex align-items-center gap-2">
+            <i class="fas fa-circle-info"></i>
+            <span>Detalle</span>
+          </p-tab>
+          <p-tab value="address" class="flex align-items-center gap-2">
+            <i class="fas fa-location-dot"></i>
+            <span>Dirección</span>
+          </p-tab>
+        </p-tablist>
+        <p-tabpanels>
+          <p-tabpanel value="detail">
+            <h3 class="flex flex-row gap-2 text-indigo-400 text-2xl">
+              <fa-icon icon="circle-info" />
+              <span>Detalle</span>
+            </h3>
+            <div class="col-12 grid align-content-start">
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="provider-name" class="text-indigo-600 pl-3">Nombre</label>
+                <input pInputText
+                       id="provider-name"
+                       autocomplete="off"
+                       formControlName="name" />
+                <p-message severity="error" text="El nombre es obligatorio" [hidden]="!hasError('name', 'empty')" />
+                <p-message severity="error" text="El nombre debe tener al menos 3 caracteres"
+                           [hidden]="!hasError('name', 'minlength')" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="provider-comercial-name" class="text-indigo-600 pl-3">Nombre comercial</label>
+                <input pInputText
+                       id="provider-comercial-name"
+                       autocomplete="off"
+                       formControlName="comercialName" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="provider-vat-number" class="text-indigo-600 pl-3">CIF</label>
+                <input pInputText
+                       id="provider-vat-number"
+                       autocomplete="off"
+                       formControlName="vatNumber" />
+              </div>
+            </div>
+            <p-divider />
+            <h3 class="flex flex-row gap-2 text-indigo-400 text-2xl">
+              <fa-icon icon="square-phone" />
+              <span>Contacto</span>
+            </h3>
+            <div class="col-12 grid align-content-start" formGroupName="contact">
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="provider-phone1" class="text-indigo-600 pl-3">Teléfono 1</label>
+                <input pInputText
+                       id="provider-phone1"
+                       autocomplete="off"
+                       formControlName="phone1" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="provider-phone2" class="text-indigo-600 pl-3">Teléfono 2</label>
+                <input pInputText
+                       id="provider-phone2"
+                       autocomplete="off"
+                       formControlName="phone2" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="provider-email" class="text-indigo-600 pl-3">Email</label>
+                <input pInputText
+                       id="provider-email"
+                       autocomplete="off"
+                       formControlName="email" />
+                <p-message severity="error" text="El email no es válido"
+                           [hidden]="!hasError('contact.email', 'email')" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="provider-web" class="text-indigo-600 pl-3">Página web</label>
+                <input pInputText
+                       id="provider-web"
+                       autocomplete="off"
+                       formControlName="website" />
+                <p-message severity="error" text="El email no es válido"
+                           [hidden]="!hasError('contact.website', 'pattern')" />
+              </div>
+            </div>
+          </p-tabpanel>
+          <p-tabpanel value="address">
+            <h3 class="flex flex-row gap-2 text-indigo-400 text-2xl">
+              <fa-icon icon="location-dot" />
+              <span>Dirección</span>
+            </h3>
+            <div class="col-12 grid align-content-start" formGroupName="address">
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="provider-street" class="text-indigo-600 pl-3">Calle</label>
+                <input pInputText
+                       id="provider-street"
+                       autocomplete="off"
+                       formControlName="street" />
+              </div>
+              <div class="col-12 lg:col-3 flex flex-column gap-2 mb-3">
+                <label for="provider-postal-code" class="text-indigo-600 pl-3">Código Postal</label>
+                <input pInputText
+                       id="provider-postal-code"
+                       autocomplete="off"
+                       formControlName="postalCode" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="provider-city" class="text-indigo-600 pl-3">Localidad</label>
+                <input pInputText
+                       id="provider-city"
+                       autocomplete="off"
+                       formControlName="city" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="provider-province" class="text-indigo-600 pl-3">Provincia</label>
+                <input pInputText
+                       id="provider-province"
+                       autocomplete="off"
+                       formControlName="province" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="provider-country" class="text-indigo-600 pl-3">Pais</label>
+                <input pInputText
+                       id="provider-country"
+                       autocomplete="off"
+                       formControlName="country" />
+              </div>
+            </div>
+          </p-tabpanel>
+        </p-tabpanels>
+      </p-tabs>
+    </div>
+  </div>
+</form>

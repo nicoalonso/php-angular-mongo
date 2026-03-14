@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mongo-mapping xmlns="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
+                                            http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
+    <document name="App\Domain\Customer\Customer" collection="customers"
+              repository-class="App\Infrastructure\Persistence\Doctrine\Repository\MongoCustomerRepository">
+        <id strategy="NONE" type="string"/>
+        <field field-name="name" type="string"/>
+        <field field-name="surname" type="string"/>
+        <embed-one field="membership" target-document="App\Domain\Customer\Membership" />
+        <embed-one field="contact" target-document="App\Domain\Customer\ContactInfo" />
+        <embed-one field="address" target-document="App\Domain\Common\Address" />
+        <field field-name="vatNumber" type="string"/>
+        <field field-name="createdBy" type="string"/>
+        <field field-name="createdAt" type="date_immutable"/>
+        <field field-name="updatedBy" type="string"/>
+        <field field-name="updatedAt" type="date_immutable"/>
+    </document>
+</doctrine-mongo-mapping>

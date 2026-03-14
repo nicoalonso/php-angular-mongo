@@ -1,0 +1,24 @@
+v1_customers_list:
+  path: customers
+  controller: App\Infrastructure\Controller\V1\Customer\CustomerListController
+  methods: [ GET ]
+
+v1_customers_create:
+  path: customers
+  controller: App\Infrastructure\Controller\V1\Customer\CustomerCreateController
+  methods: [ POST ]
+
+v1_customers_read:
+  path: customers/{customerId}
+  controller: App\Infrastructure\Controller\V1\Customer\CustomerReadController
+  methods: [ GET ]
+
+v1_customers_update:
+  path: customers/{customerId}
+  controller: App\Infrastructure\Controller\V1\Customer\CustomerUpdateController
+  methods: [ PUT ]
+
+v1_customers_delete:
+  path: customers/{customerId}
+  controller: App\Infrastructure\Controller\V1\Customer\CustomerDeleteController
+  methods: [ DELETE ]

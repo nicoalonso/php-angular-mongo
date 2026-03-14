@@ -1,0 +1,139 @@
+<div class="flex flex-column surface-section mx-6 hall min-vh-80">
+  <div class="flex flex-column p-4">
+    <span class="hall-icon text-purple-600">
+      <i class="fas fa-cash-register"></i>
+    </span>
+    <span class="watermark text-purple-600">
+      <i class="fas fa-cash-register"></i>
+    </span>
+    <div class="flex flex-row gap-3 justify-content-between">
+      <div class="flex flex-column gap-2">
+        <div class="flex">
+          <p-breadcrumb class="max-w-full" [model]="breadcrumb" [home]="homeBreadcrumb" />
+        </div>
+        <small>Editado {{ sale().lastDate | dateAgo }} por <strong>{{ sale().lastUser }}</strong></small>
+      </div>
+      <div class="flex flex-row gap-2 align-items-center">
+        <p-button [text]="true"
+                  severity="secondary"
+                  icon="fas fa-xmark"
+                  label="Salir"
+                  size="small"
+                  [routerLink]="['/sales']" />
+      </div>
+    </div>
+  </div>
+  <div class="flex-1 p-4">
+    <p-tabs value="detail" class="tab-selector">
+      <p-tablist>
+        <p-tab value="detail" class="flex align-items-center gap-2">
+          <i class="fas fa-circle-info"></i>
+          <span>Detalle</span>
+        </p-tab>
+        <p-tab value="lines" class="flex align-items-center gap-2">
+          <i class="fas fa-basket-shopping"></i>
+          <span>Ventas</span>
+        </p-tab>
+        <p-tab value="data" class="flex align-items-center gap-2">
+          <i class="fas fa-user-clock"></i>
+          <span>Datos</span>
+        </p-tab>
+      </p-tablist>
+      <p-tabpanels>
+        <p-tabpanel value="detail">
+          <h3 class="flex flex-row gap-2 text-purple-600 text-2xl">
+            <fa-icon icon="circle-info" />
+            <span>Detalle</span>
+          </h3>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-purple-400">Cliente</span>
+              <div>
+                <a class="text-lg text-orange-600 hover:underline"
+                   [routerLink]="['/customers', sale().customer.id]">
+                  {{ sale().customer.fullName }}
+                </a>
+              </div>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-purple-400">Fecha</span>
+              <span class="text-lg">{{ sale().invoice.date | date: 'dd/MM/yyyy' }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-purple-400">Número de Factura</span>
+              <app-btn-copy title="Número de entrada" [text]="sale().number">
+                <span class="text-lg">{{ sale().number }}</span>
+              </app-btn-copy>
+            </div>
+          </div>
+          <p-divider />
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-purple-400">Subtotal</span>
+              <span class="text-lg">{{ sale().invoice.amount | number: '1.2-2' }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-purple-400">IVA</span>
+              <span class="text-lg">{{ sale().invoice.taxPercentage | number: '1.2-2' }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-purple-400">Impuestos</span>
+              <span class="text-lg">{{ sale().invoice.taxes | number: '1.2-2' }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-purple-400">Total</span>
+              <span class="text-lg">{{ sale().invoice.total | currency: 'EUR' }}</span>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="lines">
+          <h3 class="flex flex-row gap-2 text-purple-600 text-2xl">
+            <fa-icon icon="basket-shopping" />
+            <span>Ventas</span>
+          </h3>
+          <p-table [value]="sale().lines"
+                   [tableStyle]="{ 'min-width': '100%' }"
+                   styleClass="p-datatable-striped">
+            <ng-template pTemplate="header">
+              <tr>
+                <th class="border-bottom-3 border-purple-400 text-center">Cantidad</th>
+                <th class="border-bottom-3 border-purple-400">Libro</th>
+                <th class="border-bottom-3 border-purple-400 text-center">Precio</th>
+                <th class="border-bottom-3 border-purple-400 text-center">Descuento</th>
+                <th class="border-bottom-3 border-purple-400 text-center">Total</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-line>
+              <tr>
+                <td class="text-right">{{ line.quantity | number: '1.0-0' }}</td>
+                <td>
+                  <a class="text-primary hover:underline"
+                     [routerLink]="['/books', line.book.id]">
+                    {{ line.book.title }}
+                  </a>
+                </td>
+                <td class="text-right">{{ line.price | number: '1.2-2' }}</td>
+                <td class="text-right">{{ line.discount | number: '1.0-2' }}</td>
+                <td class="text-right">{{ line.total | number: '1.2-2' }}</td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td [colSpan]="5">No hay entradas</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </p-tabpanel>
+        <p-tabpanel value="data">
+          <h3 class="flex flex-row gap-2 text-purple-600 text-2xl">
+            <fa-icon icon="user-clock" />
+            <span>Usuarios y fechas</span>
+          </h3>
+          <div class="col-12">
+            <app-tracking-section [entity]="sale()" color="text-purple-400" />
+          </div>
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
+  </div>
+</div>

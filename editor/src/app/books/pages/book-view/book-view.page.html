@@ -1,0 +1,160 @@
+<p-confirmDialog />
+<div class="flex flex-column surface-section mx-6 hall min-vh-80">
+  <div class="flex flex-column p-4">
+    <span class="hall-icon text-primary">
+      <i class="fas fa-book"></i>
+    </span>
+    <span class="watermark text-primary">
+      <i class="fas fa-book"></i>
+    </span>
+    <div class="flex flex-row gap-3 justify-content-between">
+      <div class="flex flex-column gap-2">
+        <div class="flex">
+          <p-breadcrumb class="max-w-full" [model]="breadcrumb" [home]="homeBreadcrumb" />
+        </div>
+        <small>Editado {{ book().lastDate | dateAgo }} por <strong>{{ book().lastUser }}</strong></small>
+      </div>
+      <div class="flex flex-row gap-2 align-items-center">
+        <p-button [text]="true"
+                  severity="danger"
+                  icon="fas fa-trash"
+                  label="Eliminar"
+                  size="small"
+                  (click)="onDelete($event)" />
+        <p-button [outlined]="true"
+                  severity="info"
+                  icon="fas fa-pen"
+                  label="Editar"
+                  size="small"
+                  [routerLink]="['/books/edit', book().id]" />
+        <p-button [text]="true"
+                  severity="secondary"
+                  icon="fas fa-xmark"
+                  label="Salir"
+                  size="small"
+                  [routerLink]="['/books']" />
+      </div>
+    </div>
+  </div>
+  <div class="flex-1 p-4">
+    <p-tabs value="detail" class="tab-selector">
+      <p-tablist>
+        <p-tab value="detail" class="flex align-items-center gap-2">
+          <i class="fas fa-circle-info"></i>
+          <span>Detalle</span>
+        </p-tab>
+        <p-tab value="edition" class="flex align-items-center gap-2">
+          <i class="fas fa-book-open"></i>
+          <span>Edición</span>
+        </p-tab>
+        <p-tab value="shop" class="flex align-items-center gap-2">
+          <i class="fas fa-shop"></i>
+          <span>Ventas</span>
+        </p-tab>
+        <p-tab value="data" class="flex align-items-center gap-2">
+          <i class="fas fa-user-clock"></i>
+          <span>Datos</span>
+        </p-tab>
+      </p-tablist>
+      <p-tabpanels>
+        <p-tabpanel value="detail">
+          <h3 class="flex flex-row gap-2 text-primary-400 text-2xl">
+            <fa-icon icon="circle-info" />
+            <span>Detalle</span>
+          </h3>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-primary-600">Título</span>
+              <span class="text-lg">{{ book().title }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-primary-600">Autor</span>
+              <div>
+                <a class="text-lg text-green-600 hover:underline"
+                   [routerLink]="['/authors', book().author.id]">
+                  {{ book().author.name }}
+                </a>
+              </div>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-primary-600">Editorial</span>
+              <div>
+                <a class="text-lg text-cyan-600 hover:underline"
+                   [routerLink]="['/editorials', book().editorial.id]">
+                  {{ book().editorial.name }}
+                </a>
+              </div>
+            </div>
+            <div class="col-12 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-primary-600">Descripción</span>
+              <span class="text-lg">{{ book().description | defaultValue }}</span>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="edition">
+          <h3 class="flex flex-row gap-2 text-primary-400 text-2xl">
+            <fa-icon icon="book-open" />
+            <span>Edición</span>
+          </h3>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-primary-600">ISBN</span>
+              <app-btn-copy title="ISBN" [text]="book().detail.isbn">
+                <span class="text-lg">{{ book().detail.isbn }}</span>
+              </app-btn-copy>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-primary-600">Edición</span>
+              <span class="text-lg">{{ book().detail.edition | defaultValue }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-primary-600">Fecha de publicación</span>
+              <span class="text-lg">{{ book().detail.publishedAt | date:'dd/MM/yyyy' }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-primary-600">Idioma</span>
+              <span class="text-lg">{{ book().detail.language | defaultValue }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-primary-600">Número de páginas</span>
+              <span class="text-lg">{{ book().detail.pages | number }}</span>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="shop">
+          <h3 class="flex flex-row gap-2 text-primary-400 text-2xl">
+            <fa-icon icon="shop" />
+            <span>Ventas</span>
+          </h3>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-primary-600">Se puede vender</span>
+              <span class="text-lg">{{ book().sale.saleable ? 'Si' : 'No' }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-primary-600">Stock</span>
+              <span class="text-lg">{{ book().stock | number }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-primary-600">Precio</span>
+              <span class="text-lg">{{ book().sale.price | currency: 'EUR' }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-primary-600">Descuento</span>
+              <span class="text-lg">{{ book().sale.discount | number: '1.2-2' }} %</span>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="data">
+          <h3 class="flex flex-row gap-2 text-primary-400 text-2xl">
+            <fa-icon icon="user-clock" />
+            <span>Usuarios y fechas</span>
+          </h3>
+          <div class="col-12">
+            <app-tracking-section [entity]="book()" color="text-primary-600" />
+          </div>
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
+  </div>
+</div>

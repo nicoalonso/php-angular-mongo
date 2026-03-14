@@ -1,0 +1,25 @@
+<p-drawer [(visible)]="showPanel"
+          position="right"
+          [header]="userName()">
+  <div class="flex flex-column gap-4">
+    @if (userName()) {
+      <div>
+        <p>
+          <i class="fas fa-envelope"></i> {{ userEmail() }}
+        </p>
+        <p>
+          <i class="fas fa-circle-user"></i>
+          Role: {{ userRole() }}
+        </p>
+      </div>
+    } @else {
+      <p class="text-center">Se requiere iniciar sesión</p>
+    }
+  </div>
+  <ng-template #footer>
+    <p class="flex flex-row gap-2 align-items-center justify-content-center m-0">
+      <img ngSrc="/img/library.png" alt="Taxonomy" priority height="40" width="40" class="mr-2" />
+      <label>{{ version }}</label>
+    </p>
+  </ng-template>
+</p-drawer>

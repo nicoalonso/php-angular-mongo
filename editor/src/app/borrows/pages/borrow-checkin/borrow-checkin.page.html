@@ -1,0 +1,170 @@
+<form [formGroup]="form" (ngSubmit)="onSave()">
+  <div class="flex flex-column surface-section mx-6 hall min-vh-80">
+    <div class="flex flex-column p-4">
+      <span class="hall-icon text-600">
+        <i class="fas fa-briefcase"></i>
+      </span>
+      <span class="watermark text-600">
+        <i class="fas fa-briefcase"></i>
+      </span>
+      <div class="flex flex-row gap-3 justify-content-between">
+        <div class="flex flex-column gap-2">
+          <div class="flex">
+            <p-breadcrumb class="max-w-full" [model]="breadcrumb" [home]="homeBreadcrumb" />
+          </div>
+        </div>
+        <div class="flex flex-row gap-2 align-items-center">
+          <p-button [outlined]="true"
+                    severity="success"
+                    icon="fas fa-pen"
+                    label="Guardar"
+                    size="small"
+                    type="submit" />
+          <p-button [text]="true"
+                    severity="secondary"
+                    icon="fas fa-xmark"
+                    label="Salir"
+                    size="small"
+                    type="button"
+                    [routerLink]="['/borrows', borrow().id]" />
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 p-4 flex flex-column gap-4">
+      <div class="grid align-content-start">
+        <div class="col-12 lg:col-3 flex flex-column gap-2 mb-3" >
+          <label for="borrow-customer-name" class="text-600 pl-3">Cliente</label>
+          <input pInputText id="borrow-customer-name"
+                 [readonly]="true"
+                 [value]="borrow().customer.fullName" />
+        </div>
+        <div class="col-12 lg:col-3 flex flex-column gap-2 mb-3" >
+          <label for="borrow-customer-number" class="text-600 pl-3">Número de socio</label>
+          <input pInputText id="borrow-customer-number"
+                 [readonly]="true"
+                 [value]="borrow().customer.number" />
+        </div>
+        <div class="col-12 lg:col-3 flex flex-column gap-2 mb-3" >
+          <label for="borrow-number" class="text-600 pl-3">Número de préstamo</label>
+          <input pInputText id="borrow-number"
+                 [readonly]="true"
+                 [value]="borrow().number" />
+        </div>
+      </div>
+      <div class="grid align-content-start">
+        <div class="col-12 lg:col-3 flex flex-column gap-2 mb-3" >
+          <label for="borrow-state" class="text-600 pl-3">Estado</label>
+          <input pInputText id="borrow-state"
+                 [readonly]="true"
+                 [ngClass]="{
+                    'text-blue-600': borrow().returned,
+                    'text-yellow-600': !borrow().returned,
+                 }"
+                 [value]="borrow().state" />
+        </div>
+        <div class="col-12 lg:col-3 flex flex-column gap-2 mb-3" >
+          <label for="borrow-penalty" class="text-600 pl-3">Multas</label>
+          <p-input-number inputId="borrow-penalty"
+                          [inputStyleClass]="`text-right ${borrow().penalty ? 'font-bold text-red-600' : 'text-green-600'}`"
+                          mode="decimal"
+                          class="w-6"
+                          [readonly]="true"
+                          [minFractionDigits]="2"
+                          [maxFractionDigits]="2"
+                          suffix=" €"
+                          formControlName="penaltyAmount" />
+        </div>
+        <div class="col-12 lg:col-3 flex flex-column gap-2 mb-3" >
+          <label for="borrow-date" class="text-600 pl-3">Fecha de préstamo</label>
+          <input pInputText id="borrow-date"
+                 class="text-center"
+                 [readonly]="true"
+                 [value]="borrowDate()" />
+        </div>
+        <div class="col-12 lg:col-3 flex flex-column gap-2 mb-3" >
+          <label for="borrow-due-date" class="text-600 pl-3">Fecha de vencimiento</label>
+          <input pInputText id="borrow-due-date"
+                 class="text-center"
+                 [readonly]="true"
+                 [value]="dueDate()" />
+        </div>
+      </div>
+      <div class="grid align-content-start gap-2">
+        <div class="w-full min-vh-40" formArrayName="lines">
+          <p-table [value]="lines.controls" stripedRows>
+            <ng-template pTemplate="header">
+              <tr>
+                <th class="border-bottom-3 border-600 w-4 pl-2">Libro</th>
+                <th class="border-bottom-3 border-600 w-2 pl-2">ISBN</th>
+                <th class="border-bottom-3 border-600 w-2 pl-2">Estado</th>
+                <th class="border-bottom-3 border-600 w-2 pl-2">Multa</th>
+                <th class="border-bottom-3 border-600 w-auto"></th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-line let-i="rowIndex">
+              <tr [formGroupName]="i">
+                <td formGroupName="book">
+                  <input type="hidden" formControlName="id" />
+                  <input pInputText
+                         [readonly]="true"
+                         formControlName="title"
+                         class="w-full" />
+                </td>
+                <td formGroupName="book">
+                  <input pInputText
+                         [readonly]="true"
+                         formControlName="isbn"
+                         class="w-full" />
+                </td>
+                <td>
+                  <input pInputText
+                         [readonly]="true"
+                         [ngClass]="{
+                          'text-blue-600': getLine(i).returned,
+                          'text-yellow-600': !getLine(i).returned,
+                         }"
+                         formControlName="state"
+                         class="w-full" />
+                </td>
+                <td>
+                  <p-input-number
+                          [inputStyleClass]="`text-right ${getLine(i).penalty ? 'font-bold text-red-600' : 'text-green-600'}`"
+                          mode="decimal"
+                          class="w-6"
+                          [readonly]="true"
+                          [minFractionDigits]="2"
+                          [maxFractionDigits]="2"
+                          suffix=" €"
+                          formControlName="penaltyAmount" />
+                </td>
+                <td>
+                  @if (getLine(i).returned) {
+                    <input type="hidden" formControlName="returned" />
+                  } @else {
+                    <div class="flex flex-row gap-2 align-items-center">
+                      <p-toggleswitch [inputId]="`line-return-${i}`" formControlName="returned" />
+                      <label [for]="`line-return-${i}`" class="cursor-pointer">Retornar</label>
+                    </div>
+                  }
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td [colSpan]="6" class="text-center text-xl h-30vh">No se han seleccionado libros</td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="footer">
+              <tr>
+                <td colspan="4" class="text-right">Total libros prestados:</td>
+                <td>
+                  <input pInputText class="text-center" [readonly]="true" [value]="lines.length" />
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

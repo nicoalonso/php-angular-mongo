@@ -1,0 +1,102 @@
+name: library-php-angular-mongo
+
+services:
+  core:
+    hostname: core-library
+    build:
+      context: docker/php-fpm/
+      dockerfile: develop/Dockerfile
+      args:
+        HOST_USER: ${HOST_USER}
+        HOST_USER_ID: ${HOST_USER_ID}
+        HOST_GROUP: ${HOST_GROUP}
+        HOST_GROUP_ID: ${HOST_GROUP_ID}
+        TIMEZONE: ${TIMEZONE}
+    volumes:
+      - ./core:/srv/app/core:rw,cached
+    networks:
+      library-php:
+
+  worker:
+    build:
+      context: docker/php-cli/
+      dockerfile: develop/Dockerfile
+      args:
+        HOST_USER: ${HOST_USER}
+        HOST_USER_ID: ${HOST_USER_ID}
+        HOST_GROUP: ${HOST_GROUP}
+        HOST_GROUP_ID: ${HOST_GROUP_ID}
+        TIMEZONE: ${TIMEZONE}
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+        restart: true
+    environment:
+      - APP_ENV=dev_cli
+    volumes:
+      - ./core:/srv/app:rw,cached
+    command: [ "bin/console", "messenger:consume", "async_library", "-vv" ]
+    networks:
+      library-php:
+
+  editor:
+    build:
+      context: docker/editor/
+      dockerfile: develop/Dockerfile
+      args:
+        HOST_USER: ${HOST_USER}
+        HOST_USER_ID: ${HOST_USER_ID}
+        HOST_GROUP: ${HOST_GROUP}
+        HOST_GROUP_ID: ${HOST_GROUP_ID}
+        TIMEZONE: ${TIMEZONE}
+    volumes:
+      - ./editor:/app:rw,cached
+    networks:
+      library-php:
+
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/develop/Dockerfile
+    depends_on:
+      - core
+      - editor
+    volumes:
+      - ./core:/srv/app/core:ro
+    links:
+      - core
+      - editor
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      library-php:
+
+  mongo:
+    image: mongo:6.0.11
+    ports:
+      - "27017:27017"
+    volumes:
+      - ${MONGO_DB_PATH}:/data/db
+      - ${MONGO_CONFIG_PATH}:/data/configdb
+    networks:
+      library-php:
+
+  rabbitmq:
+    hostname: rabbit
+    image: rabbitmq:3-management
+    healthcheck:
+      test: [ "CMD-SHELL", "rabbitmq-diagnostics -q ping" ]
+      interval: 5s
+      timeout: 30s
+      retries: 5
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ${RABBITMQ_DATA_PATH}:/var/lib/rabbitmq/
+    networks:
+      library-php:
+
+networks:
+  library-php:

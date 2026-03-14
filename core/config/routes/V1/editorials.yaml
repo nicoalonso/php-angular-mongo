@@ -1,0 +1,24 @@
+v1_editorials_list:
+  path: editorials
+  controller: App\Infrastructure\Controller\V1\Editorial\EditorialListController
+  methods: [ GET ]
+
+v1_editorials_create:
+  path: editorials
+  controller: App\Infrastructure\Controller\V1\Editorial\EditorialCreateController
+  methods: [ POST ]
+
+v1_editorials_read:
+  path: editorials/{editorialId}
+  controller: App\Infrastructure\Controller\V1\Editorial\EditorialReadController
+  methods: [ GET ]
+
+v1_editorials_update:
+  path: editorials/{editorialId}
+  controller: App\Infrastructure\Controller\V1\Editorial\EditorialUpdateController
+  methods: [ PUT ]
+
+v1_editorials_delete:
+  path: editorials/{editorialId}
+  controller: App\Infrastructure\Controller\V1\Editorial\EditorialDeleteController
+  methods: [ DELETE ]

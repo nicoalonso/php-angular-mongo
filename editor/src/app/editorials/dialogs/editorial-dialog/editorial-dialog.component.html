@@ -1,0 +1,81 @@
+<p-dialog header="Buscar y seleccionar Editorial"
+          [modal]="true" [(visible)]="visible"
+          [style]="{ width: '80vw', height: '60vh' }"
+          [closable]="true"
+          [resizable]="false">
+  <form [formGroup]="form" (ngSubmit)="onSearch()">
+    <section class="flex flex-column gap-2">
+      <div class="flex flex-column gap-4">
+        <div class="flex flex-row gap-2 align-items-center">
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     #nameInput
+                     id="editorial-search-name"
+                     autocomplete="off"
+                     formControlName="name" />
+              <label for="editorial-search-name">Nombre</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({name: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar nombre" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     id="editorial-search-comercial-name"
+                     autocomplete="off"
+                     formControlName="comercialName" />
+              <label for="editorial-search-comercial-name">Nombre comercial</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({comercialName: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar nombre comercial" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-button label="Buscar"
+                    severity="info"
+                    icon="fas fa-search"
+                    type="submit" />
+        </div>
+        <div class="w-full">
+          <p-table [value]="editorials()"
+                   [paginator]="true"
+                   [rows]="5"
+                   [totalRecords]="editorials().length"
+                   [loading]="loading()"
+                   selectionMode="single"
+                   [tableStyle]="{ 'min-width': '100%' }"
+                   styleClass="p-datatable-striped">
+            <ng-template pTemplate="header">
+              <tr>
+                <th class="border-bottom-3 border-green-600">Nombre</th>
+                <th class="border-bottom-3 border-green-600">Nombre comercial</th>
+                <th class="border-bottom-3 border-green-600">Web</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-editorial let-rowIndex="rowIndex">
+              <tr [pSelectableRow]="editorial"
+                  [pSelectableRowIndex]="rowIndex"
+                  (click)="onClickItem(editorial, $event)">
+                <td>{{ editorial.name }}</td>
+                <td>{{ editorial.comercialName }}</td>
+                <td>{{ editorial.contact.website }}</td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td [colSpan]="3">No se han encontrado registros.</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </section>
+  </form>
+</p-dialog>

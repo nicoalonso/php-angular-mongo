@@ -1,0 +1,644 @@
+openapi: 3.0.0
+info:
+  title: Borrow API
+  description: Borrow API
+  version: 1.0.0
+
+paths:
+  /borrows:
+    get:
+      summary: Get all borrows
+      description: Get all borrows with pagination and filters
+      tags: [ Borrows ]
+      operationId: v1ListBorrows
+      parameters:
+        - name: customerId
+          description: Filter by customer id
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: customer
+          description: Filter by customer name
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: customerNumber
+          description: Filter by customer number
+          in: query
+          schema:
+              type: string
+              minLength: 3
+              maxLength: 255
+        - name: number
+          description: Filter by borrow number
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: fromBorrowDate
+          description: Filter by borrow date (Greater than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: toBorrowDate
+          description: Filter by borrow date (Less than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: fromDueDate
+          description: Filter by due date (Greater than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: toDueDate
+          description: Filter by due date (Less than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: returned
+          description: Filter by returned status
+          in: query
+          schema:
+            type: boolean
+        - name: penalty
+          description: Filter by penalty status
+          in: query
+          schema:
+            type: boolean
+        - name: createdBy
+          description: Filter by created user
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: fromCreatedAt
+          description: Filter by created date (Greater than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: toCreatedAt
+          description: Filter by created date (Less than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: page
+          description: Set page
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: limit
+          description: Limit rows per page
+          in: query
+          schema:
+            type: integer
+            minimum: 5
+            maximum: 100
+            default: 10
+        - name: sort
+          description: Sort list by fields
+          in: query
+          examples:
+            SortDesc:
+              value: "-createdAt"
+              summary: Sort desc
+            Multiple:
+              value: "-createdAt,+name"
+              summary: Multiple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'List of Authors'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BorrowList'
+                  pagination:
+                    $ref: '#/components/schemas/PaginationView'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+    post:
+      summary: Create a new borrow
+      description: 'Create a new borrow with customer and book details'
+      tags: [ Borrows ]
+      operationId: v1CreateBorrows
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BorrowPayload'
+      responses:
+        '201':
+          description: 'Borrow created successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Borrow'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+  /borrows/{borrowId}:
+    get:
+      summary: Get borrow by id
+      description: Get borrow details by id
+      tags: [ Borrows ]
+      operationId: v1ReadBorrow
+      parameters:
+        - name: borrowId
+          description: Borrow id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: 'Borrow details'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Borrow'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+    patch:
+      summary: Check in a borrow
+      description: 'Check in a borrow by id and update return details'
+      tags: [ Borrows ]
+      operationId: v1CheckInBorrow
+      parameters:
+        - name: borrowId
+          description: Borrow id
+          in: path
+          required: true
+          schema:
+              type: string
+              format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BorrowCheckinPayload'
+      responses:
+        '204':
+          description: 'Borrow checked in successfully'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+  /borrows/manual-penalty:
+    post:
+      summary: Manual penalty
+      description: 'Execute manual penalty'
+      tags: [ Borrows ]
+      operationId: v1ManualPenaltyBorrow
+      responses:
+        '202':
+          description: 'Manual penalty accepted successfully'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+components:
+  schemas:
+    Borrow:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        customer:
+          $ref: '#/components/schemas/BorrowCustomer'
+        number:
+          type: string
+          example: P-12345
+        borrowDate:
+          type: string
+          format: date
+          example: 2023-06-01
+        totalBooks:
+          type: integer
+          example: 3
+        dueDate:
+          type: string
+          format: date
+          example: 2023-06-15
+        totalReturnedBooks:
+          type: integer
+          example: 1
+        returned:
+          type: boolean
+          example: false
+        returnDate:
+          type: string
+          format: date
+          example: 2023-06-10
+        penalty:
+          type: boolean
+          example: true
+        penaltyAmount:
+          type: number
+          format: float
+          example: 10.00
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/BorrowLine'
+        createdBy:
+          type: string
+          example: admin
+        createdAt:
+          type: string
+          format: date-time
+          example: 2023-06-01T12:00:00Z
+        updatedBy:
+          type: string
+          example: admin
+        updatedAt:
+          type: string
+          format: date-time
+          example: 2023-06-01T12:00:00Z
+
+    BorrowList:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        customer:
+          $ref: '#/components/schemas/BorrowCustomer'
+        number:
+          type: string
+          example: P-12345
+        borrowDate:
+          type: string
+          format: date
+          example: 2023-06-01
+        totalBooks:
+          type: integer
+          example: 3
+        dueDate:
+          type: string
+          format: date
+          example: 2023-06-15
+        totalReturnedBooks:
+          type: integer
+          example: 1
+        returned:
+          type: boolean
+          example: false
+        returnDate:
+          type: string
+          format: date
+          example: 2023-06-10
+        penalty:
+          type: boolean
+          example: true
+        penaltyAmount:
+          type: number
+          format: float
+          example: 10.00
+        createdBy:
+          type: string
+          example: admin
+        createdAt:
+          type: string
+          format: date-time
+          example: 2023-06-01T12:00:00Z
+        updatedBy:
+          type: string
+          example: admin
+        updatedAt:
+          type: string
+          format: date-time
+          example: 2023-06-01T12:00:00Z
+
+    BorrowCustomer:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        name:
+          type: string
+          example: John
+        surname:
+          type: string
+          example: Doe
+        vatNumber:
+          type: string
+          example: 1234567890
+        number:
+          type: string
+          example: SN12546
+
+    BorrowLine:
+      type: object
+      properties:
+        lineId:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        book:
+          type: object
+          properties:
+            id:
+              type: string
+              example: 123e4567-e89b-12d3-a456-426614174000
+              format: uuid
+            title:
+              type: string
+              example: The Great Gatsby
+            isbn:
+              type: string
+              example: 978-3161484100
+        returned:
+          type: boolean
+          example: false
+        returnDate:
+          type: string
+          format: date
+          example: 2023-06-10
+        penalty:
+          type: boolean
+          example: true
+        penaltyAmount:
+          type: number
+          format: float
+          example: 10.00
+
+    BorrowPayload:
+      type: object
+      required:
+        - customerId
+        - lines
+      properties:
+        customerId:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/BorrowLinePayload'
+
+    BorrowLinePayload:
+      type: object
+      required:
+        - bookId
+      properties:
+        bookId:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+
+    BorrowCheckinPayload:
+      type: object
+      required:
+        - lines
+      properties:
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/BorrowCheckinLinePayload'
+
+    BorrowCheckinLinePayload:
+      type: object
+      required:
+        - lineId
+        - bookId
+        - returned
+      properties:
+        lineId:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        bookId:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        returned:
+          type: boolean
+          example: true
+
+    PaginationView:
+      type: object
+      properties:
+        total:
+          type: integer
+          example: 2
+        rowsPerPage:
+          type: integer
+          example: 10
+        page:
+          type: integer
+          example: 1
+        totalPages:
+          type: integer
+          example: 5
+
+  responses:
+    Success:
+      description: Success
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                type: array
+                items:
+                  type: string
+                example: []
+
+    JWTNotFound:
+      description: JWT not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: JWT not Found
+              code:
+                type: integer
+                example: 401
+
+    ObjectNotFound:
+      description: Object not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Object not found
+              code:
+                type: integer
+                example: 404
+
+    BadRequestError:
+      description: Bad Request Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Bad Request Error
+              code:
+                type: integer
+                example: 400
+
+    ServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Internal Server Error
+              code:
+                type: integer
+                example: 500
+
+    ServiceUnavailable:
+      description: Server Unavailable
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Server Unavailable
+              code:
+                type: integer
+                example: 503

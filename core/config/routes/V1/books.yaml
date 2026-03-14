@@ -1,0 +1,29 @@
+v1_books_list:
+  path: books
+  controller: App\Infrastructure\Controller\V1\Book\BookListController
+  methods: [ GET ]
+
+v1_books_create:
+  path: books
+  controller: App\Infrastructure\Controller\V1\Book\BookCreateController
+  methods: [ POST ]
+
+v1_books_read:
+  path: books/{bookId}
+  controller: App\Infrastructure\Controller\V1\Book\BookReadController
+  methods: [ GET ]
+
+v1_books_update:
+  path: books/{bookId}
+  controller: App\Infrastructure\Controller\V1\Book\BookUpdateController
+  methods: [ PUT ]
+
+v1_books_delete:
+  path: books/{bookId}
+  controller: App\Infrastructure\Controller\V1\Book\BookDeleteController
+  methods: [ DELETE ]
+
+v1_books_available:
+  path: books/{bookId}/available
+  controller: App\Infrastructure\Controller\V1\Book\BookAvailableController
+  methods: [ GET ]

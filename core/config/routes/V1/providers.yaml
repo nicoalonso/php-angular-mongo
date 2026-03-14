@@ -1,0 +1,24 @@
+v1_providers_list:
+  path: providers
+  controller: App\Infrastructure\Controller\V1\Provider\ProviderListController
+  methods: [ GET ]
+
+v1_providers_create:
+  path: providers
+  controller: App\Infrastructure\Controller\V1\Provider\ProviderCreateController
+  methods: [ POST ]
+
+v1_providers_read:
+  path: providers/{providerId}
+  controller: App\Infrastructure\Controller\V1\Provider\ProviderReadController
+  methods: [ GET ]
+
+v1_providers_update:
+  path: providers/{providerId}
+  controller: App\Infrastructure\Controller\V1\Provider\ProviderUpdateController
+  methods: [ PUT ]
+
+v1_providers_delete:
+  path: providers/{providerId}
+  controller: App\Infrastructure\Controller\V1\Provider\ProviderDeleteController
+  methods: [ DELETE ]

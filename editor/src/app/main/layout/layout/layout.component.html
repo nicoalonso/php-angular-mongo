@@ -1,0 +1,20 @@
+<p-toast position="top-right" key="tr" />
+<p-toast position="top-center" key="tc" />
+<p-toast position="bottom-right" key="br" />
+<p-toast position="bottom-center" key="bc" />
+
+<app-header (showMenu)="menuAside.set(true)"
+            (showUserPanel)="menuUser.set(true)" />
+
+<app-menu-aside [(menuAside)]="menuAside" />
+<app-user-panel [(showPanel)]="menuUser" />
+
+<main class="p-container-fluid">
+  @if (isNavigating()) {
+    <div class="flex align-items-center align-content-center justify-content-center w-full p-6">
+      <p-progressSpinner strokeWidth="6" styleClass="text-primary" />
+    </div>
+  } @else {
+    <router-outlet />
+  }
+</main>

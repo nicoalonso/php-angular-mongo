@@ -1,0 +1,24 @@
+framework:
+  messenger:
+    default_bus: domain.bus
+    buses:
+      domain.bus:
+        default_middleware:
+          allow_no_handlers: true
+
+    transports:
+      async_library:
+        dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+        serializer: App\Infrastructure\Serializer\Messenger\LibrarySerializer
+        options:
+          exchange:
+            name: app_management
+            type: topic
+          queues:
+            app_library:
+              binding_keys:
+                - app.library
+
+    routing:
+      App\Application\Book\Inventory\BookInventoryEvent: async_library
+      App\Application\Borrow\Sanctioner\BorrowPenaltyEvent: async_library

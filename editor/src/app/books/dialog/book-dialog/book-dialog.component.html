@@ -1,0 +1,113 @@
+<p-dialog header="Buscar y seleccionar Libro"
+          [modal]="true" [(visible)]="visible"
+          [style]="{ width: '80vw', height: '60vh' }"
+          [closable]="true"
+          [resizable]="false">
+  <form [formGroup]="form" (ngSubmit)="onSearch()">
+    <section class="flex flex-column gap-2">
+      <div class="flex flex-column gap-4">
+        <div class="flex flex-row gap-2 align-items-center">
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     #titleInput
+                     id="book-search-title"
+                     autocomplete="off"
+                     formControlName="title" />
+              <label for="book-search-title">Título</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({title: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar título" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     id="book-search-author"
+                     autocomplete="off"
+                     formControlName="author" />
+              <label for="book-search-author">Autor</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({author: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar autor" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     id="book-search-editorial"
+                     autocomplete="off"
+                     formControlName="editorial" />
+              <label for="book-search-editorial">Editorial</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({editorial: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar editorial" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     id="book-search-isbn"
+                     autocomplete="off"
+                     formControlName="isbn" />
+              <label for="book-search-isbn">ISBN</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({isbn: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar ISBN" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-button label="Buscar"
+                    severity="info"
+                    icon="fas fa-search"
+                    type="submit" />
+        </div>
+        <div class="w-full">
+          <p-table [value]="books()"
+                   [paginator]="true"
+                   [rows]="5"
+                   [totalRecords]="books().length"
+                   [loading]="loading()"
+                   selectionMode="single"
+                   [tableStyle]="{ 'min-width': '100%' }"
+                   styleClass="p-datatable-striped">
+            <ng-template pTemplate="header">
+              <tr>
+                <th class="border-bottom-3 border-green-600">Título</th>
+                <th class="border-bottom-3 border-green-600">Autor</th>
+                <th class="border-bottom-3 border-green-600">Editorial</th>
+                <th class="border-bottom-3 border-green-600">ISBN</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-book let-rowIndex="rowIndex">
+              <tr [pSelectableRow]="book"
+                  [pSelectableRowIndex]="rowIndex"
+                  (click)="onClickItem(book, $event)">
+                <td>{{ book.title }}</td>
+                <td>{{ book.author.name }}</td>
+                <td>{{ book.editorial.name }}</td>
+                <td>{{ book.detail.isbn }}</td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td [colSpan]="4">No se han encontrado registros.</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </section>
+  </form>
+</p-dialog>

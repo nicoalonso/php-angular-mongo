@@ -1,0 +1,446 @@
+openapi: 3.0.0
+info:
+  title: Provider API
+  description: Provider API
+  version: 1.0.0
+
+paths:
+  /providers:
+    get:
+      summary: Provider API
+      description: 'Get a list of providers with optional filters and pagination.'
+      tags: [ Providers ]
+      operationId: v1ListProviders
+      parameters:
+        - name: name
+          description: Filter by name
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: comercialName
+          description: Filter by comercial name
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: vatNumber
+          description: Filter by comercial name
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: website
+          description: Filter by comercial name
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: createdBy
+          description: Filter by created user
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: fromCreatedAt
+          description: Filter by created date (Greater than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: toCreatedAt
+          description: Filter by created date (Less than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: page
+          description: Set page
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: limit
+          description: Limit rows per page
+          in: query
+          schema:
+            type: integer
+            minimum: 5
+            maximum: 100
+            default: 10
+        - name: sort
+          description: Sort list by fields
+          in: query
+          examples:
+            SortDesc:
+              value: "-createdAt"
+              summary: Sort desc
+            Multiple:
+              value: "-createdAt,+name"
+              summary: Multiple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'List of Authors'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Provider'
+                  pagination:
+                    $ref: '#/components/schemas/PaginationView'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+    post:
+      summary: Create a new provider
+      description: 'Create a new provider with the provided information.'
+      tags: [ Providers ]
+      operationId: v1CreateProvider
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProviderPayload'
+      responses:
+        '201':
+          description: Provider created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Provider'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+  /providers/{providerId}:
+    get:
+      summary: Get provider by ID
+      description: 'Retrieve a provider by its unique ID.'
+      tags: [ Providers ]
+      operationId: v1GetProviderById
+      parameters:
+        - name: providerId
+          description: The unique identifier of the provider
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Provider retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Provider'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+    put:
+      summary: Update provider by ID
+      description: 'Update an existing provider by its unique ID.'
+      tags: [ Providers ]
+      operationId: v1UpdateProviderById
+      parameters:
+        - name: providerId
+          description: The unique identifier of the provider
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProviderPayload'
+      responses:
+        '204':
+          description: 'Author updated successfully'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+    delete:
+      summary: Delete provider by ID
+      description: 'Delete an existing provider by its unique ID.'
+      tags: [ Providers ]
+      operationId: v1DeleteProviderById
+      parameters:
+        - name: providerId
+          description: The unique identifier of the provider
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: 'Author deleted successfully'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+components:
+  schemas:
+    Provider:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        name:
+          type: string
+          example: Amazon
+        comercialName:
+          type: string
+          example: Amazon Inc.
+        vatNumber:
+          type: string
+          example: B3456789012
+        contact:
+          $ref: '#/components/schemas/ContactEnterprise'
+        address:
+          $ref: '#/components/schemas/Address'
+        createdBy:
+          type: string
+          example: admin
+        createdAt:
+          type: string
+          format: date-time
+          example: 2023-06-01T12:00:00Z
+        updatedBy:
+          type: string
+          example: admin
+        updatedAt:
+          type: string
+          format: date-time
+          example: 2023-06-01T12:00:00Z
+
+    ProviderPayload:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: Amazon
+        comercialName:
+          type: string
+          example: Amazon Inc.
+        vatNumber:
+          type: string
+          example: B3456789012
+        contact:
+          $ref: '#/components/schemas/ContactEnterprise'
+        address:
+          $ref: '#/components/schemas/Address'
+
+    ContactEnterprise:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          example: info@anaya.com
+        web:
+          type: string
+          format: email
+          example: anaya.com
+        phone1:
+          type: string
+          example: +34986543210
+        phone2:
+          type: string
+          example: +34986543210
+
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          example: Main Street
+        postalCode:
+          type: string
+          example: 12345
+        city:
+          type: string
+          example: Anytown
+        province:
+          type: string
+          example: California
+        country:
+          type: string
+          example: USA
+
+    PaginationView:
+      type: object
+      properties:
+        total:
+          type: integer
+          example: 2
+        rowsPerPage:
+          type: integer
+          example: 10
+        page:
+          type: integer
+          example: 1
+        totalPages:
+          type: integer
+          example: 5
+
+  responses:
+    Success:
+      description: Success
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                type: array
+                items:
+                  type: string
+                example: [ ]
+
+    JWTNotFound:
+      description: JWT not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: JWT not Found
+              code:
+                type: integer
+                example: 401
+
+    ObjectNotFound:
+      description: Object not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Object not found
+              code:
+                type: integer
+                example: 404
+
+    BadRequestError:
+      description: Bad Request Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Bad Request Error
+              code:
+                type: integer
+                example: 400
+
+    ServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Internal Server Error
+              code:
+                type: integer
+                example: 500
+
+    ServiceUnavailable:
+      description: Server Unavailable
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Server Unavailable
+              code:
+                type: integer
+                example: 503

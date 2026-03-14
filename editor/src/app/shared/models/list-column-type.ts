@@ -1,0 +1,15 @@
+export enum ListColumnType {
+  Text = 'text',
+  Number = 'number',
+  Boolean = 'boolean',
+  Currency = 'currency',
+  Percentage = 'percentage',
+  Date = 'date',
+  Time = 'time',
+  DateTime = 'datetime',
+  Image = 'image',
+  Icon = 'icon',
+  Link = 'link',
+  Email = 'email',
+  Phone = 'phone',
+}

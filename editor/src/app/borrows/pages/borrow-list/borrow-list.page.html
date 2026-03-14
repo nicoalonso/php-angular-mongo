@@ -1,0 +1,30 @@
+<p-confirmDialog />
+
+<div class="grid grid-nogutter surface-section mx-6">
+  <div class="col-12 p-4 flex flex-column relative">
+    <span class="watermark text-600">
+      <i class="fas fa-briefcase"></i>
+    </span>
+    <div class="border-none border-bottom-3 border--600">
+      <app-list-table name="borrows"
+                      recordsLabel="Préstamos"
+                      borderColor="border-600"
+                      [breadcrumb]="breadcrumb"
+                      [service]="service"
+                      [columns]="columns"
+                      [adapter]="adapter"
+                      (itemClicked)="onClick($event)">
+        <p-button (click)="onManualPenalty($event)"
+                  size="small" severity="secondary"
+                  pTooltip="Calcular sancionaes manualmente" tooltipPosition="bottom">
+          <fa-icon class="mr-2" icon="ticket"></fa-icon>
+          <span>Calcular sanciones</span>
+        </p-button>
+        <p-button (click)="onCreate()" size="small">
+          <fa-icon class="mr-2" icon="plus"></fa-icon>
+          <span>Nuevo Préstamo</span>
+        </p-button>
+      </app-list-table>
+    </div>
+  </div>
+</div>

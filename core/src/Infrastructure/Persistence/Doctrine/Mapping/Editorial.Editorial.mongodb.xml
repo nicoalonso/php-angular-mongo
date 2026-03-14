@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mongo-mapping xmlns="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
+                                            http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
+    <document name="App\Domain\Editorial\Editorial" collection="editorials"
+              repository-class="App\Infrastructure\Persistence\Doctrine\Repository\MongoEditorialRepository">
+        <id strategy="NONE" type="string"/>
+        <field field-name="name" type="string"/>
+        <field field-name="comercialName" type="string"/>
+        <embed-one field="contact" target-document="App\Domain\Common\EnterpriseContact" />
+        <embed-one field="address" target-document="App\Domain\Common\Address" />
+        <field field-name="createdBy" type="string"/>
+        <field field-name="createdAt" type="date_immutable"/>
+        <field field-name="updatedBy" type="string"/>
+        <field field-name="updatedAt" type="date_immutable"/>
+    </document>
+</doctrine-mongo-mapping>

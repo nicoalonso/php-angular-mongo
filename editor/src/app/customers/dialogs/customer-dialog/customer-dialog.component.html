@@ -1,0 +1,113 @@
+<p-dialog header="Buscar y seleccionar Cliente"
+          [modal]="true" [(visible)]="visible"
+          [style]="{ width: '80vw', height: '60vh' }"
+          [closable]="true"
+          [resizable]="false">
+  <form [formGroup]="form" (ngSubmit)="onSearch()">
+    <section class="flex flex-column gap-2">
+      <div class="flex flex-column gap-4">
+        <div class="flex flex-row gap-2 align-items-center">
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     #nameInput
+                     id="customer-search-name"
+                     autocomplete="off"
+                     formControlName="name" />
+              <label for="customer-search-name">Nombre</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({name: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar nombre" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     id="customer-search-surname"
+                     autocomplete="off"
+                     formControlName="surname" />
+              <label for="customer-search-surname">Apellidos</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({surname: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar apellidos" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     id="customer-search-number"
+                     autocomplete="off"
+                     formControlName="number" />
+              <label for="customer-search-number">Carnet</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({number: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar carnet" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-input-group>
+            <p-iftalabel>
+              <input pInputText
+                     id="customer-search-vat"
+                     autocomplete="off"
+                     formControlName="vatNumber" />
+              <label for="customer-search-vat">NIF</label>
+            </p-iftalabel>
+            <p-inputgroup-addon>
+              <p-button (click)="form.patchValue({vatNumber: ''})"
+                        [tabindex]="-1"
+                        icon="fas fa-delete-left" severity="danger" variant="text"
+                        pTooltip="Borrar NIF" tooltipPosition="top" />
+            </p-inputgroup-addon>
+          </p-input-group>
+          <p-button label="Buscar"
+                    severity="info"
+                    icon="fas fa-search"
+                    type="submit" />
+        </div>
+        <div class="w-full">
+          <p-table [value]="customers()"
+                   [paginator]="true"
+                   [rows]="5"
+                   [totalRecords]="customers().length"
+                   [loading]="loading()"
+                   selectionMode="single"
+                   [tableStyle]="{ 'min-width': '100%' }"
+                   styleClass="p-datatable-striped">
+            <ng-template pTemplate="header">
+              <tr>
+                <th class="border-bottom-3 border-green-600">Nombre</th>
+                <th class="border-bottom-3 border-green-600">Apellidos</th>
+                <th class="border-bottom-3 border-green-600">Carnet</th>
+                <th class="border-bottom-3 border-green-600">NIF</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-customer let-rowIndex="rowIndex">
+              <tr [pSelectableRow]="customer"
+                  [pSelectableRowIndex]="rowIndex"
+                  (click)="onClickItem(customer, $event)">
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.surname }}</td>
+                <td>{{ customer.membership.number }}</td>
+                <td>{{ customer.vatNumber }}</td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td [colSpan]="4">No se han encontrado registros.</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </section>
+  </form>
+</p-dialog>

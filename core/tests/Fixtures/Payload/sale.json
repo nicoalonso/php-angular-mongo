@@ -1,0 +1,19 @@
+{
+  "customerId": "d6e20876-6f65-5181-a656-b34086d68b4f",
+  "invoice": {
+    "date": "2024-01-01",
+    "amount": 100,
+    "taxPercentage": 21,
+    "taxes": 21,
+    "total": 121
+  },
+  "lines": [
+    {
+      "bookId": "d6e20876-6f65-5181-a656-b34086d68b4f",
+      "quantity": 2,
+      "price": 10.0,
+      "discount": 0.0,
+      "total": 20.0
+    }
+  ]
+}

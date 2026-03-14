@@ -1,0 +1,142 @@
+<section>
+  <p-table #dt
+           [columns]="columns()"
+           [value]="items()"
+           [lazy]="true"
+           (onLazyLoad)="onLoadData($event)"
+           [paginator]="pagination().showPagination"
+           [rows]="rows()"
+           [rowsPerPageOptions]="limitOptions"
+           [showCurrentPageReport]="true"
+           [totalRecords]="totalRecords()"
+           [loading]="loading()"
+           currentPageReportTemplate="Mostrando {first} de {last}"
+           sortMode="multiple"
+           selectionMode="single"
+           stateStorage="session"
+           [stateKey]="'list-table-' + name()"
+           styleClass="p-datatable-striped">
+    @if (showCaption()) {
+      <ng-template pTemplate="caption">
+        <div class="flex flex-row gap-3 justify-content-between">
+          <div class="flex flex-column gap-2">
+            <p-breadcrumb class="max-w-full" [model]="breadcrumb()" [home]="homeBreadcrumb" />
+            <small>
+              {{ totalRecords() | number: '1.0-0' }} {{ recordsLabel() }}
+              @if (constraints() && constraints().length) {
+                , filtrado por: <span class="font-bold text-purple-600">{{ getConstraints() }}</span>
+              }
+            </small>
+          </div>
+          <div class="flex flex-row gap-2 align-items-center">
+            @if (canFilter()) {
+              <p-toggleButton onIcon="pi pi-filter-slash"
+                              offIcon="pi pi-filter"
+                              onLabel="Ocultar"
+                              offLabel="Filtrar"
+                              pTooltip="Aplicar filtros"
+                              tooltipPosition="bottom"
+                              [(ngModel)]="showFilters" />
+              <span [hidden]="!showFilters()">
+                <p-button severity="secondary"
+                          [text]="true"
+                          (click)="clearFilters()"
+                          pTooltip="Borrar filtros"
+                          tooltipPosition="bottom"
+                          size="small">
+                  <fa-icon icon="delete-left" size="2x" />
+                </p-button>
+              </span>
+            }
+            <ng-content></ng-content>
+          </div>
+        </div>
+      </ng-template>
+    }
+    <ng-template pTemplate="header">
+      <tr>
+        @for (col of columns(); track col.field) {
+          @if (col.sortable) {
+            <th [pSortableColumn]="col.field" class="border-bottom-3" [ngClass]="borderColor()">
+              {{ col.header }}
+              <p-sortIcon [field]="col.field"></p-sortIcon>
+            </th>
+          } @else {
+            <th class="border-bottom-3" [ngClass]="borderColor()">{{ col.header }}</th>
+          }
+        }
+      </tr>
+      <tr [hidden]="!showFilters()">
+        @for (col of columns(); track col.field) {
+          <th>
+            @if (col.filterable) {
+              @if (col.selectable) {
+                <p-columnFilter [field]="col.field" matchMode="equals" [showMenu]="false" [showClearButton]="false">
+                  <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                    <p-select
+                      [ngModel]="value"
+                      [options]="col.options"
+                      (onChange)="filter($event.value)"
+                      placeholder="Selecciona"
+                      [showClear]="true">
+                    </p-select>
+                  </ng-template>
+                </p-columnFilter>
+              } @else {
+                <p-columnFilter
+                  [type]="col.getFilterType()"
+                  [field]="col.field"
+                  [showMenu]="false"
+                  [placeholder]="'Buscar por ' + col.header"
+                  [ariaLabel]="'Filtrar por ' + col.header" />
+              }
+            }
+          </th>
+        }
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+      <tr [pSelectableRow]="rowData"
+          [pSelectableRowIndex]="rowIndex"
+          (click)="onClickItem(rowData, $event)">
+        @for (col of columns(); track col.field) {
+          <td [ngClass]="getColumnClass(col, rowData)">
+          @switch (col.type) {
+            @case ('date') {
+              {{ rowData[col.field] | date: 'dd/MM/yyyy' }}
+            }
+            @case ('datetime') {
+              {{ rowData[col.field] | date: 'dd/MM/yyyy HH:mm:ss' }}
+            }
+            @case ('boolean') {
+              @if (formatter()) {
+                {{ formatter()!(col, rowData[col.field]) }}
+              } @else {
+                {{ rowData[col.field] ? 'Sí' : 'No' }}
+              }
+            }
+            @case ('number') {
+              {{ rowData[col.field] | number: '1.0-2' }}
+            }
+            @case ('currency') {
+              {{ rowData[col.field] | currency: 'EUR' }}
+            }
+            @default {
+              @if (formatter()) {
+                {{ formatter()!(col, rowData[col.field]) }}
+              } @else {
+                {{ rowData[col.field] }}
+              }
+            }
+          }
+          </td>
+        }
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td [colSpan]="columns().length">No se han encontrado registros.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</section>

@@ -1,0 +1,562 @@
+openapi: 3.0.0
+info:
+  title: Book API
+  description: Book API for managing books in the library
+  version: 1.0.0
+
+paths:
+  /books:
+    get:
+      summary: Get all books
+      description: 'Get a list of all books with optional filters and pagination'
+      tags: [ Books ]
+      operationId: v1ListBooks
+      parameters:
+        - name: title
+          description: Filter by title
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: author
+          description: Filter by author name
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: editorial
+          description: Filter by editorial name
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: isbn
+          description: Filter by ISBN
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: language
+          description: Filter by language
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: fromPublishedAt
+          description: Filter by published date (Greater than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: toPublishedAt
+          description: Filter by published date (Less than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: price
+          description: Filter by price
+          in: query
+          schema:
+            type: number
+            format: float
+            minimum: 1
+        - name: saleable
+          description: Filter by saleable
+          in: query
+          schema:
+            type: boolean
+        - name: createdBy
+          description: Filter by created user
+          in: query
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 255
+        - name: fromCreatedAt
+          description: Filter by created date (Greater than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: toCreatedAt
+          description: Filter by created date (Less than or equal)
+          in: query
+          examples:
+            ShortDate:
+              value: "2025-01-01"
+              summary: Short date string format
+            DateTime:
+              value: "2025-01-01T00:00:00+01:00"
+              summary: Date string format
+          schema:
+            oneOf:
+              - type: string
+                format: date
+              - type: string
+                format: date-time
+        - name: page
+          description: Set page
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: limit
+          description: Limit rows per page
+          in: query
+          schema:
+            type: integer
+            minimum: 5
+            maximum: 100
+            default: 10
+        - name: sort
+          description: Sort list by fields
+          in: query
+          examples:
+            SortDesc:
+              value: "-createdAt"
+              summary: Sort desc
+            Multiple:
+              value: "-createdAt,+title"
+              summary: Multiple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'List of Authors'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Book'
+                  pagination:
+                    $ref: '#/components/schemas/PaginationView'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+    post:
+      summary: Create a new book
+      description: 'Create a new book with the provided information'
+      tags: [ Books ]
+      operationId: v1CreateBook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookPayload'
+      responses:
+        '201':
+          description: 'Author created successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Book'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+  /books/{bookId}:
+    get:
+      summary: Get a book by ID
+      description: 'Get a book by its unique ID'
+      tags: [ Books ]
+      operationId: v1GetBookById
+      parameters:
+        - name: bookId
+          description: The unique ID of the book
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: 'Book found successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Book'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+    put:
+      summary: Update a book by ID
+      description: 'Update a book by its unique ID with the provided information'
+      tags: [ Books ]
+      operationId: v1UpdateBookById
+      parameters:
+        - name: bookId
+          description: The unique ID of the book
+          in: path
+          required: true
+          schema:
+              type: string
+              format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookPayload'
+      responses:
+        '204':
+          description: 'Author updated successfully'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+    delete:
+      summary: Delete a book by ID
+      description: 'Delete a book by its unique ID'
+      tags: [ Books ]
+      operationId: v1DeleteBookById
+      parameters:
+        - name: bookId
+          description: The unique ID of the book
+          in: path
+          required: true
+          schema:
+              type: string
+              format: uuid
+      responses:
+        '204':
+          description: 'Author deleted successfully'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+  /books/{bookId}/available:
+    get:
+      summary: Check if a book is available
+      description: 'Check if a book is available for sale by its unique ID'
+      tags: [ Books ]
+      operationId: v1CheckBookAvailability
+      parameters:
+        - name: bookId
+          description: The unique ID of the book
+          in: path
+          required: true
+          schema:
+              type: string
+              format: uuid
+        - name: sale
+          description: 'Check availability for saleable books'
+          in: query
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: 'Book availability checked successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      available:
+                        type: boolean
+                        example: true
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/JWTNotFound'
+        '404':
+          $ref: '#/components/responses/ObjectNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+components:
+  schemas:
+    Book:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        title:
+          type: string
+          example: The Great Gatsby
+        description:
+          type: string
+          example: A novel written by F. Scott Fitzgerald
+        author:
+          type: object
+          properties:
+            id:
+              type: string
+              example: 123e4567-e89b-12d3-a456-426614174000
+              format: uuid
+            name:
+              type: string
+              example: F. Scott Fitzgerald
+        editorial:
+          type: object
+          properties:
+            id:
+              type: string
+              example: 123e4567-e89b-12d3-a456-426614174000
+              format: uuid
+            name:
+              type: string
+              example: Scribner
+        detail:
+          $ref: '#/components/schemas/BookDetail'
+        sale:
+          $ref: '#/components/schemas/BookSale'
+        stock:
+          type: integer
+          example: 50
+        createdBy:
+          type: string
+          example: admin
+        createdAt:
+          type: string
+          format: date-time
+          example: 2023-06-01T12:00:00Z
+        updatedBy:
+          type: string
+          example: admin
+        updatedAt:
+          type: string
+          format: date-time
+          example: 2023-06-01T12:00:00Z
+
+    BookPayload:
+      type: object
+      properties:
+        title:
+          type: string
+          example: The Great Gatsby
+        description:
+          type: string
+          example: A novel written by F. Scott Fitzgerald
+        authorId:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        editorialId:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        detail:
+          $ref: '#/components/schemas/BookDetail'
+        sale:
+          $ref: '#/components/schemas/BookSale'
+
+    BookDetail:
+      type: object
+      properties:
+        edition:
+          type: string
+          example: 001
+        isbn:
+          type: string
+          example: 978-3161484100
+        language:
+          type: string
+          example: Spanish
+        publicationAt:
+          type: string
+          format: date
+          example: 2023-06-01
+        pages:
+          type: integer
+          example: 180
+
+    BookSale:
+      type: object
+      properties:
+        saleable:
+          type: boolean
+          example: true
+        price:
+          type: number
+          format: float
+          example: 19.99
+        discount:
+          type: number
+          format: float
+          example: 0.15
+
+    PaginationView:
+      type: object
+      properties:
+        total:
+          type: integer
+          example: 2
+        rowsPerPage:
+          type: integer
+          example: 10
+        page:
+          type: integer
+          example: 1
+        totalPages:
+          type: integer
+          example: 5
+
+  responses:
+    Success:
+      description: Success
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                type: array
+                items:
+                  type: string
+                example: [ ]
+
+    JWTNotFound:
+      description: JWT not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: JWT not Found
+              code:
+                type: integer
+                example: 401
+
+    ObjectNotFound:
+      description: Object not Found
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Object not found
+              code:
+                type: integer
+                example: 404
+
+    BadRequestError:
+      description: Bad Request Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Bad Request Error
+              code:
+                type: integer
+                example: 400
+
+    ServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Internal Server Error
+              code:
+                type: integer
+                example: 500
+
+    ServiceUnavailable:
+      description: Server Unavailable
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: Server Unavailable
+              code:
+                type: integer
+                example: 503

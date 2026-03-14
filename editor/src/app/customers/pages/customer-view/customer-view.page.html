@@ -1,0 +1,236 @@
+<p-confirmDialog />
+<div class="flex flex-column surface-section mx-6 hall min-vh-80">
+  <div class="flex flex-column p-4">
+    <span class="hall-icon text-orange-600">
+      <i class="fas fa-people-group"></i>
+    </span>
+    <span class="watermark text-orange-600">
+      <i class="fas fa-people-group"></i>
+    </span>
+    <div class="flex flex-row gap-3 justify-content-between">
+      <div class="flex flex-column gap-2">
+        <div class="flex">
+          <p-breadcrumb class="max-w-full" [model]="breadcrumb" [home]="homeBreadcrumb" />
+        </div>
+        <small>Editado {{ customer().lastDate | dateAgo }} por <strong>{{ customer().lastUser }}</strong></small>
+      </div>
+      <div class="flex flex-row gap-2 align-items-center">
+        <p-button [text]="true"
+                  severity="danger"
+                  icon="fas fa-trash"
+                  label="Eliminar"
+                  size="small"
+                  (click)="onDelete($event)" />
+        <p-button [outlined]="true"
+                  severity="info"
+                  icon="fas fa-pen"
+                  label="Editar"
+                  size="small"
+                  [routerLink]="['/customers/edit', customer().id]" />
+        <p-button [text]="true"
+                  severity="secondary"
+                  icon="fas fa-xmark"
+                  label="Salir"
+                  size="small"
+                  [routerLink]="['/customers']" />
+      </div>
+    </div>
+  </div>
+  <div class="flex-1 p-4">
+    <p-tabs value="detail" class="tab-selector">
+      <p-tablist>
+        <p-tab value="detail" class="flex align-items-center gap-2">
+          <i class="fas fa-circle-info"></i>
+          <span>Detalle</span>
+        </p-tab>
+        <p-tab value="address" class="flex align-items-center gap-2">
+          <i class="fas fa-location-dot"></i>
+          <span>Dirección</span>
+        </p-tab>
+        <p-tab value="borrows" class="flex align-items-center gap-2">
+          <i class="fas fa-briefcase"></i>
+          <span>Préstamos</span>
+        </p-tab>
+        <p-tab value="data" class="flex align-items-center gap-2">
+          <i class="fas fa-user-clock"></i>
+          <span>Datos</span>
+        </p-tab>
+      </p-tablist>
+      <p-tabpanels>
+        <p-tabpanel value="detail">
+          <h3 class="flex flex-row gap-2 text-orange-400 text-2xl">
+            <fa-icon icon="circle-info" />
+            <span>Detalle</span>
+          </h3>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-orange-600">Nombre</span>
+              <span class="text-lg">{{ customer().name }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-orange-600">Apellidos</span>
+              <span class="text-lg">{{ customer().surname }}</span>
+            </div>
+          </div>
+          <p-divider />
+          <h3 class="flex flex-row gap-2 text-orange-400 text-2xl">
+            <fa-icon icon="id-card" />
+            <span>Membresía</span>
+          </h3>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-orange-600">Número de Carnet</span>
+              <app-btn-copy title="Número de Carnet" [text]="customer().membership.number">
+                <span class="text-lg">{{ customer().membership.number }}</span>
+              </app-btn-copy>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-orange-600">Estado</span>
+              @if (customer().membership.active) {
+                <span class="text-lg text-green-600 font-bold">
+                  <i class="fas fa-check-circle mr-2"></i>
+                  Activa
+                </span>
+              } @else {
+                <span class="text-lg text-red-600 font-bold">
+                  <i class="fas fa-times-circle mr-2"></i>
+                  Dado de baja
+                </span>
+              }
+            </div>
+            @if (!customer().membership.active) {
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <span class="text-base font-bold text-orange-600">Terminada en</span>
+                <span class="text-lg">{{ customer().membership.endedAt | date:'dd/MM/yyyy, HH:mm:ss' }}</span>
+              </div>
+            }
+          </div>
+          <p-divider />
+          <h3 class="flex flex-row gap-2 text-orange-400 text-2xl">
+            <fa-icon icon="square-phone" />
+            <span>Contacto</span>
+          </h3>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-orange-600">Teléfono móvil</span>
+              <app-btn-copy title="Teléfono móvil" [text]="customer().contact.phone1">
+                <span class="text-lg">{{ customer().contact.phone1 | defaultValue }}</span>
+              </app-btn-copy>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-orange-600">Teléfono fijo</span>
+              <app-btn-copy title="Teléfono fijo" [text]="customer().contact.phone2">
+                <span class="text-lg">{{ customer().contact.phone2 | defaultValue }}</span>
+              </app-btn-copy>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-orange-600">Email</span>
+              <app-btn-copy title="Email" [text]="customer().contact.email">
+                <span class="text-lg">{{ customer().contact.email | defaultValue }}</span>
+              </app-btn-copy>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="address">
+          <h3 class="flex flex-row gap-2 text-orange-400 text-2xl">
+            <fa-icon icon="location-dot" />
+            <span>Dirección</span>
+          </h3>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-orange-600">Calle</span>
+              <app-btn-copy title="Calle" [text]="customer().address.street">
+                <span class="text-lg">{{ customer().address.street | defaultValue }}</span>
+              </app-btn-copy>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-orange-600">Código postal</span>
+              <span class="text-lg">{{ customer().address.postalCode | defaultValue }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-orange-600">Ciudad</span>
+              <span class="text-lg">{{ customer().address.city | defaultValue }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-orange-600">Provincia</span>
+              <span class="text-lg">{{ customer().address.province | defaultValue }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-orange-600">Pais</span>
+              <span class="text-lg">{{ customer().address.country | defaultValue }}</span>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="borrows">
+          <h3 class="flex flex-row gap-2 text-orange-400 text-2xl">
+            <fa-icon icon="hand-holding-dollar" />
+            <span>Préstamos</span>
+          </h3>
+          <p-table [value]="borrows()"
+                   [tableStyle]="{ 'min-width': '100%' }"
+                   styleClass="p-datatable-striped">
+            <ng-template pTemplate="header">
+              <tr>
+                <th class="border-bottom-3 border-orange-600">Préstamo</th>
+                <th class="border-bottom-3 border-orange-600">Fecha de préstamo</th>
+                <th class="border-bottom-3 border-orange-600">Fecha de vencimiento</th>
+                <th class="border-bottom-3 border-orange-600">Total libros</th>
+                <th class="border-bottom-3 border-orange-600">Multa</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-borrow>
+              <tr>
+                <td>
+                  <a class="text-primary hover:underline"
+                     [routerLink]="['/borrows', borrow.id]">
+                    {{ borrow.number }}
+                  </a>
+                </td>
+                <td>{{ borrow.borrowDate | date: 'dd/MM/yyyy' }}</td>
+                <td>{{ borrow.dueDate | date: 'dd/MM/yyyy' }}</td>
+                <td>{{ borrow.totalBooks | number }}</td>
+                <td [ngClass]="{
+                  'text-red-600': borrow.penalty,
+                  'text-green-600': !borrow.penalty
+                }">
+                  @if (borrow.penalty) {
+                    {{ borrow.penaltyAmount | currency: 'EUR' }}
+                  } @else {
+                    No
+                  }
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td [colSpan]="5">No dispone de préstamos</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </p-tabpanel>
+        <p-tabpanel value="data">
+          <h3 class="flex flex-row gap-2 text-orange-400 text-2xl">
+            <fa-icon icon="hand-holding-dollar" />
+            <span>Datos fiscales</span>
+          </h3>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-orange-600">NIF</span>
+              <app-btn-copy title="NIF" [text]="customer().vatNumber">
+                <span class="text-lg">{{ customer().vatNumber | defaultValue }}</span>
+              </app-btn-copy>
+            </div>
+          </div>
+          <p-divider />
+          <h3 class="flex flex-row gap-2 text-orange-400 text-2xl">
+            <fa-icon icon="user-clock" />
+            <span>Usuarios y fechas</span>
+          </h3>
+          <div class="col-12">
+            <app-tracking-section [entity]="customer()" color="text-orange-600" />
+          </div>
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+v1_sales_list:
+  path: sales
+  controller: App\Infrastructure\Controller\V1\Sale\SaleListController
+  methods: [ GET ]
+
+v1_sales_create:
+  path: sales
+  controller: App\Infrastructure\Controller\V1\Sale\SaleCreateController
+  methods: [ POST ]
+
+v1_sales_read:
+  path: sales/{saleId}
+  controller: App\Infrastructure\Controller\V1\Sale\SaleReadController
+  methods: [ GET ]

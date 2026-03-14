@@ -1,0 +1,151 @@
+<p-confirmDialog />
+<div class="flex flex-column surface-section mx-6 hall min-vh-80">
+  <div class="flex flex-column p-4">
+    <span class="hall-icon text-green-600">
+      <i class="fas fa-pen-fancy"></i>
+    </span>
+    <span class="watermark text-green-600">
+      <i class="fas fa-pen-fancy"></i>
+    </span>
+    <div class="flex flex-row gap-3 justify-content-between">
+      <div class="flex flex-column gap-2">
+        <div class="flex">
+          <p-breadcrumb class="max-w-full" [model]="breadcrumb" [home]="homeBreadcrumb" />
+        </div>
+        <small>Editado {{ author().lastDate | dateAgo }} por <strong>{{ author().lastUser }}</strong></small>
+      </div>
+      <div class="flex flex-row gap-2 align-items-center">
+        <p-button [text]="true"
+                  severity="danger"
+                  icon="fas fa-trash"
+                  label="Eliminar"
+                  size="small"
+                  (click)="onDelete($event)" />
+        <p-button [outlined]="true"
+                  severity="info"
+                  icon="fas fa-pen"
+                  label="Editar"
+                  size="small"
+                  [routerLink]="['/authors/edit', author().id]" />
+        <p-button [text]="true"
+                  severity="secondary"
+                  icon="fas fa-xmark"
+                  label="Salir"
+                  size="small"
+                  [routerLink]="['/authors']" />
+      </div>
+    </div>
+  </div>
+  <div class="flex-1 p-4">
+    <p-tabs value="detail" class="tab-selector">
+      <p-tablist>
+        <p-tab value="detail" class="flex align-items-center gap-2">
+          <i class="fas fa-circle-info"></i>
+          <span>Detalle</span>
+        </p-tab>
+        <p-tab value="personal-data" class="flex align-items-center gap-2">
+          <i class="fas fa-address-card"></i>
+          <span>Datos personales</span>
+        </p-tab>
+        <p-tab value="data" class="flex align-items-center gap-2">
+          <i class="fas fa-user-clock"></i>
+          <span>Datos</span>
+        </p-tab>
+      </p-tablist>
+      <p-tabpanels>
+        <p-tabpanel value="detail">
+          <h3 class="flex flex-row gap-2 text-green-400 text-2xl">
+            <fa-icon icon="circle-info" />
+            <span>Detalle</span>
+          </h3>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 lg:col-8 grid">
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <span class="text-base font-bold text-green-600">Nombre</span>
+                <app-btn-copy title="Nombre" [text]="author().name">
+                  <span class="text-lg">{{ author().name }}</span>
+                </app-btn-copy>
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <span class="text-base font-bold text-green-600">Nombre real</span>
+                <app-btn-copy title="Nombre real" [text]="author().realName">
+                  <span class="text-lg">{{ author().realName | defaultValue }}</span>
+                </app-btn-copy>
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <span class="text-base font-bold text-green-600">Géneros</span>
+                <span class="text-lg">{{ author().genres | defaultValue }}</span>
+              </div>
+            </div>
+            <div class="col-12 lg:col-4 flex flex-row justify-content-end">
+              @if (author().photoUrl) {
+                <img [src]="author().photoUrl" class="shadow-2 mr-4 img-cover border-round" height="160" [alt]="author().name" />
+              } @else {
+                <div class="shadow-2 p-6 flex align-items-center justify-content-center bg-gray-200 border-round img-cover">
+                  <i class="fas fa-camera text-8xl text-gray-400"></i>
+                </div>
+              }
+            </div>
+          </div>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-green-600">Biografía</span>
+              <span class="text-lg">{{ author().biography | defaultValue }}</span>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="personal-data">
+          <h3 class="flex flex-row gap-2 text-green-400 text-2xl">
+            <fa-icon icon="address-card" />
+            <span>Datos personales</span>
+          </h3>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-green-600">Fecha de nacimiento</span>
+              <span class="text-lg">{{ author().birthDate | date:'dd/MM/yyyy' }}</span>
+            </div>
+            @if (author().deathDate) {
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <span class="text-base font-bold text-green-600">Fecha de fallecimiento</span>
+                <span class="text-lg">{{ author().deathDate | date:'dd/MM/yyyy' }}</span>
+              </div>
+            }
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-green-600">Nacionalidad</span>
+              <span class="text-lg">{{ author().nationality | defaultValue }}</span>
+            </div>
+            <div class="col-12 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-green-600">Fotografía URL</span>
+              @if (author().photoUrl) {
+                <a class="text-lg text-blue-600 hover:underline" [href]="author().photoUrl" target="_blank" rel="noopener">
+                  {{ author().photoUrl }}
+                </a>
+              } @else {
+                <span class="text-lg">--</span>
+              }
+            </div>
+            <div class="col-12 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-green-600">Página web</span>
+              @if (author().website) {
+                <a class="text-lg text-blue-600 hover:underline" [href]="author().website" target="_blank" rel="noopener">
+                  {{ author().website }}
+                </a>
+              } @else {
+                <span class="text-lg">--</span>
+              }
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="data">
+          <h3 class="flex flex-row gap-2 text-green-400 text-2xl">
+            <fa-icon icon="user-clock" />
+            <span>Usuarios y fechas</span>
+          </h3>
+          <div class="col-12">
+            <app-tracking-section [entity]="author()" color="text-green-600" />
+          </div>
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
+  </div>
+</div>

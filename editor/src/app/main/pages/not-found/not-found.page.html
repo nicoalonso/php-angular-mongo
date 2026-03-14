@@ -1,0 +1,38 @@
+<div class="grid grid-nogutter surface-section text-800">
+  <div class="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
+    <section>
+      <div class="text-6xl text-red-700 font-bold mb-3">Recurso no encontrado</div>
+      <p class="mt-0 mb-4 text-700 line-height-3">
+        El recurso no existe o no es accesible temporalmente.<br />
+        En caso de error, puede ponerse en contacto con el administrador del sistema.<br />
+        Pulse en @if (retryUrl()) {
+        <strong class="text-cyan-300">reintentar</strong> o
+      }
+        <strong class="text-yellow-400">volver</strong> para regresar a la página principal.
+      </p>
+
+      @if (retryUrl()) {
+        <p-button severity="help"
+                  raised
+                  [routerLink]="[retryUrl()]"
+                  class="mr-3">
+          <fa-icon [icon]="['fas', 'refresh']" class="mr-2"></fa-icon>
+          Reintentar
+        </p-button>
+      }
+
+      <p-button severity="warn"
+                raised
+                [routerLink]="['']"
+                class="mr-3">
+        <fa-icon [icon]="['fas', 'arrow-left']" class="mr-2"></fa-icon>
+        Volver
+      </p-button>
+    </section>
+  </div>
+  <div class="col-12 md:col-6 overflow-hidden">
+    <img ngSrc="/img/not-found.jpg" alt="Not found" class="md:ml-auto block md:h-full"
+         style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%); height: 400px"
+         height="600" width="600">
+  </div>
+</div>

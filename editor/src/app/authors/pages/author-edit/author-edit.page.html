@@ -1,0 +1,136 @@
+<form [formGroup]="form" (ngSubmit)="onSave()">
+  <div class="flex flex-column surface-section mx-6 hall min-vh-80">
+    <div class="flex flex-column p-4">
+      <span class="hall-icon text-green-600">
+        <i class="fas fa-pen-fancy"></i>
+      </span>
+      <span class="watermark text-green-600">
+        <i class="fas fa-pen-fancy"></i>
+      </span>
+      <div class="flex flex-row gap-3 justify-content-between">
+      <div class="flex flex-column gap-2">
+        <div class="flex">
+          <p-breadcrumb class="max-w-full" [model]="breadcrumb" [home]="homeBreadcrumb" />
+        </div>
+      </div>
+      <div class="flex flex-row gap-2 align-items-center">
+        <p-button [outlined]="true"
+                  severity="success"
+                  icon="fas fa-pen"
+                  label="Guardar"
+                  size="small"
+                  type="submit" />
+        <p-button [text]="true"
+                  severity="secondary"
+                  icon="fas fa-xmark"
+                  label="Salir"
+                  size="small"
+                  type="button"
+                  [routerLink]="['/authors', author().id]" />
+      </div>
+    </div>
+    </div>
+    <div class="flex-1 p-4">
+      <p-tabs value="detail" class="tab-selector">
+        <p-tablist>
+          <p-tab value="detail" class="flex align-items-center gap-2">
+            <i class="fas fa-circle-info"></i>
+            <span>Detalle</span>
+          </p-tab>
+          <p-tab value="personal-data" class="flex align-items-center gap-2">
+            <i class="fas fa-address-card"></i>
+            <span>Datos personales</span>
+          </p-tab>
+        </p-tablist>
+        <p-tabpanels>
+          <p-tabpanel value="detail">
+            <h3 class="flex flex-row gap-2 text-green-400 text-2xl">
+              <fa-icon icon="circle-info" />
+              <span>Detalle</span>
+            </h3>
+            <div class="col-12 grid align-content-start">
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="author-name" class="text-green-600 pl-3">Nombre</label>
+                <input pInputText
+                       id="author-name"
+                       autocomplete="off"
+                       formControlName="name" />
+                <p-message severity="error" text="El nombre es obligatorio" [hidden]="!hasError('name', 'empty')" />
+                <p-message severity="error" text="El nombre debe tener al menos 3 caracteres"
+                           [hidden]="!hasError('name', 'minlength')" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="author-real-name" class="text-green-600 pl-3">Nombre real</label>
+                <input pInputText
+                       id="author-real-name"
+                       autocomplete="off"
+                       formControlName="realName" />
+              </div>
+              <div class="col-12 flex flex-column gap-2 mb-3">
+                <label for="author-genres" class="text-green-600 pl-3">Géneros</label>
+                <input pInputText
+                       id="author-genres"
+                       autocomplete="off"
+                       formControlName="genres" />
+              </div>
+              <div class="col-12 flex flex-column gap-2 mb-3">
+                <label for="author-biography" class="text-green-600 pl-3">Biografía</label>
+                <textarea pInputText id="author-biography" rows="5" formControlName="biography"></textarea>
+              </div>
+            </div>
+          </p-tabpanel>
+          <p-tabpanel value="personal-data">
+            <h3 class="flex flex-row gap-2 text-green-400 text-2xl">
+              <fa-icon icon="address-card" />
+              <span>Datos personales</span>
+            </h3>
+            <div class="col-12 grid align-content-start">
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="author-birth-date" class="text-green-600 pl-3">Fecha de nacimiento</label>
+                <p-date-picker showIcon iconDisplay="input"
+                               inputId="author-birth-date"
+                               [maxDate]="maxDate"
+                               formControlName="birthDate" />
+                <p-message severity="error" text="La fecha de nacimiento es obligatoria"
+                           [hidden]="!hasError('birthDate', 'required')" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="author-death-date" class="text-green-600 pl-3">Fecha de fallecimiento</label>
+                <p-date-picker showIcon iconDisplay="input"
+                               inputId="author-death-date"
+                               [maxDate]="maxDate"
+                               [showClear]="true"
+                               formControlName="deathDate" />
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <label for="author-nationality" class="text-green-600 pl-3">Nacionalidad</label>
+                <input pInputText
+                       id="author-nationality"
+                       autocomplete="off"
+                       formControlName="nationality" />
+              </div>
+            </div>
+            <div class="col-12 flex flex-column gap-2 mb-3">
+              <label for="author-photo-url" class="text-green-600 pl-3">Fotografía URL</label>
+              <input pInputText
+                     id="author-photo-url"
+                     autocomplete="off"
+                     formControlName="photoUrl" />
+              <p-message severity="error" text="La URL de la fotografía no es válida"
+                         [hidden]="!hasError('photoUrl', 'pattern')" />
+            </div>
+            <div class="col-12 flex flex-column gap-2 mb-3">
+              <label for="author-website" class="text-green-600 pl-3">Página web</label>
+              <input pInputText
+                     id="author-website"
+                     autocomplete="off"
+                     formControlName="website" />
+              <p-message severity="error" text="La URL de la fotografía no es válida"
+                         [hidden]="!hasError('website', 'pattern')" />
+            </div>
+          </p-tabpanel>
+        </p-tabpanels>
+      </p-tabs>
+    </div>
+  </div>
+</form>

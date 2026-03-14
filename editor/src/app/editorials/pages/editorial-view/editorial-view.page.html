@@ -1,0 +1,149 @@
+<p-confirmDialog />
+<div class="flex flex-column surface-section mx-6 hall min-vh-80">
+  <div class="flex flex-column p-4">
+    <span class="hall-icon text-cyan-600">
+      <i class="fas fa-stamp"></i>
+    </span>
+    <span class="watermark text-cyan-600">
+      <i class="fas fa-stamp"></i>
+    </span>
+    <div class="flex flex-row gap-3 justify-content-between">
+      <div class="flex flex-column gap-2">
+        <div class="flex">
+          <p-breadcrumb class="max-w-full" [model]="breadcrumb" [home]="homeBreadcrumb" />
+        </div>
+        <small>Editado {{ editorial().lastDate | dateAgo }} por <strong>{{ editorial().lastUser }}</strong></small>
+      </div>
+      <div class="flex flex-row gap-2 align-items-center">
+        <p-button [text]="true"
+                  severity="danger"
+                  icon="fas fa-trash"
+                  label="Eliminar"
+                  size="small"
+                  (click)="onDelete($event)" />
+        <p-button [outlined]="true"
+                  severity="info"
+                  icon="fas fa-pen"
+                  label="Editar"
+                  size="small"
+                  [routerLink]="['/editorials/edit', editorial().id]" />
+        <p-button [text]="true"
+                  severity="secondary"
+                  icon="fas fa-xmark"
+                  label="Salir"
+                  size="small"
+                  [routerLink]="['/editorials']" />
+      </div>
+    </div>
+  </div>
+  <div class="flex-1 p-4">
+    <p-tabs value="detail" class="tab-selector">
+      <p-tablist>
+        <p-tab value="detail" class="flex align-items-center gap-2">
+          <i class="fas fa-circle-info"></i>
+          <span>Detalle</span>
+        </p-tab>
+        <p-tab value="address" class="flex align-items-center gap-2">
+          <i class="fas fa-location-dot"></i>
+          <span>Dirección</span>
+        </p-tab>
+        <p-tab value="data" class="flex align-items-center gap-2">
+          <i class="fas fa-user-clock"></i>
+          <span>Datos</span>
+        </p-tab>
+      </p-tablist>
+      <p-tabpanels>
+        <p-tabpanel value="detail">
+          <h3 class="flex flex-row gap-2 text-cyan-400 text-2xl">
+            <fa-icon icon="circle-info" />
+            <span>Detalle</span>
+          </h3>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-cyan-600">Nombre</span>
+              <span class="text-lg">{{ editorial().name }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-cyan-600">Nombre comercial</span>
+              <span class="text-lg">{{ editorial().comercialName | defaultValue }}</span>
+            </div>
+            <p-divider />
+            <h3 class="flex flex-row gap-2 text-cyan-400 text-2xl">
+              <fa-icon icon="square-phone" />
+              <span>Contacto</span>
+            </h3>
+            <div class="col-12 grid align-content-start">
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <span class="text-base font-bold text-cyan-600">Teléfono 1</span>
+                <app-btn-copy title="Teléfono móvil" [text]="editorial().contact.phone1">
+                  <span class="text-lg">{{ editorial().contact.phone1 | defaultValue }}</span>
+                </app-btn-copy>
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <span class="text-base font-bold text-cyan-600">Teléfono 2</span>
+                <app-btn-copy title="Teléfono fijo" [text]="editorial().contact.phone2">
+                  <span class="text-lg">{{ editorial().contact.phone2 | defaultValue }}</span>
+                </app-btn-copy>
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <span class="text-base font-bold text-cyan-600">Email</span>
+                <app-btn-copy title="Email" [text]="editorial().contact.email">
+                  <span class="text-lg">{{ editorial().contact.email | defaultValue }}</span>
+                </app-btn-copy>
+              </div>
+              <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+                <span class="text-base font-bold text-cyan-600">Página web</span>
+                @if (editorial().contact.website) {
+                  <a class="text-lg text-blue-600 hover:underline" [href]="editorial().contact.website" target="_blank" rel="noopener">
+                    {{ editorial().contact.website }}
+                  </a>
+                } @else {
+                  <span class="text-lg">--</span>
+                }
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="address">
+          <h3 class="flex flex-row gap-2 text-cyan-400 text-2xl">
+            <fa-icon icon="location-dot" />
+            <span>Dirección</span>
+          </h3>
+          <div class="col-12 grid align-content-start">
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-cyan-600">Calle</span>
+              <app-btn-copy title="Calle" [text]="editorial().address.street">
+                <span class="text-lg">{{ editorial().address.street | defaultValue }}</span>
+              </app-btn-copy>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-cyan-600">Código postal</span>
+              <span class="text-lg">{{ editorial().address.postalCode | defaultValue }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-cyan-600">Ciudad</span>
+              <span class="text-lg">{{ editorial().address.city | defaultValue }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-cyan-600">Provincia</span>
+              <span class="text-lg">{{ editorial().address.province | defaultValue }}</span>
+            </div>
+            <div class="col-12 lg:col-6 flex flex-column gap-2 mb-3">
+              <span class="text-base font-bold text-cyan-600">Pais</span>
+              <span class="text-lg">{{ editorial().address.country | defaultValue }}</span>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="data">
+          <h3 class="flex flex-row gap-2 text-cyan-400 text-2xl">
+            <fa-icon icon="user-clock" />
+            <span>Usuarios y fechas</span>
+          </h3>
+          <div class="col-12">
+            <app-tracking-section [entity]="editorial()" color="text-cyan-600" />
+          </div>
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
+  </div>
+</div>
