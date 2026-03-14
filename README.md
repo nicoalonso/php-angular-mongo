@@ -71,6 +71,9 @@ id
 
 Ejemplo: `uid=100(nico) gid=1000(nico)`
 
+En las subcarpetas `core` y `editor` también localizarás dos ficheros .env.dist, haz lo mismo que en la carpeta principal para antes de arrancar los contedores.
+
+
 ### Crear la carpeta data para los volúmenes de Docker
 
 Para evitar perdida de datos, el contenedor de MongoDB usará un volumen que se montará en la carpeta `data` del proyecto. Es importante crear esta carpeta antes de levantar los contenedores, para evitar problemas de permisos.
@@ -88,3 +91,15 @@ El modificador `-d` detach es opcional.
 ```bash
 docker compose up -d
 ```
+
+### Abrir la aplicación en el navegador
+
+Estoy usando certificados autorfirmados para poder usar `HTTPS`.
+Suelo trabajar con `HTTPS` para poder usar OAuth y alternativas, el problema es que el navegador los identifica como inválidos.
+Pero este se corrige añadiendo una excepción en el navegador.
+
+Para iniciar la aplicación, y si has seguido todos los pasos anteriores, accede a las siguientes URLs, recuerda añadir las excepciones al navegador, o la aplicación no funcionará.
+
+Primer accedemos al [Backed](https://library-core.portafolio.loc/v1/doc)
+
+Y en segundo lugar entramos en el [editor](https://library.portafolio.loc)
