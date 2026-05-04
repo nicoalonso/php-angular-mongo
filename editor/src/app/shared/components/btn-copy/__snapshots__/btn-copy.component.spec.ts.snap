@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`BtnCopyComponent should create 1`] = `
+<app-btn-copy
+  clipboardService={[Function Object]}
+  text={[Function Function]}
+  title={[Function Function]}
+  toastService={[Function Object]}
+>
+  <div
+    class="flex flex-row gap-3 align-items-center"
+  >
+    <p-button
+      icon="fas fa-copy"
+      pc1=""
+      severity="secondary"
+      size="small"
+    >
+      <button
+        class="p-ripple p-button p-component p-button-icon-only p-button-secondary p-button-text p-button-sm"
+        data-pc-name="button"
+        data-pc-section="root"
+        disabled=""
+        pc2=""
+        pc3=""
+        pripple=""
+        type="button"
+      >
+        <span
+          class="fas fa-copy p-button-icon"
+          data-pc-section="icon"
+        />
+      </button>
+    </p-button>
+  </div>
+</app-btn-copy>
+`;

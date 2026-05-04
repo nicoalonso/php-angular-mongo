@@ -1,0 +1,19 @@
+{
+  "lines": [
+    {
+      "lineId": "d6e20876-6f65-5181-a656-b34086d68b4f",
+      "bookId": "d6e20876-6f65-5181-a656-b34086d68b4f",
+      "returned": true
+    },
+    {
+      "lineId": "d6e20876-6f65-5181-a656-b34086d68b4f",
+      "bookId": "d6e20876-6f65-5181-a656-b34086d68b4f",
+      "returned": false
+    },
+    {
+      "lineId": "d6e20876-6f65-5181-a656-b34086d68b4f",
+      "bookId": "d6e20876-6f65-5181-a656-b34086d68b4f",
+      "returned": true
+    }
+  ]
+}

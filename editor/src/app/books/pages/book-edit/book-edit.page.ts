@@ -88,7 +88,7 @@ export default class BookEditPage
 
   breadcrumb: MenuItem[] = [
     { label: 'Libros', routerLink: '/books' },
-    { label: 'Editar Cliente', styleClass: 'text-xl font-bold' },
+    { label: 'Editar Libro', styleClass: 'text-xl font-bold' },
   ];
 
   constructor() {

@@ -83,9 +83,9 @@ export class ListColumn {
   getFilterValue(value: unknown): string {
     if (value instanceof Date) {
       return (value.getTime() / 1000).toString();
-    } else if (value instanceof Number) {
+    } else if (typeof value === 'number' || value instanceof Number) {
       return value.toString();
-    } else if (value instanceof Boolean) {
+    } else if (typeof value === 'boolean' || value instanceof Boolean) {
       return value ? 'true' : 'false';
     }
 

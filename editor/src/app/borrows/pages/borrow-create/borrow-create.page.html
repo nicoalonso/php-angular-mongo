@@ -30,10 +30,10 @@
       <div class="flex-1 p-4 flex flex-column gap-4">
         <div class="grid align-content-start">
           <div class="col-12 lg:col-4 flex flex-column gap-2 mb-3" formGroupName="customer">
-            <label for="sale-customer" class="text-600 pl-3">Cliente</label>
+            <label for="borrow-customer" class="text-600 pl-3">Cliente</label>
             <input type="hidden" formControlName="id" />
             <p-inputgroup>
-              <input pInputText id="sale-customer"
+              <input pInputText id="borrow-customer"
                      (keydown)="onCustomerKeydown($event)"
                      [readonly]="true"
                      formControlName="fullName" />
@@ -48,28 +48,28 @@
                        [hidden]="!hasError('customer.id', 'empty')" />
           </div>
           <div class="col-12 lg:col-2 flex flex-column gap-2 mb-3" formGroupName="customer">
-            <label for="sale-customer-number" class="text-600 pl-3">Número de socio</label>
-            <input pInputText id="sale-customer-number"
+            <label for="borrow-customer-number" class="text-600 pl-3">Número de socio</label>
+            <input pInputText id="borrow-customer-number"
                    (keydown)="onCustomerKeydown($event)"
                    [readonly]="true"
                    formControlName="number" />
           </div>
           <div class="col-12 lg:col-3 flex flex-column gap-2 mb-3 align-items-center">
             <div class="flex flex-column gap-2">
-              <label for="sale-date" class="text-600 pl-3">Fecha</label>
-              <input pInputText id="sale-date"
+              <label for="borrow-date" class="text-600 pl-3">Fecha</label>
+              <input pInputText id="borrow-date"
                      [value]="today"
                      [readonly]="true" />
             </div>
           </div>
           <div class="col-12 lg:col-3 flex flex-column gap-2 mb-3">
-            <label for="sale-number" class="text-600 pl-3">Número</label>
+            <label for="borrow-number" class="text-600 pl-3">Número</label>
             <input pInputText
-                   id="sale-number"
+                   id="borrow-number"
                    autocomplete="off"
                    [value]="sequenceNumber()"
                    [readonly]="true" />
-            <small id="sale-number-help">El número más probable que se asignará automáticamente una vez creado.</small>
+            <small id="borrow-number-help">El número más probable que se asignará automáticamente una vez creado.</small>
           </div>
         </div>
         <div class="grid align-content-start gap-2">

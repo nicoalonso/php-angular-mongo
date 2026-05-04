@@ -1,0 +1,540 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`AuthorDialogComponent should create 1`] = `
+<app-author-dialog
+  authorService={[Function AuthorServiceStub]}
+  authors={[Function Function]}
+  form={[Function FormGroup]}
+  initialOpen="false"
+  loading={[Function Function]}
+  nameInput={[Function Function]}
+  selected={[Function OutputEmitterRef]}
+  visible={[Function Function]}
+>
+  <p-dialog
+    header="Buscar y seleccionar Autor"
+    pc1=""
+  >
+    <div
+      class="p-dialog-mask p-overlay-mask p-overlay-mask-enter"
+      style="position: fixed; height: 100%; width: 100%; left: 0px; top: 0px; display: flex; justify-content: center; align-items: center; pointer-events: auto;"
+    >
+      <div
+        aria-labelledby="pn_id_1_header"
+        aria-modal="true"
+        class="ng-trigger ng-trigger-animation p-dialog p-component ng-animating"
+        pc30=""
+        pfocustrap=""
+        role="dialog"
+        style="height: 60vh; width: 80vw; display: flex; flex-direction: column; pointer-events: auto;"
+      >
+        <span
+          aria-hidden="true"
+          class="p-hidden-accessible p-hidden-focusable"
+          data-p-hidden-accessible="true"
+          data-p-hidden-focusable="true"
+          data-pc-section="firstfocusableelement"
+          role="presentation"
+          tabindex="0"
+        />
+        <div
+          class="p-dialog-header"
+          style=""
+        >
+          <span
+            class="p-dialog-title"
+            id="pn_id_1_header"
+          >
+            Buscar y seleccionar Autor
+          </span>
+          <div
+            class="p-dialog-header-actions"
+          >
+            <p-button
+              pc31=""
+            >
+              <button
+                class="p-ripple p-button p-component p-button-icon-only p-button-secondary p-button-rounded p-button-text p-dialog-close-button"
+                data-pc-name="button"
+                data-pc-section="root"
+                pc32=""
+                pc33=""
+                pripple=""
+                tabindex="0"
+                type="button"
+              >
+                <timesicon
+                  class="p-component p-iconwrapper"
+                  pc34=""
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="p-icon"
+                    fill="none"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    width="14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8.01186 7.00933L12.27 2.75116C12.341 2.68501 12.398 2.60524 12.4375 2.51661C12.4769 2.42798 12.4982 2.3323 12.4999 2.23529C12.5016 2.13827 12.4838 2.0419 12.4474 1.95194C12.4111 1.86197 12.357 1.78024 12.2884 1.71163C12.2198 1.64302 12.138 1.58893 12.0481 1.55259C11.9581 1.51625 11.8617 1.4984 11.7647 1.50011C11.6677 1.50182 11.572 1.52306 11.4834 1.56255C11.3948 1.60204 11.315 1.65898 11.2488 1.72997L6.99067 5.98814L2.7325 1.72997C2.59553 1.60234 2.41437 1.53286 2.22718 1.53616C2.03999 1.53946 1.8614 1.61529 1.72901 1.74767C1.59663 1.88006 1.5208 2.05865 1.5175 2.24584C1.5142 2.43303 1.58368 2.61419 1.71131 2.75116L5.96948 7.00933L1.71131 11.2675C1.576 11.403 1.5 11.5866 1.5 11.7781C1.5 11.9696 1.576 12.1532 1.71131 12.2887C1.84679 12.424 2.03043 12.5 2.2219 12.5C2.41338 12.5 2.59702 12.424 2.7325 12.2887L6.99067 8.03052L11.2488 12.2887C11.3843 12.424 11.568 12.5 11.7594 12.5C11.9509 12.5 12.1346 12.424 12.27 12.2887C12.4053 12.1532 12.4813 11.9696 12.4813 11.7781C12.4813 11.5866 12.4053 11.403 12.27 11.2675L8.01186 7.00933Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </timesicon>
+              </button>
+            </p-button>
+          </div>
+        </div>
+        <div
+          class="p-dialog-content"
+          data-pc-section="content"
+          style=""
+        >
+          <form
+            class="ng-untouched ng-pristine ng-valid"
+            novalidate=""
+          >
+            <section
+              class="flex flex-column gap-2"
+            >
+              <div
+                class="flex flex-column gap-4"
+              >
+                <div
+                  class="flex flex-row gap-2 align-items-center"
+                >
+                  <p-input-group
+                    class="p-inputgroup"
+                    data-pc-name="inputgroup"
+                    pc2=""
+                  >
+                    <p-iftalabel
+                      class="p-iftalabel"
+                      pc3=""
+                    >
+                      <input
+                        autocomplete="off"
+                        class="p-inputtext p-component ng-untouched ng-pristine ng-valid"
+                        formcontrolname="name"
+                        id="author-search-name"
+                        pc4=""
+                        pinputtext=""
+                      />
+                      <label
+                        for="author-search-name"
+                      >
+                        Nombre
+                      </label>
+                    </p-iftalabel>
+                    <p-inputgroup-addon
+                      class="p-inputgroupaddon"
+                      data-pc-name="inputgroupaddon"
+                      pc5=""
+                    >
+                      <p-button
+                        icon="fas fa-delete-left"
+                        pc6=""
+                        pc7=""
+                        ptooltip="Borrar nombre"
+                        severity="danger"
+                        tooltipposition="top"
+                        variant="text"
+                      >
+                        <button
+                          class="p-ripple p-button p-component p-button-icon-only p-button-danger p-button-text"
+                          data-pc-name="button"
+                          data-pc-section="root"
+                          pc22=""
+                          pc23=""
+                          pripple=""
+                          tabindex="-1"
+                          type="button"
+                        >
+                          <span
+                            class="fas fa-delete-left p-button-icon"
+                            data-pc-section="icon"
+                          />
+                        </button>
+                      </p-button>
+                    </p-inputgroup-addon>
+                  </p-input-group>
+                  <p-input-group
+                    class="p-inputgroup"
+                    data-pc-name="inputgroup"
+                    pc8=""
+                  >
+                    <p-iftalabel
+                      class="p-iftalabel"
+                      pc9=""
+                    >
+                      <input
+                        autocomplete="off"
+                        class="p-inputtext p-component ng-untouched ng-pristine ng-valid"
+                        formcontrolname="realName"
+                        id="author-search-real-name"
+                        pc10=""
+                        pinputtext=""
+                      />
+                      <label
+                        for="author-search-real-name"
+                      >
+                        Nombre real
+                      </label>
+                    </p-iftalabel>
+                    <p-inputgroup-addon
+                      class="p-inputgroupaddon"
+                      data-pc-name="inputgroupaddon"
+                      pc11=""
+                    >
+                      <p-button
+                        icon="fas fa-delete-left"
+                        pc12=""
+                        pc13=""
+                        ptooltip="Borrar nombre real"
+                        severity="danger"
+                        tooltipposition="top"
+                        variant="text"
+                      >
+                        <button
+                          class="p-ripple p-button p-component p-button-icon-only p-button-danger p-button-text"
+                          data-pc-name="button"
+                          data-pc-section="root"
+                          pc24=""
+                          pc25=""
+                          pripple=""
+                          tabindex="-1"
+                          type="button"
+                        >
+                          <span
+                            class="fas fa-delete-left p-button-icon"
+                            data-pc-section="icon"
+                          />
+                        </button>
+                      </p-button>
+                    </p-inputgroup-addon>
+                  </p-input-group>
+                  <p-input-group
+                    class="p-inputgroup"
+                    data-pc-name="inputgroup"
+                    pc14=""
+                  >
+                    <p-iftalabel
+                      class="p-iftalabel"
+                      pc15=""
+                    >
+                      <input
+                        autocomplete="off"
+                        class="p-inputtext p-component ng-untouched ng-pristine ng-valid"
+                        formcontrolname="nationality"
+                        id="author-search-nationality"
+                        pc16=""
+                        pinputtext=""
+                      />
+                      <label
+                        for="author-search-nationality"
+                      >
+                        Nacionalidad
+                      </label>
+                    </p-iftalabel>
+                    <p-inputgroup-addon
+                      class="p-inputgroupaddon"
+                      data-pc-name="inputgroupaddon"
+                      pc17=""
+                    >
+                      <p-button
+                        icon="fas fa-delete-left"
+                        pc18=""
+                        pc19=""
+                        ptooltip="Borrar nacionalidad"
+                        severity="danger"
+                        tooltipposition="top"
+                        variant="text"
+                      >
+                        <button
+                          class="p-ripple p-button p-component p-button-icon-only p-button-danger p-button-text"
+                          data-pc-name="button"
+                          data-pc-section="root"
+                          pc26=""
+                          pc27=""
+                          pripple=""
+                          tabindex="-1"
+                          type="button"
+                        >
+                          <span
+                            class="fas fa-delete-left p-button-icon"
+                            data-pc-section="icon"
+                          />
+                        </button>
+                      </p-button>
+                    </p-inputgroup-addon>
+                  </p-input-group>
+                  <p-button
+                    icon="fas fa-search"
+                    label="Buscar"
+                    pc20=""
+                    severity="info"
+                    type="submit"
+                  >
+                    <button
+                      class="p-ripple p-button p-component p-button-info"
+                      data-pc-name="button"
+                      data-pc-section="root"
+                      pc28=""
+                      pc29=""
+                      pripple=""
+                      type="submit"
+                    >
+                      <span
+                        class="fas fa-search p-button-icon p-button-icon-left"
+                        data-pc-section="icon"
+                      />
+                      <span
+                        aria-hidden="false"
+                        class="p-button-label"
+                        data-pc-section="label"
+                      >
+                        Buscar
+                      </span>
+                    </button>
+                  </p-button>
+                </div>
+                <div
+                  class="w-full"
+                >
+                  <p-table
+                    pc21=""
+                    selectionmode="single"
+                    styleclass="p-datatable-striped"
+                  >
+                    <div
+                      class="p-datatable p-component p-datatable-hoverable"
+                      id="pn_id_1"
+                    >
+                      <div
+                        class="p-datatable-table-container"
+                        style="overflow: auto;"
+                      >
+                        <table
+                          class="p-datatable-table"
+                          id="pn_id_1-table"
+                          style="min-width: 100%;"
+                        >
+                          <thead
+                            class="p-datatable-thead"
+                            style="position: sticky;"
+                          >
+                            <tr>
+                              <th
+                                class="border-bottom-3 border-green-600"
+                              >
+                                Nombre
+                              </th>
+                              <th
+                                class="border-bottom-3 border-green-600"
+                              >
+                                Nombre real
+                              </th>
+                              <th
+                                class="border-bottom-3 border-green-600"
+                              >
+                                Nacionalidad
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody
+                            class="p-datatable-tbody"
+                          >
+                            <tr
+                              class="p-datatable-selectable-row"
+                              data-p-selectable-row="true"
+                              tabindex="0"
+                            >
+                              <td>
+                                William Shakespeare
+                              </td>
+                              <td>
+                                William Shakespeare
+                              </td>
+                              <td>
+                                English
+                              </td>
+                            </tr>
+                            <tr
+                              class="p-datatable-selectable-row"
+                              data-p-selectable-row="true"
+                              tabindex="0"
+                            >
+                              <td>
+                                Miguel de Cervantes
+                              </td>
+                              <td>
+                                Miguel de Cervantes Saavedra
+                              </td>
+                              <td>
+                                Spanish
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p-paginator
+                        pc35=""
+                      >
+                        <div
+                          class="p-paginator p-component"
+                          data-pc-section="root"
+                        >
+                          <button
+                            aria-label="First Page"
+                            class="p-ripple p-paginator-first p-disabled"
+                            disabled=""
+                            pc38=""
+                            pripple=""
+                            type="button"
+                          >
+                            <angledoublelefticon
+                              class="p-component p-iconwrapper"
+                              pc42=""
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="p-icon p-paginator-first-icon"
+                                fill="none"
+                                height="14"
+                                viewBox="0 0 14 14"
+                                width="14"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  clip-rule="evenodd"
+                                  d="M5.71602 11.164C5.80782 11.2021 5.9063 11.2215 6.00569 11.221C6.20216 11.2301 6.39427 11.1612 6.54025 11.0294C6.68191 10.8875 6.76148 10.6953 6.76148 10.4948C6.76148 10.2943 6.68191 10.1021 6.54025 9.96024L3.51441 6.9344L6.54025 3.90855C6.624 3.76126 6.65587 3.59011 6.63076 3.42254C6.60564 3.25498 6.525 3.10069 6.40175 2.98442C6.2785 2.86815 6.11978 2.79662 5.95104 2.7813C5.78229 2.76598 5.61329 2.80776 5.47112 2.89994L1.97123 6.39983C1.82957 6.54167 1.75 6.73393 1.75 6.9344C1.75 7.13486 1.82957 7.32712 1.97123 7.46896L5.47112 10.9991C5.54096 11.0698 5.62422 11.1259 5.71602 11.164ZM11.0488 10.9689C11.1775 11.1156 11.3585 11.2061 11.5531 11.221C11.7477 11.2061 11.9288 11.1156 12.0574 10.9689C12.1815 10.8302 12.25 10.6506 12.25 10.4645C12.25 10.2785 12.1815 10.0989 12.0574 9.96024L9.03158 6.93439L12.0574 3.90855C12.1248 3.76739 12.1468 3.60881 12.1204 3.45463C12.0939 3.30045 12.0203 3.15826 11.9097 3.04765C11.7991 2.93703 11.6569 2.86343 11.5027 2.83698C11.3486 2.81053 11.19 2.83252 11.0488 2.89994L7.51865 6.36957C7.37699 6.51141 7.29742 6.70367 7.29742 6.90414C7.29742 7.1046 7.37699 7.29686 7.51865 7.4387L11.0488 10.9689Z"
+                                  fill="currentColor"
+                                  fill-rule="evenodd"
+                                />
+                              </svg>
+                            </angledoublelefticon>
+                          </button>
+                          <button
+                            aria-label="Previous Page"
+                            class="p-ripple p-paginator-prev p-disabled"
+                            disabled=""
+                            pc36=""
+                            pripple=""
+                            type="button"
+                          >
+                            <anglelefticon
+                              class="p-component p-iconwrapper"
+                              pc39=""
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="p-icon p-paginator-prev-icon"
+                                fill="none"
+                                height="14"
+                                viewBox="0 0 14 14"
+                                width="14"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M8.75 11.185C8.65146 11.1854 8.55381 11.1662 8.4628 11.1284C8.37179 11.0906 8.28924 11.0351 8.22 10.965L4.72 7.46496C4.57955 7.32433 4.50066 7.13371 4.50066 6.93496C4.50066 6.73621 4.57955 6.54558 4.72 6.40496L8.22 2.93496C8.36095 2.84357 8.52851 2.80215 8.69582 2.81733C8.86312 2.83252 9.02048 2.90344 9.14268 3.01872C9.26487 3.134 9.34483 3.28696 9.36973 3.4531C9.39463 3.61924 9.36303 3.78892 9.28 3.93496L6.28 6.93496L9.28 9.93496C9.42045 10.0756 9.49934 10.2662 9.49934 10.465C9.49934 10.6637 9.42045 10.8543 9.28 10.995C9.13526 11.1257 8.9448 11.1939 8.75 11.185Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </anglelefticon>
+                          </button>
+                          <span
+                            class="p-paginator-pages"
+                          >
+                            <button
+                              aria-current="page"
+                              aria-label="1"
+                              class="p-ripple p-paginator-page p-paginator-page-selected"
+                              pc43=""
+                              pripple=""
+                              type="button"
+                            >
+                               1 
+                            </button>
+                          </span>
+                          <button
+                            aria-label="Next Page"
+                            class="p-ripple p-paginator-next p-disabled"
+                            disabled=""
+                            pc37=""
+                            pripple=""
+                            type="button"
+                          >
+                            <anglerighticon
+                              class="p-component p-iconwrapper"
+                              pc40=""
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="p-icon p-paginator-next-icon"
+                                fill="none"
+                                height="14"
+                                viewBox="0 0 14 14"
+                                width="14"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M5.25 11.1728C5.14929 11.1694 5.05033 11.1455 4.9592 11.1025C4.86806 11.0595 4.78666 10.9984 4.72 10.9228C4.57955 10.7822 4.50066 10.5916 4.50066 10.3928C4.50066 10.1941 4.57955 10.0035 4.72 9.86283L7.72 6.86283L4.72 3.86283C4.66067 3.71882 4.64765 3.55991 4.68275 3.40816C4.71785 3.25642 4.79932 3.11936 4.91585 3.01602C5.03238 2.91268 5.17819 2.84819 5.33305 2.83149C5.4879 2.81479 5.64411 2.84671 5.78 2.92283L9.28 6.42283C9.42045 6.56346 9.49934 6.75408 9.49934 6.95283C9.49934 7.15158 9.42045 7.34221 9.28 7.48283L5.78 10.9228C5.71333 10.9984 5.63193 11.0595 5.5408 11.1025C5.44966 11.1455 5.35071 11.1694 5.25 11.1728Z"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                            </anglerighticon>
+                          </button>
+                          <button
+                            aria-label="Last Page"
+                            class="p-ripple p-paginator-last p-disabled"
+                            disabled=""
+                            pc41=""
+                            pripple=""
+                            type="button"
+                          >
+                            <angledoublerighticon
+                              class="p-component p-iconwrapper"
+                              pc44=""
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="p-icon p-paginator-last-icon"
+                                fill="none"
+                                height="14"
+                                viewBox="0 0 14 14"
+                                width="14"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  clip-rule="evenodd"
+                                  d="M7.68757 11.1451C7.7791 11.1831 7.8773 11.2024 7.9764 11.2019C8.07769 11.1985 8.17721 11.1745 8.26886 11.1312C8.36052 11.088 8.44238 11.0265 8.50943 10.9505L12.0294 7.49085C12.1707 7.34942 12.25 7.15771 12.25 6.95782C12.25 6.75794 12.1707 6.56622 12.0294 6.42479L8.50943 2.90479C8.37014 2.82159 8.20774 2.78551 8.04633 2.80192C7.88491 2.81833 7.73309 2.88635 7.6134 2.99588C7.4937 3.10541 7.41252 3.25061 7.38189 3.40994C7.35126 3.56927 7.37282 3.73423 7.44337 3.88033L10.4605 6.89748L7.44337 9.91463C7.30212 10.0561 7.22278 10.2478 7.22278 10.4477C7.22278 10.6475 7.30212 10.8393 7.44337 10.9807C7.51301 11.0512 7.59603 11.1071 7.68757 11.1451ZM1.94207 10.9505C2.07037 11.0968 2.25089 11.1871 2.44493 11.2019C2.63898 11.1871 2.81949 11.0968 2.94779 10.9505L6.46779 7.49085C6.60905 7.34942 6.68839 7.15771 6.68839 6.95782C6.68839 6.75793 6.60905 6.56622 6.46779 6.42479L2.94779 2.90479C2.80704 2.83757 2.6489 2.81563 2.49517 2.84201C2.34143 2.86839 2.19965 2.94178 2.08936 3.05207C1.97906 3.16237 1.90567 3.30415 1.8793 3.45788C1.85292 3.61162 1.87485 3.76975 1.94207 3.9105L4.95922 6.92765L1.94207 9.9448C1.81838 10.0831 1.75 10.2621 1.75 10.4477C1.75 10.6332 1.81838 10.8122 1.94207 10.9505Z"
+                                  fill="currentColor"
+                                  fill-rule="evenodd"
+                                />
+                              </svg>
+                            </angledoublerighticon>
+                          </button>
+                        </div>
+                      </p-paginator>
+                    </div>
+                  </p-table>
+                </div>
+              </div>
+            </section>
+          </form>
+        </div>
+        <span
+          aria-hidden="true"
+          class="p-hidden-accessible p-hidden-focusable"
+          data-p-hidden-accessible="true"
+          data-p-hidden-focusable="true"
+          data-pc-section="lastfocusableelement"
+          role="presentation"
+          tabindex="0"
+        />
+      </div>
+    </div>
+  </p-dialog>
+</app-author-dialog>
+`;

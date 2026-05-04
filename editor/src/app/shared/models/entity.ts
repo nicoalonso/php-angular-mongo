@@ -18,7 +18,7 @@ export abstract class Entity {
   parse(data: Entity): void {
     this.createdBy = data.createdBy;
     this.createdAt = new Date(data.createdAt);
-    this.updatedBy = data.updatedBy;
+    this.updatedBy = data.updatedBy ?? null;
     this.updatedAt = data.updatedAt ? new Date(data.updatedAt) : null;
   }
 }

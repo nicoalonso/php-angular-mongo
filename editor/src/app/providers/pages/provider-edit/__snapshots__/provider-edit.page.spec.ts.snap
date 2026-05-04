@@ -1,0 +1,676 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ProviderEditPage should create 1`] = `
+<ng-component
+  breadcrumb={[Function Array]}
+  form={[Function FormGroup]}
+  homeBreadcrumb={[Function Object]}
+  provider={[Function Function]}
+  providerService={[Function ProviderServiceStub]}
+  router={[Function _Router]}
+  toastService={[Function Object]}
+  webPattern={[Function RegExp]}
+>
+  <form
+    class="ng-untouched ng-pristine ng-valid"
+    novalidate=""
+  >
+    <div
+      class="flex flex-column surface-section mx-6 hall min-vh-80"
+    >
+      <div
+        class="flex flex-column p-4"
+      >
+        <span
+          class="hall-icon text-indigo-600"
+        >
+          <i
+            class="fas fa-truck"
+          />
+        </span>
+        <span
+          class="watermark text-indigo-600"
+        >
+          <i
+            class="fas fa-truck"
+          />
+        </span>
+        <div
+          class="flex flex-row gap-3 justify-content-between"
+        >
+          <div
+            class="flex flex-column gap-2"
+          >
+            <div
+              class="flex"
+            >
+              <p-breadcrumb
+                class="max-w-full"
+                pc1=""
+              >
+                <nav
+                  class="p-breadcrumb p-component"
+                  data-pc-name="breadcrumb"
+                  data-pc-section="root"
+                >
+                  <ol
+                    class="p-breadcrumb-list"
+                    data-pc-section="menu"
+                  >
+                    <li
+                      class="p-breadcrumb-home-item"
+                      data-pc-section="home"
+                      pc34=""
+                      ptooltip=""
+                    >
+                      <a
+                        class="p-breadcrumb-item-link"
+                        href="/"
+                        tabindex="0"
+                      >
+                        <span
+                          class="p-breadcrumb-item-icon fas fa-home"
+                        />
+                      </a>
+                    </li>
+                    <li
+                      class="p-breadcrumb-separator"
+                      data-pc-section="separator"
+                    >
+                      <chevronrighticon
+                        class="p-component p-iconwrapper"
+                        pc35=""
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="p-icon"
+                          fill="none"
+                          height="14"
+                          viewBox="0 0 14 14"
+                          width="14"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.38708 13C4.28408 13.0005 4.18203 12.9804 4.08691 12.9409C3.99178 12.9014 3.9055 12.8433 3.83313 12.7701C3.68634 12.6231 3.60388 12.4238 3.60388 12.2161C3.60388 12.0084 3.68634 11.8091 3.83313 11.6622L8.50507 6.99022L3.83313 2.31827C3.69467 2.16968 3.61928 1.97313 3.62287 1.77005C3.62645 1.56698 3.70872 1.37322 3.85234 1.22959C3.99596 1.08597 4.18972 1.00371 4.3928 1.00012C4.59588 0.996539 4.79242 1.07192 4.94102 1.21039L10.1669 6.43628C10.3137 6.58325 10.3962 6.78249 10.3962 6.99022C10.3962 7.19795 10.3137 7.39718 10.1669 7.54416L4.94102 12.7701C4.86865 12.8433 4.78237 12.9014 4.68724 12.9409C4.59212 12.9804 4.49007 13.0005 4.38708 13Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </chevronrighticon>
+                    </li>
+                    <li
+                      class="p-breadcrumb-item"
+                      data-pc-section="menuitem"
+                      pc36=""
+                      ptooltip=""
+                    >
+                      <a
+                        class="p-breadcrumb-item-link"
+                        href="/providers"
+                        tabindex="0"
+                      >
+                        <span
+                          class="p-breadcrumb-item-label"
+                        >
+                          Proveedores
+                        </span>
+                      </a>
+                    </li>
+                    <li
+                      class="p-breadcrumb-separator"
+                      data-pc-section="separator"
+                    >
+                      <chevronrighticon
+                        class="p-component p-iconwrapper"
+                        pc37=""
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="p-icon"
+                          fill="none"
+                          height="14"
+                          viewBox="0 0 14 14"
+                          width="14"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.38708 13C4.28408 13.0005 4.18203 12.9804 4.08691 12.9409C3.99178 12.9014 3.9055 12.8433 3.83313 12.7701C3.68634 12.6231 3.60388 12.4238 3.60388 12.2161C3.60388 12.0084 3.68634 11.8091 3.83313 11.6622L8.50507 6.99022L3.83313 2.31827C3.69467 2.16968 3.61928 1.97313 3.62287 1.77005C3.62645 1.56698 3.70872 1.37322 3.85234 1.22959C3.99596 1.08597 4.18972 1.00371 4.3928 1.00012C4.59588 0.996539 4.79242 1.07192 4.94102 1.21039L10.1669 6.43628C10.3137 6.58325 10.3962 6.78249 10.3962 6.99022C10.3962 7.19795 10.3137 7.39718 10.1669 7.54416L4.94102 12.7701C4.86865 12.8433 4.78237 12.9014 4.68724 12.9409C4.59212 12.9804 4.49007 13.0005 4.38708 13Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </chevronrighticon>
+                    </li>
+                    <li
+                      class="text-xl font-bold p-breadcrumb-item"
+                      data-pc-section="menuitem"
+                      pc38=""
+                      ptooltip=""
+                    >
+                      <a
+                        class="p-breadcrumb-item-link"
+                        tabindex="0"
+                        target="undefined"
+                      >
+                        <span
+                          class="p-breadcrumb-item-label"
+                        >
+                          Editar Proveedor
+                        </span>
+                      </a>
+                    </li>
+                  </ol>
+                </nav>
+              </p-breadcrumb>
+            </div>
+          </div>
+          <div
+            class="flex flex-row gap-2 align-items-center"
+          >
+            <p-button
+              icon="fas fa-pen"
+              label="Guardar"
+              pc2=""
+              severity="success"
+              size="small"
+              type="submit"
+            >
+              <button
+                class="p-ripple p-button p-component p-button-success p-button-outlined p-button-sm"
+                data-pc-name="button"
+                data-pc-section="root"
+                pc30=""
+                pc31=""
+                pripple=""
+                type="submit"
+              >
+                <span
+                  class="fas fa-pen p-button-icon p-button-icon-left"
+                  data-pc-section="icon"
+                />
+                <span
+                  aria-hidden="false"
+                  class="p-button-label"
+                  data-pc-section="label"
+                >
+                  Guardar
+                </span>
+              </button>
+            </p-button>
+            <p-button
+              icon="fas fa-xmark"
+              label="Salir"
+              pc3=""
+              severity="secondary"
+              size="small"
+              tabindex="0"
+              type="button"
+            >
+              <button
+                class="p-ripple p-button p-component p-button-secondary p-button-text p-button-sm"
+                data-pc-name="button"
+                data-pc-section="root"
+                pc32=""
+                pc33=""
+                pripple=""
+                type="button"
+              >
+                <span
+                  class="fas fa-xmark p-button-icon p-button-icon-left"
+                  data-pc-section="icon"
+                />
+                <span
+                  aria-hidden="false"
+                  class="p-button-label"
+                  data-pc-section="label"
+                >
+                  Salir
+                </span>
+              </button>
+            </p-button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex-1 p-4"
+      >
+        <p-tabs
+          class="tab-selector p-tabs p-component"
+          data-pc-name="tabs"
+          id="pn_id_1"
+          pc4=""
+          value="detail"
+        >
+          <p-tablist
+            class="p-tablist p-component"
+            data-pc-name="tablist"
+            pc5=""
+          >
+            <div
+              class="p-tablist-content"
+            >
+              <div
+                class="p-tablist-tab-list"
+                role="tablist"
+              >
+                <p-tab
+                  aria-controls="pn_id_1_tabpanel_detail"
+                  aria-selected="true"
+                  class="p-ripple flex align-items-center gap-2 p-tab p-tab-active p-component"
+                  data-p-active="true"
+                  data-p-disabled="false"
+                  data-pc-name="tab"
+                  id="pn_id_1_tab_detail"
+                  pc6=""
+                  pc7=""
+                  role="tab"
+                  tabindex="0"
+                  value="detail"
+                >
+                  <i
+                    class="fas fa-circle-info"
+                  />
+                  <span>
+                    Detalle
+                  </span>
+                </p-tab>
+                <p-tab
+                  aria-controls="pn_id_1_tabpanel_address"
+                  aria-selected="false"
+                  class="p-ripple flex align-items-center gap-2 p-tab p-component"
+                  data-p-active="false"
+                  data-p-disabled="false"
+                  data-pc-name="tab"
+                  id="pn_id_1_tab_address"
+                  pc8=""
+                  pc9=""
+                  role="tab"
+                  tabindex="-1"
+                  value="address"
+                >
+                  <i
+                    class="fas fa-location-dot"
+                  />
+                  <span>
+                    Dirección
+                  </span>
+                </p-tab>
+                <span
+                  class="p-tablist-active-bar"
+                  data-pc-section="inkbar"
+                  role="presentation"
+                />
+              </div>
+            </div>
+            <button
+              aria-label="Next"
+              class="p-ripple p-tablist-nav-button p-tablist-next-button"
+              data-pc-group-section="navigator"
+              pc39=""
+              pripple=""
+              tabindex="0"
+              type="button"
+            >
+              <chevronrighticon
+                class="p-component p-iconwrapper"
+                pc40=""
+              >
+                <svg
+                  aria-hidden="true"
+                  class="p-icon"
+                  fill="none"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  width="14"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.38708 13C4.28408 13.0005 4.18203 12.9804 4.08691 12.9409C3.99178 12.9014 3.9055 12.8433 3.83313 12.7701C3.68634 12.6231 3.60388 12.4238 3.60388 12.2161C3.60388 12.0084 3.68634 11.8091 3.83313 11.6622L8.50507 6.99022L3.83313 2.31827C3.69467 2.16968 3.61928 1.97313 3.62287 1.77005C3.62645 1.56698 3.70872 1.37322 3.85234 1.22959C3.99596 1.08597 4.18972 1.00371 4.3928 1.00012C4.59588 0.996539 4.79242 1.07192 4.94102 1.21039L10.1669 6.43628C10.3137 6.58325 10.3962 6.78249 10.3962 6.99022C10.3962 7.19795 10.3137 7.39718 10.1669 7.54416L4.94102 12.7701C4.86865 12.8433 4.78237 12.9014 4.68724 12.9409C4.59212 12.9804 4.49007 13.0005 4.38708 13Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </chevronrighticon>
+            </button>
+          </p-tablist>
+          <p-tabpanels
+            class="p-tabpanels p-component"
+            data-pc-name="tabpanels"
+            pc10=""
+            role="presentation"
+          >
+            <p-tabpanel
+              aria-labelledby="pn_id_1_tab_detail"
+              class="p-tabpanel p-component"
+              data-p-active="true"
+              data-pc-name="tabpanel"
+              id="pn_id_1_tabpanel_detail"
+              pc11=""
+              role="tabpanel"
+              value="detail"
+            >
+              <h3
+                class="flex flex-row gap-2 text-indigo-400 text-2xl"
+              >
+                <fa-icon
+                  class="ng-fa-icon"
+                  icon="circle-info"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-circle-info"
+                    data-icon="circle-info"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zM224 160a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm-8 64l48 0c13.3 0 24 10.7 24 24l0 88 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l24 0 0-64-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </fa-icon>
+                <span>
+                  Detalle
+                </span>
+              </h3>
+              <div
+                class="col-12 grid align-content-start"
+              >
+                <div
+                  class="col-12 lg:col-6 flex flex-column gap-2 mb-3"
+                >
+                  <label
+                    class="text-indigo-600 pl-3"
+                    for="provider-name"
+                  >
+                    Nombre
+                  </label>
+                  <input
+                    autocomplete="off"
+                    class="p-inputtext p-component ng-untouched ng-pristine ng-valid p-filled"
+                    formcontrolname="name"
+                    id="provider-name"
+                    pc12=""
+                    pinputtext=""
+                  />
+                  <p-message
+                    hidden=""
+                    pc13=""
+                    severity="error"
+                    text="El nombre es obligatorio"
+                  >
+                    <div
+                      aria-live="polite"
+                      class="p-message p-component ng-trigger ng-trigger-messageAnimation p-message-error ng-animating"
+                      role="alert"
+                    >
+                      <div
+                        class="p-message-content"
+                      >
+                        <span
+                          class="p-message-text"
+                          style=""
+                        >
+                          El nombre es obligatorio
+                        </span>
+                        <span
+                          class="p-message-text"
+                          style=""
+                        />
+                      </div>
+                    </div>
+                  </p-message>
+                  <p-message
+                    hidden=""
+                    pc14=""
+                    severity="error"
+                    text="El nombre debe tener al menos 3 caracteres"
+                  >
+                    <div
+                      aria-live="polite"
+                      class="p-message p-component ng-trigger ng-trigger-messageAnimation p-message-error ng-animating"
+                      role="alert"
+                    >
+                      <div
+                        class="p-message-content"
+                      >
+                        <span
+                          class="p-message-text"
+                          style=""
+                        >
+                          El nombre debe tener al menos 3 caracteres
+                        </span>
+                        <span
+                          class="p-message-text"
+                          style=""
+                        />
+                      </div>
+                    </div>
+                  </p-message>
+                </div>
+                <div
+                  class="col-12 lg:col-6 flex flex-column gap-2 mb-3"
+                >
+                  <label
+                    class="text-indigo-600 pl-3"
+                    for="provider-comercial-name"
+                  >
+                    Nombre comercial
+                  </label>
+                  <input
+                    autocomplete="off"
+                    class="p-inputtext p-component ng-untouched ng-pristine ng-valid p-filled"
+                    formcontrolname="comercialName"
+                    id="provider-comercial-name"
+                    pc15=""
+                    pinputtext=""
+                  />
+                </div>
+                <div
+                  class="col-12 lg:col-6 flex flex-column gap-2 mb-3"
+                >
+                  <label
+                    class="text-indigo-600 pl-3"
+                    for="provider-vat-number"
+                  >
+                    CIF
+                  </label>
+                  <input
+                    autocomplete="off"
+                    class="p-inputtext p-component ng-untouched ng-pristine ng-valid p-filled"
+                    formcontrolname="vatNumber"
+                    id="provider-vat-number"
+                    pc16=""
+                    pinputtext=""
+                  />
+                </div>
+              </div>
+              <p-divider
+                aria-orientation="horizontal"
+                class="p-divider p-component p-divider-horizontal p-divider-solid p-divider-left"
+                data-pc-name="divider"
+                pc17=""
+                role="separator"
+                style="justify-content: center;"
+              >
+                <div
+                  class="p-divider-content"
+                />
+              </p-divider>
+              <h3
+                class="flex flex-row gap-2 text-indigo-400 text-2xl"
+              >
+                <fa-icon
+                  class="ng-fa-icon"
+                  icon="square-phone"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-square-phone"
+                    data-icon="square-phone"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm88 96.7c9.8-2.7 20.1 2.4 24 11.8l20.3 48.7c3.4 8.3 1.1 17.8-5.9 23.5l-22.1 18c16.2 35.8 44.5 65 79.6 82.4l19.3-23.6c5.7-6.9 15.2-9.3 23.5-5.9l48.7 20.3c9.4 3.9 14.4 14.2 11.8 24l-.8 2.8c-8.8 32.3-40.1 59.9-78.2 51.8-87.5-18.5-156.3-87.4-174.9-174.9-8.1-38.1 19.5-69.4 51.8-78.2l2.8-.8z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </fa-icon>
+                <span>
+                  Contacto
+                </span>
+              </h3>
+              <div
+                class="col-12 grid align-content-start ng-untouched ng-pristine ng-valid"
+                formgroupname="contact"
+              >
+                <div
+                  class="col-12 lg:col-6 flex flex-column gap-2 mb-3"
+                >
+                  <label
+                    class="text-indigo-600 pl-3"
+                    for="provider-phone1"
+                  >
+                    Teléfono 1
+                  </label>
+                  <input
+                    autocomplete="off"
+                    class="p-inputtext p-component ng-untouched ng-pristine ng-valid p-filled"
+                    formcontrolname="phone1"
+                    id="provider-phone1"
+                    pc18=""
+                    pinputtext=""
+                  />
+                </div>
+                <div
+                  class="col-12 lg:col-6 flex flex-column gap-2 mb-3"
+                >
+                  <label
+                    class="text-indigo-600 pl-3"
+                    for="provider-phone2"
+                  >
+                    Teléfono 2
+                  </label>
+                  <input
+                    autocomplete="off"
+                    class="p-inputtext p-component ng-untouched ng-pristine ng-valid p-filled"
+                    formcontrolname="phone2"
+                    id="provider-phone2"
+                    pc19=""
+                    pinputtext=""
+                  />
+                </div>
+                <div
+                  class="col-12 lg:col-6 flex flex-column gap-2 mb-3"
+                >
+                  <label
+                    class="text-indigo-600 pl-3"
+                    for="provider-email"
+                  >
+                    Email
+                  </label>
+                  <input
+                    autocomplete="off"
+                    class="p-inputtext p-component ng-untouched ng-pristine ng-valid p-filled"
+                    formcontrolname="email"
+                    id="provider-email"
+                    pc20=""
+                    pinputtext=""
+                  />
+                  <p-message
+                    hidden=""
+                    pc21=""
+                    severity="error"
+                    text="El email no es válido"
+                  >
+                    <div
+                      aria-live="polite"
+                      class="p-message p-component ng-trigger ng-trigger-messageAnimation p-message-error ng-animating"
+                      role="alert"
+                    >
+                      <div
+                        class="p-message-content"
+                      >
+                        <span
+                          class="p-message-text"
+                          style=""
+                        >
+                          El email no es válido
+                        </span>
+                        <span
+                          class="p-message-text"
+                          style=""
+                        />
+                      </div>
+                    </div>
+                  </p-message>
+                </div>
+                <div
+                  class="col-12 lg:col-6 flex flex-column gap-2 mb-3"
+                >
+                  <label
+                    class="text-indigo-600 pl-3"
+                    for="provider-web"
+                  >
+                    Página web
+                  </label>
+                  <input
+                    autocomplete="off"
+                    class="p-inputtext p-component ng-untouched ng-pristine ng-valid p-filled"
+                    formcontrolname="website"
+                    id="provider-web"
+                    pc22=""
+                    pinputtext=""
+                  />
+                  <p-message
+                    hidden=""
+                    pc23=""
+                    severity="error"
+                    text="El email no es válido"
+                  >
+                    <div
+                      aria-live="polite"
+                      class="p-message p-component ng-trigger ng-trigger-messageAnimation p-message-error ng-animating"
+                      role="alert"
+                    >
+                      <div
+                        class="p-message-content"
+                      >
+                        <span
+                          class="p-message-text"
+                          style=""
+                        >
+                          El email no es válido
+                        </span>
+                        <span
+                          class="p-message-text"
+                          style=""
+                        />
+                      </div>
+                    </div>
+                  </p-message>
+                </div>
+              </div>
+            </p-tabpanel>
+            <p-tabpanel
+              aria-labelledby="pn_id_1_tab_address"
+              class="p-tabpanel p-component"
+              data-p-active="false"
+              data-pc-name="tabpanel"
+              id="pn_id_1_tabpanel_address"
+              pc24=""
+              role="tabpanel"
+              value="address"
+            >
+            </p-tabpanel>
+          </p-tabpanels>
+        </p-tabs>
+      </div>
+    </div>
+  </form>
+</ng-component>
+`;

@@ -10,6 +10,7 @@ ARG HOST_USER
 ARG HOST_USER_ID
 ARG HOST_GROUP
 ARG HOST_GROUP_ID
+ARG TIMEZONE
 
 COPY ./develop/docker-entrypoint.sh /usr/local/bin/docker-app-entrypoint
 RUN chmod +x /usr/local/bin/docker-app-entrypoint
@@ -19,6 +20,10 @@ ENTRYPOINT ["docker-app-entrypoint"]
 RUN deluser node \
     && addgroup -g ${HOST_GROUP_ID} -S ${HOST_GROUP} \
     && adduser -u ${HOST_USER_ID} -G ${HOST_GROUP} -s /bin/sh -D -g "" ${HOST_USER}
+
+# https://wiki.alpinelinux.org/wiki/Setting_the_timezone
+RUN apk --no-cache add tzdata \
+    && ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
 
 RUN npm install -g pnpm \
     && npm add -g @angular/cli@19

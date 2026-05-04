@@ -71,7 +71,7 @@ export default class BorrowListPage extends AbstractListPage {
             'El proceso de cálculo de penalizaciones se ha lanzado correctamente.',
         });
       },
-      error: (e) => {
+      error: (e) => /* istanbul ignore next */ {
         const errorMessage = e.error?.message || e.message;
         console.error(errorMessage);
 

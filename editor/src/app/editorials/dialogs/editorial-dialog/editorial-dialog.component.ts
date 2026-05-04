@@ -62,7 +62,7 @@ export class EditorialDialogComponent {
 
     effect(() => {
       if (this.visible()) {
-        setTimeout(() => {
+        setTimeout(() => /* istanbul ignore next */ {
           this.nameInput()?.nativeElement.focus();
           this.nameInput()?.nativeElement.select();
         }, 500);

@@ -65,7 +65,7 @@ export class CustomerDialogComponent {
 
     effect(() => {
       if (this.visible()) {
-        setTimeout(() => {
+        setTimeout(() => /* istanbul ignore next */ {
           this.nameInput()?.nativeElement.select();
           this.nameInput()?.nativeElement.focus();
         }, 450);

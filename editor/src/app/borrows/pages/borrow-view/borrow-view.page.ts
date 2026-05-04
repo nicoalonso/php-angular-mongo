@@ -60,6 +60,7 @@ export default class BorrowViewPage extends AbstractViewPage {
   ];
 
   override getPathBack(): string[] {
+    // istanbul ignore next
     return ['/borrows'];
   }
 }

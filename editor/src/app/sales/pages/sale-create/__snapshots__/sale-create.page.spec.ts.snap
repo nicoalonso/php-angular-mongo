@@ -1,0 +1,774 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`SaleCreatePage should create 1`] = `
+<ng-component
+  activeStep={[Function Function]}
+  bookSelectorVisible={[Function Function]}
+  bookService={[Function BookServiceStub]}
+  breadcrumb={[Function Array]}
+  customerSelectorVisible={[Function Function]}
+  detailBadges={[Function Function]}
+  form={[Function FormGroup]}
+  homeBreadcrumb={[Function Object]}
+  lineIndex="null"
+  linesChangesSub={[Function Array]}
+  maxDate={[Function Date]}
+  router={[Function _Router]}
+  saleService={[Function SaleServiceStub]}
+  sequenceNumber={[Function Function]}
+  steps={[Function StepPageControl]}
+  toastService={[Function Object]}
+>
+  <app-customer-dialog>
+    <p-dialog
+      header="Buscar y seleccionar Cliente"
+      pc19=""
+    >
+    </p-dialog>
+  </app-customer-dialog><app-book-dialog>
+    <p-dialog
+      header="Buscar y seleccionar Libro"
+      pc56=""
+    >
+    </p-dialog>
+  </app-book-dialog><form
+    class="ng-untouched ng-pristine ng-invalid"
+    novalidate=""
+  >
+    <div
+      class="flex flex-column surface-section mx-6 hall min-vh-80"
+    >
+      <div
+        class="col-12 p-4 flex flex-column"
+      >
+        <span
+          class="hall-icon text-purple-600"
+        >
+          <i
+            class="fas fa-cash-register"
+          />
+        </span>
+        <span
+          class="watermark text-purple-600"
+        >
+          <i
+            class="fas fa-cash-register"
+          />
+        </span>
+        <div
+          class="flex flex-row gap-3 justify-content-between"
+        >
+          <div
+            class="flex flex-column gap-2"
+          >
+            <div
+              class="flex"
+            >
+              <p-breadcrumb
+                class="max-w-full"
+                pc1=""
+              >
+                <nav
+                  class="p-breadcrumb p-component"
+                  data-pc-name="breadcrumb"
+                  data-pc-section="root"
+                >
+                  <ol
+                    class="p-breadcrumb-list"
+                    data-pc-section="menu"
+                  >
+                    <li
+                      class="p-breadcrumb-home-item"
+                      data-pc-section="home"
+                      pc125=""
+                      ptooltip=""
+                    >
+                      <a
+                        class="p-breadcrumb-item-link"
+                        href="/"
+                        tabindex="0"
+                      >
+                        <span
+                          class="p-breadcrumb-item-icon fas fa-home"
+                        />
+                      </a>
+                    </li>
+                    <li
+                      class="p-breadcrumb-separator"
+                      data-pc-section="separator"
+                    >
+                      <chevronrighticon
+                        class="p-component p-iconwrapper"
+                        pc126=""
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="p-icon"
+                          fill="none"
+                          height="14"
+                          viewBox="0 0 14 14"
+                          width="14"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.38708 13C4.28408 13.0005 4.18203 12.9804 4.08691 12.9409C3.99178 12.9014 3.9055 12.8433 3.83313 12.7701C3.68634 12.6231 3.60388 12.4238 3.60388 12.2161C3.60388 12.0084 3.68634 11.8091 3.83313 11.6622L8.50507 6.99022L3.83313 2.31827C3.69467 2.16968 3.61928 1.97313 3.62287 1.77005C3.62645 1.56698 3.70872 1.37322 3.85234 1.22959C3.99596 1.08597 4.18972 1.00371 4.3928 1.00012C4.59588 0.996539 4.79242 1.07192 4.94102 1.21039L10.1669 6.43628C10.3137 6.58325 10.3962 6.78249 10.3962 6.99022C10.3962 7.19795 10.3137 7.39718 10.1669 7.54416L4.94102 12.7701C4.86865 12.8433 4.78237 12.9014 4.68724 12.9409C4.59212 12.9804 4.49007 13.0005 4.38708 13Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </chevronrighticon>
+                    </li>
+                    <li
+                      class="p-breadcrumb-item"
+                      data-pc-section="menuitem"
+                      pc127=""
+                      ptooltip=""
+                    >
+                      <a
+                        class="p-breadcrumb-item-link"
+                        href="/sales"
+                        tabindex="0"
+                      >
+                        <span
+                          class="p-breadcrumb-item-label"
+                        >
+                          Ventas
+                        </span>
+                      </a>
+                    </li>
+                    <li
+                      class="p-breadcrumb-separator"
+                      data-pc-section="separator"
+                    >
+                      <chevronrighticon
+                        class="p-component p-iconwrapper"
+                        pc128=""
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="p-icon"
+                          fill="none"
+                          height="14"
+                          viewBox="0 0 14 14"
+                          width="14"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.38708 13C4.28408 13.0005 4.18203 12.9804 4.08691 12.9409C3.99178 12.9014 3.9055 12.8433 3.83313 12.7701C3.68634 12.6231 3.60388 12.4238 3.60388 12.2161C3.60388 12.0084 3.68634 11.8091 3.83313 11.6622L8.50507 6.99022L3.83313 2.31827C3.69467 2.16968 3.61928 1.97313 3.62287 1.77005C3.62645 1.56698 3.70872 1.37322 3.85234 1.22959C3.99596 1.08597 4.18972 1.00371 4.3928 1.00012C4.59588 0.996539 4.79242 1.07192 4.94102 1.21039L10.1669 6.43628C10.3137 6.58325 10.3962 6.78249 10.3962 6.99022C10.3962 7.19795 10.3137 7.39718 10.1669 7.54416L4.94102 12.7701C4.86865 12.8433 4.78237 12.9014 4.68724 12.9409C4.59212 12.9804 4.49007 13.0005 4.38708 13Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </chevronrighticon>
+                    </li>
+                    <li
+                      class="text-xl font-bold p-breadcrumb-item"
+                      data-pc-section="menuitem"
+                      pc129=""
+                      ptooltip=""
+                    >
+                      <a
+                        class="p-breadcrumb-item-link"
+                        tabindex="0"
+                        target="undefined"
+                      >
+                        <span
+                          class="p-breadcrumb-item-label"
+                        >
+                          Crear Venta
+                        </span>
+                      </a>
+                    </li>
+                  </ol>
+                </nav>
+              </p-breadcrumb>
+            </div>
+          </div>
+          <div
+            class="flex flex-row gap-2 align-items-center"
+          >
+            <p-button
+              icon="fas fa-xmark"
+              label="Salir"
+              pc2=""
+              severity="secondary"
+              size="small"
+              tabindex="0"
+            >
+              <button
+                class="p-ripple p-button p-component p-button-secondary p-button-text p-button-sm"
+                data-pc-name="button"
+                data-pc-section="root"
+                pc93=""
+                pc94=""
+                pripple=""
+                type="button"
+              >
+                <span
+                  class="fas fa-xmark p-button-icon p-button-icon-left"
+                  data-pc-section="icon"
+                />
+                <span
+                  aria-hidden="false"
+                  class="p-button-label"
+                  data-pc-section="label"
+                >
+                  Salir
+                </span>
+              </button>
+            </p-button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-12 flex flex-column gap-4 px-6 py-4"
+      >
+        <div
+          class="flex-1 p-4 flex flex-column gap-4"
+        >
+          <div
+            class="grid align-content-start"
+          >
+            <div
+              class="col-12 lg:col-6 flex flex-column gap-2 mb-3 ng-untouched ng-pristine ng-invalid"
+              formgroupname="customer"
+            >
+              <label
+                class="text-purple-400 pl-3"
+                for="sale-customer"
+              >
+                Cliente
+              </label>
+              <input
+                class="ng-untouched ng-pristine ng-invalid"
+                formcontrolname="id"
+                type="hidden"
+                value=""
+              />
+              <p-inputgroup
+                class="p-inputgroup"
+                data-pc-name="inputgroup"
+                pc3=""
+              >
+                <input
+                  class="p-inputtext p-component ng-untouched ng-pristine ng-invalid"
+                  formcontrolname="fullName"
+                  id="sale-customer"
+                  pc4=""
+                  pinputtext=""
+                  readonly=""
+                />
+                <p-inputgroup-addon
+                  class="p-inputgroupaddon"
+                  data-pc-name="inputgroupaddon"
+                  pc5=""
+                >
+                  <p-button
+                    icon="fas fa-binoculars"
+                    pc6=""
+                    pc7=""
+                    ptooltip="Seleccionar cliente [ / ]"
+                    severity="primary"
+                    tooltipposition="top"
+                    variant="text"
+                  >
+                    <button
+                      class="p-ripple p-button p-component p-button-icon-only p-button-primary p-button-text"
+                      data-pc-name="button"
+                      data-pc-section="root"
+                      pc95=""
+                      pc96=""
+                      pripple=""
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <span
+                        class="fas fa-binoculars p-button-icon"
+                        data-pc-section="icon"
+                      />
+                    </button>
+                  </p-button>
+                </p-inputgroup-addon>
+              </p-inputgroup>
+              <p-message
+                hidden=""
+                pc8=""
+                severity="error"
+                text="El cliente es obligatorio"
+              >
+                <div
+                  aria-live="polite"
+                  class="p-message p-component ng-trigger ng-trigger-messageAnimation p-message-error ng-animating"
+                  role="alert"
+                >
+                  <div
+                    class="p-message-content"
+                  >
+                    <span
+                      class="p-message-text"
+                      style=""
+                    >
+                      El cliente es obligatorio
+                    </span>
+                    <span
+                      class="p-message-text"
+                      style=""
+                    />
+                  </div>
+                </div>
+              </p-message>
+            </div>
+            <div
+              class="col-12 lg:col-3 flex flex-column gap-2 mb-3 align-items-center ng-untouched ng-pristine ng-valid"
+              formgroupname="invoice"
+            >
+              <div
+                class="flex flex-column gap-2"
+              >
+                <label
+                  class="text-purple-400 pl-3"
+                  for="sale-date"
+                >
+                  Fecha
+                </label>
+                <p-date-picker
+                  class="ng-untouched ng-pristine ng-valid"
+                  formcontrolname="date"
+                  icondisplay="input"
+                  inputid="sale-date"
+                  pc9=""
+                  showicon=""
+                >
+                  <span
+                    class="p-datepicker p-component p-inputwrapper p-inputwrapper-filled"
+                  >
+                    <input
+                      aria-autocomplete="none"
+                      aria-expanded="false"
+                      aria-haspopup="dialog"
+                      autocomplete="off"
+                      class="p-inputtext p-component p-datepicker-input p-filled"
+                      id="sale-date"
+                      pc130=""
+                      pc131=""
+                      pinputtext=""
+                      placeholder=""
+                      role="combobox"
+                      type="text"
+                    />
+                    <span
+                      class="p-datepicker-input-icon-container"
+                    >
+                      <calendaricon
+                        class="p-component p-iconwrapper p-datepicker-input-icon"
+                        pc132=""
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="p-icon"
+                          fill="none"
+                          height="14"
+                          viewBox="0 0 14 14"
+                          width="14"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M10.7838 1.51351H9.83783V0.567568C9.83783 0.417039 9.77804 0.272676 9.6716 0.166237C9.56516 0.0597971 9.42079 0 9.27027 0C9.11974 0 8.97538 0.0597971 8.86894 0.166237C8.7625 0.272676 8.7027 0.417039 8.7027 0.567568V1.51351H5.29729V0.567568C5.29729 0.417039 5.2375 0.272676 5.13106 0.166237C5.02462 0.0597971 4.88025 0 4.72973 0C4.5792 0 4.43484 0.0597971 4.3284 0.166237C4.22196 0.272676 4.16216 0.417039 4.16216 0.567568V1.51351H3.21621C2.66428 1.51351 2.13494 1.73277 1.74467 2.12305C1.35439 2.51333 1.13513 3.04266 1.13513 3.59459V11.9189C1.13513 12.4709 1.35439 13.0002 1.74467 13.3905C2.13494 13.7807 2.66428 14 3.21621 14H10.7838C11.3357 14 11.865 13.7807 12.2553 13.3905C12.6456 13.0002 12.8649 12.4709 12.8649 11.9189V3.59459C12.8649 3.04266 12.6456 2.51333 12.2553 2.12305C11.865 1.73277 11.3357 1.51351 10.7838 1.51351ZM3.21621 2.64865H4.16216V3.59459C4.16216 3.74512 4.22196 3.88949 4.3284 3.99593C4.43484 4.10237 4.5792 4.16216 4.72973 4.16216C4.88025 4.16216 5.02462 4.10237 5.13106 3.99593C5.2375 3.88949 5.29729 3.74512 5.29729 3.59459V2.64865H8.7027V3.59459C8.7027 3.74512 8.7625 3.88949 8.86894 3.99593C8.97538 4.10237 9.11974 4.16216 9.27027 4.16216C9.42079 4.16216 9.56516 4.10237 9.6716 3.99593C9.77804 3.88949 9.83783 3.74512 9.83783 3.59459V2.64865H10.7838C11.0347 2.64865 11.2753 2.74831 11.4527 2.92571C11.6301 3.10311 11.7297 3.34371 11.7297 3.59459V5.67568H2.27027V3.59459C2.27027 3.34371 2.36993 3.10311 2.54733 2.92571C2.72473 2.74831 2.96533 2.64865 3.21621 2.64865ZM10.7838 12.8649H3.21621C2.96533 12.8649 2.72473 12.7652 2.54733 12.5878C2.36993 12.4104 2.27027 12.1698 2.27027 11.9189V6.81081H11.7297V11.9189C11.7297 12.1698 11.6301 12.4104 11.4527 12.5878C11.2753 12.7652 11.0347 12.8649 10.7838 12.8649Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </calendaricon>
+                    </span>
+                  </span>
+                </p-date-picker>
+                <p-message
+                  hidden=""
+                  pc10=""
+                  severity="error"
+                  text="La fecha es obligatoria"
+                >
+                  <div
+                    aria-live="polite"
+                    class="p-message p-component ng-trigger ng-trigger-messageAnimation p-message-error ng-animating"
+                    role="alert"
+                  >
+                    <div
+                      class="p-message-content"
+                    >
+                      <span
+                        class="p-message-text"
+                        style=""
+                      >
+                        La fecha es obligatoria
+                      </span>
+                      <span
+                        class="p-message-text"
+                        style=""
+                      />
+                    </div>
+                  </div>
+                </p-message>
+              </div>
+            </div>
+            <div
+              class="col-12 lg:col-3 flex flex-column gap-2 mb-3"
+            >
+              <label
+                class="text-purple-400 pl-3"
+                for="sale-number"
+              >
+                Número de factura
+              </label>
+              <input
+                autocomplete="off"
+                class="p-inputtext p-component p-filled"
+                id="sale-number"
+                pc11=""
+                pinputtext=""
+                readonly=""
+              />
+              <small
+                id="sale-number-help"
+              >
+                El número más probable que se asignará automáticamente a esta factura una vez creada.
+              </small>
+            </div>
+          </div>
+          <div
+            class="grid align-content-start gap-2"
+          >
+            <div
+              class="w-full min-vh-40 ng-untouched ng-pristine ng-invalid"
+              formarrayname="lines"
+            >
+              <p-table
+                pc12=""
+                stripedrows=""
+              >
+                <div
+                  class="p-datatable p-component p-datatable-striped"
+                  id="pn_id_1"
+                >
+                  <div
+                    class="p-datatable-table-container"
+                    style="overflow: auto;"
+                  >
+                    <table
+                      class="p-datatable-table"
+                      id="pn_id_1-table"
+                    >
+                      <thead
+                        class="p-datatable-thead"
+                        style="position: sticky;"
+                      >
+                        <tr>
+                          <th
+                            class="border-bottom-3 border-purple-600 text-center w-2"
+                          >
+                            Cantidad
+                          </th>
+                          <th
+                            class="border-bottom-3 border-purple-600 w-4"
+                          >
+                            Libro
+                          </th>
+                          <th
+                            class="border-bottom-3 border-purple-600 text-center w-2"
+                          >
+                            Precio
+                          </th>
+                          <th
+                            class="border-bottom-3 border-purple-600 text-center w-1"
+                          >
+                            Descuento
+                          </th>
+                          <th
+                            class="border-bottom-3 border-purple-600 text-center w-2"
+                          >
+                            Total
+                          </th>
+                          <th
+                            class="border-bottom-3 border-purple-600 w-auto"
+                          />
+                        </tr>
+                      </thead>
+                      <tbody
+                        class="p-datatable-tbody"
+                      >
+                        <tr>
+                          <td
+                            class="text-center text-xl h-30vh"
+                            colspan="6"
+                          >
+                            No hay ventas
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tfoot
+                        class="p-datatable-tfoot"
+                        style="position: sticky;"
+                      >
+                        <tr>
+                          <td
+                            colspan="6"
+                          >
+                            <div
+                              class="flex flex-row gap-2 justify-content-end"
+                            >
+                              <p-button
+                                icon="fas fa-plus"
+                                label="Añadir línea"
+                                pc133=""
+                                severity="success"
+                                size="small"
+                                type="button"
+                              >
+                                <button
+                                  class="p-ripple p-button p-component p-button-success p-button-text p-button-sm"
+                                  data-pc-name="button"
+                                  data-pc-section="root"
+                                  pc134=""
+                                  pc135=""
+                                  pripple=""
+                                  type="button"
+                                >
+                                  <span
+                                    class="fas fa-plus p-button-icon p-button-icon-left"
+                                    data-pc-section="icon"
+                                  />
+                                  <span
+                                    aria-hidden="false"
+                                    class="p-button-label"
+                                    data-pc-section="label"
+                                  >
+                                    Añadir línea
+                                  </span>
+                                </button>
+                              </p-button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </p-table>
+            </div>
+            <p-message
+              hidden=""
+              pc13=""
+              severity="error"
+              text="No puede haber una venta sin líneas"
+            >
+              <div
+                aria-live="polite"
+                class="p-message p-component ng-trigger ng-trigger-messageAnimation p-message-error ng-animating"
+                role="alert"
+              >
+                <div
+                  class="p-message-content"
+                >
+                  <span
+                    class="p-message-text"
+                    style=""
+                  >
+                    No puede haber una venta sin líneas
+                  </span>
+                  <span
+                    class="p-message-text"
+                    style=""
+                  />
+                </div>
+              </div>
+            </p-message>
+          </div>
+          <div
+            class="grid justify-content-end pt-2 ng-untouched ng-pristine ng-valid"
+            formgroupname="invoice"
+          >
+            <div
+              class="col-12 lg:col-3 flex flex-column align-items-end gap-2 mb-3"
+            >
+              <label
+                class="text-purple-400 pr-3"
+                for="sale-amount"
+              >
+                Subtotal
+              </label>
+              <div>
+                <p-input-number
+                  class="w-6 p-component p-inputnumber p-inputwrapper p-inputwrapper-filled ng-untouched ng-pristine ng-valid"
+                  data-pc-name="inputnumber"
+                  data-pc-section="root"
+                  formcontrolname="amount"
+                  inputid="sale-amount"
+                  inputstyleclass="text-right"
+                  mode="decimal"
+                  pc14=""
+                >
+                  <input
+                    aria-valuenow="0"
+                    class="p-inputtext p-component text-right p-inputnumber-input p-filled"
+                    data-pc-section="input"
+                    id="sale-amount"
+                    inputmode="decimal"
+                    pc97=""
+                    pc98=""
+                    pinputtext=""
+                    role="spinbutton"
+                  />
+                </p-input-number>
+              </div>
+            </div>
+            <div
+              class="col-12 lg:col-3 flex flex-column align-items-end gap-2 mb-3"
+            >
+              <label
+                class="text-purple-400 pr-3"
+                for="sale-tax-percentage"
+              >
+                IVA
+              </label>
+              <div>
+                <p-input-number
+                  class="w-6 p-component p-inputnumber p-inputwrapper p-inputwrapper-filled ng-untouched ng-pristine ng-valid"
+                  data-pc-name="inputnumber"
+                  data-pc-section="root"
+                  formcontrolname="taxPercentage"
+                  inputid="sale-tax-percentage"
+                  inputstyleclass="text-right"
+                  mode="decimal"
+                  pc15=""
+                >
+                  <input
+                    aria-valuenow="21"
+                    class="p-inputtext p-component text-right p-inputnumber-input p-filled"
+                    data-pc-section="input"
+                    id="sale-tax-percentage"
+                    inputmode="decimal"
+                    pc100=""
+                    pc99=""
+                    pinputtext=""
+                    role="spinbutton"
+                  />
+                </p-input-number>
+              </div>
+            </div>
+            <div
+              class="col-12 lg:col-3 flex flex-column align-items-end gap-2 mb-3"
+            >
+              <label
+                class="text-purple-400 pr-3"
+                for="sale-taxes"
+              >
+                Impuestos
+              </label>
+              <div>
+                <p-input-number
+                  class="w-6 p-component p-inputnumber p-inputwrapper p-inputwrapper-filled ng-untouched ng-pristine ng-valid"
+                  data-pc-name="inputnumber"
+                  data-pc-section="root"
+                  formcontrolname="taxes"
+                  inputid="sale-taxes"
+                  inputstyleclass="text-right"
+                  mode="decimal"
+                  pc16=""
+                >
+                  <input
+                    aria-valuenow="0"
+                    class="p-inputtext p-component text-right p-inputnumber-input p-filled"
+                    data-pc-section="input"
+                    id="sale-taxes"
+                    inputmode="decimal"
+                    pc101=""
+                    pc102=""
+                    pinputtext=""
+                    role="spinbutton"
+                  />
+                </p-input-number>
+              </div>
+            </div>
+            <div
+              class="col-12 lg:col-3 flex flex-column align-items-end gap-2 mb-3"
+            >
+              <label
+                class="text-purple-400 pr-3"
+                for="sale-total"
+              >
+                Total
+              </label>
+              <div>
+                <p-input-number
+                  class="w-6 p-component p-inputnumber p-inputwrapper p-inputwrapper-filled ng-untouched ng-pristine ng-valid"
+                  data-pc-name="inputnumber"
+                  data-pc-section="root"
+                  formcontrolname="total"
+                  inputid="sale-total"
+                  inputstyleclass="text-right"
+                  mode="decimal"
+                  pc17=""
+                  suffix=" €"
+                >
+                  <input
+                    aria-valuenow="0"
+                    class="p-inputtext p-component text-right p-inputnumber-input p-filled"
+                    data-pc-section="input"
+                    id="sale-total"
+                    inputmode="decimal"
+                    pc103=""
+                    pc104=""
+                    pinputtext=""
+                    role="spinbutton"
+                  />
+                </p-input-number>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-row gap-4 justify-content-end"
+        >
+          <p-button
+            pc18=""
+            size="small"
+            type="submit"
+          >
+            <button
+              class="p-ripple p-button p-component p-button-sm"
+              data-pc-name="button"
+              data-pc-section="root"
+              pc105=""
+              pc106=""
+              pripple=""
+              type="submit"
+            >
+              <fa-icon
+                class="ng-fa-icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-floppy-disk"
+                  data-icon="floppy-disk"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-242.7c0-17-6.7-33.3-18.7-45.3L352 50.7C340 38.7 323.7 32 306.7 32L64 32zm32 96c0-17.7 14.3-32 32-32l160 0c17.7 0 32 14.3 32 32l0 64c0 17.7-14.3 32-32 32l-160 0c-17.7 0-32-14.3-32-32l0-64zM224 288a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </fa-icon>
+              <span
+                class="ml-2 font-bold"
+              >
+                Crear Venta
+              </span>
+            </button>
+          </p-button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-component>
+`;

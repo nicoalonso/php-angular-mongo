@@ -1,6 +1,6 @@
 import { Entity } from '@/shared/models/entity';
 import { ProviderDescriptor } from '@/providers/model/provider-descriptor';
-import { PurchaseInventory } from '@/purchase/model/purchase-inventory';
+import { PurchaseInvoice } from './purchase-invoice';
 import { PurchaseLine } from '@/purchase/model/purchase-line';
 
 export class Purchase extends Entity {
@@ -10,7 +10,7 @@ export class Purchase extends Entity {
     id: string,
     public provider: ProviderDescriptor,
     public purchasedAt: Date,
-    public invoice: PurchaseInventory,
+    public invoice: PurchaseInvoice,
   ) {
     super(id);
     this.lines = [];
@@ -21,7 +21,7 @@ export class Purchase extends Entity {
       item.id,
       ProviderDescriptor.from(item.provider),
       new Date(item.purchasedAt),
-      PurchaseInventory.from(item.invoice),
+      PurchaseInvoice.from(item.invoice),
     );
 
     if (item.lines) {

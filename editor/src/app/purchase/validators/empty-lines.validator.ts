@@ -9,6 +9,7 @@ export const emptyLinesValidator: ValidatorFn = (
   control: AbstractControl,
 ): ValidationErrors | null => {
   if (!(control instanceof FormArray)) {
+    // istanbul ignore next
     return null;
   }
 

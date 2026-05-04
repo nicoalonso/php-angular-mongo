@@ -1,0 +1,17 @@
+{
+  "name": "Anaya",
+  "comercialName": "Anaya Inc.",
+  "contact": {
+    "email": "info@amazon.com",
+    "website": "https://www.amazon.com",
+    "phone1": "+1-800-123-4567",
+    "phone2": "+1-800-987-6543"
+  },
+  "address": {
+    "street": "123 Main Street",
+    "postalCode": "12345",
+    "city": "Anytown",
+    "province": "Alaska",
+    "country": "EEUU"
+  }
+}

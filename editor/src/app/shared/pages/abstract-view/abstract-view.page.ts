@@ -23,6 +23,7 @@ export abstract class AbstractViewPage
   }
 
   getPathBack(): string[] {
+    // istanbul ignore next
     return ['/'];
   }
 }

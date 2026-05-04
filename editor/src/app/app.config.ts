@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   provideHttpClient,
   withFetch,
+  withInterceptors,
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
@@ -30,6 +31,7 @@ import { MessageService } from 'primeng/api';
 import { LaraBlue } from '@/shared/presets/primeng';
 // Routes
 import { routes } from './app.routes';
+import { authInterceptor } from '@/shared/interceptors/auth.interceptor';
 
 registerLocaleData(localeEs, 'es-ES');
 
@@ -54,7 +56,11 @@ export const appConfig: ApplicationConfig = {
       }),
     ),
     importProvidersFrom([BrowserModule, BrowserAnimationsModule]),
-    provideHttpClient(withInterceptorsFromDi(), withFetch()),
+    provideHttpClient(
+      withInterceptors([authInterceptor]),
+      withInterceptorsFromDi(),
+      withFetch(),
+    ),
     provideTranslateService({
       loader: provideTranslateHttpLoader({
         prefix: 'i18n/',

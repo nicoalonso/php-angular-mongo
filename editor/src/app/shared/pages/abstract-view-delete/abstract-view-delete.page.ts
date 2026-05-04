@@ -46,7 +46,7 @@ export abstract class AbstractViewDeletePage<
         });
         this.goBack();
       },
-      error: (e) => {
+      error: (e) => /* istanbul ignore next */ {
         const errorMessage = e.error?.message || e.message;
         console.error(errorMessage);
 

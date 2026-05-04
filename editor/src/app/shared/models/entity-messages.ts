@@ -25,7 +25,7 @@ export class EntityMessages {
     const lexicon = new NounLexicon(genre);
     const notFound = `No se ha encontrado ${lexicon.article} ${name}`;
 
-    const title = `${lexicon.editNoun} ${name}`;
+    const title = lexicon.capitalize(`${lexicon.editNoun} ${name}`);
     const summary = `${name} ${lexicon.updateAdverb}`;
     const detail = lexicon.capitalize(
       `${lexicon.article} ${name} ha sido ${lexicon.updateAdverb} correctamente`,

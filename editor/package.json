@@ -8,7 +8,7 @@
     "build": "pnpm run envs && ng build",
     "watch": "ng build --watch --configuration development",
     "lint": "eslint",
-    "test": "ng test"
+    "test": "jest"
   },
   "private": true,
   "dependencies": {
@@ -42,17 +42,26 @@
     "@angular/cli": "19.2.21",
     "@angular/compiler-cli": "19.2.18",
     "@eslint/js": "^10.0.1",
+    "@testing-library/dom": "^10.4.1",
+    "@types/jest": "^30.0.0",
     "@typescript-eslint/eslint-plugin": "^8.56.1",
     "@typescript-eslint/parser": "^8.56.1",
     "eslint": "^10.0.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jest": "^29.15.2",
     "eslint-plugin-jsdoc": "^62.7.1",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^5.5.5",
     "globals": "^17.3.0",
+    "jest": "^30.3.0",
+    "jest-css-modules": "^2.1.0",
+    "jest-environment-jsdom": "^30.3.0",
+    "jest-preset-angular": "^16.1.4",
+    "jsdom": "^29.1.0",
     "less": "4.5.1",
     "prettier": "^3.8.1",
+    "ts-node": "^10.9.2",
     "typescript": "5.7.3"
   }
 }

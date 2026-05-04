@@ -10,7 +10,19 @@ Este es el frontend de la aplicación de biblioteca.
 
 ## Testing
 
-In progress...
+Para la parte de testing se está usando Jest como framework de pruebas unitarias.
+
+Para ejecutar los tests unitarios, puedes usar el siguiente comando:
+
+```bash
+docker compose exec editor pnpm test
+```
+
+O si tienes instalada la utilidad `pnpm` en tu máquina, puedes ejecutar los tests directamente con:
+
+```bash
+pnpm test
+```
 
 ## Gestor de paquetes
 

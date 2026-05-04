@@ -1,0 +1,478 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ListTableComponent should create 1`] = `
+<app-list-table
+  adapter={[Function Function]}
+  borderColor={[Function Function]}
+  breadcrumb={[Function Function]}
+  canFilter={[Function Function]}
+  columns={[Function Function]}
+  constraints={[Function Function]}
+  defaultRowsPerPage={[Function Number]}
+  dt={[Function Function]}
+  formatter={[Function Function]}
+  homeBreadcrumb={[Function Object]}
+  itemClicked={[Function OutputEmitterRef]}
+  items={[Function Function]}
+  limitOptions={[Function Array]}
+  loading={[Function Function]}
+  name={[Function Function]}
+  pagination={[Function Function]}
+  recordsLabel={[Function Function]}
+  rows={[Function Function]}
+  service={[Function Function]}
+  showCaption={[Function Function]}
+  showFilters={[Function Function]}
+  stylable={[Function Function]}
+  totalRecords={[Function Function]}
+>
+  <section>
+    <p-table
+      currentpagereporttemplate="Mostrando {first} de {last}"
+      pc1=""
+      selectionmode="single"
+      sortmode="multiple"
+      statestorage="session"
+      styleclass="p-datatable-striped"
+    >
+      <div
+        class="p-datatable p-component p-datatable-hoverable"
+        id="pn_id_1"
+      >
+        <div
+          class="p-datatable-header"
+        >
+          <div
+            class="flex flex-row gap-3 justify-content-between"
+          >
+            <div
+              class="flex flex-column gap-2"
+            >
+              <p-breadcrumb
+                class="max-w-full"
+                pc2=""
+              >
+                <nav
+                  class="p-breadcrumb p-component"
+                  data-pc-name="breadcrumb"
+                  data-pc-section="root"
+                >
+                  <ol
+                    class="p-breadcrumb-list"
+                    data-pc-section="menu"
+                  >
+                    <li
+                      class="p-breadcrumb-home-item"
+                      data-pc-section="home"
+                      pc10=""
+                      ptooltip=""
+                    >
+                      <a
+                        class="p-breadcrumb-item-link"
+                        href="/"
+                        tabindex="0"
+                      >
+                        <span
+                          class="p-breadcrumb-item-icon fas fa-home"
+                        />
+                      </a>
+                    </li>
+                    <li
+                      class="p-breadcrumb-separator"
+                      data-pc-section="separator"
+                    >
+                      <chevronrighticon
+                        class="p-component p-iconwrapper"
+                        pc11=""
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="p-icon"
+                          fill="none"
+                          height="14"
+                          viewBox="0 0 14 14"
+                          width="14"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.38708 13C4.28408 13.0005 4.18203 12.9804 4.08691 12.9409C3.99178 12.9014 3.9055 12.8433 3.83313 12.7701C3.68634 12.6231 3.60388 12.4238 3.60388 12.2161C3.60388 12.0084 3.68634 11.8091 3.83313 11.6622L8.50507 6.99022L3.83313 2.31827C3.69467 2.16968 3.61928 1.97313 3.62287 1.77005C3.62645 1.56698 3.70872 1.37322 3.85234 1.22959C3.99596 1.08597 4.18972 1.00371 4.3928 1.00012C4.59588 0.996539 4.79242 1.07192 4.94102 1.21039L10.1669 6.43628C10.3137 6.58325 10.3962 6.78249 10.3962 6.99022C10.3962 7.19795 10.3137 7.39718 10.1669 7.54416L4.94102 12.7701C4.86865 12.8433 4.78237 12.9014 4.68724 12.9409C4.59212 12.9804 4.49007 13.0005 4.38708 13Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </chevronrighticon>
+                    </li>
+                  </ol>
+                </nav>
+              </p-breadcrumb>
+              <small>
+                 2 Registros 
+              </small>
+            </div>
+            <div
+              class="flex flex-row gap-2 align-items-center"
+            >
+              <p-togglebutton
+                class="p-ripple p-togglebutton ng-untouched ng-pristine ng-valid"
+                data-p-checked="false"
+                data-p-disabled="false"
+                disabled="false"
+                officon="pi pi-filter"
+                offlabel="Filtrar"
+                onicon="pi pi-filter-slash"
+                onlabel="Ocultar"
+                pc3=""
+                pc4=""
+                pc5=""
+                ptooltip="Aplicar filtros"
+                tabindex="0"
+                tooltipposition="bottom"
+                type="button"
+              >
+                <span
+                  class="p-togglebutton-content"
+                >
+                  <span
+                    class="pi pi-filter p-togglebutton-icon p-togglebutton-icon-left"
+                    data-pc-section="icon"
+                  />
+                  <span
+                    class="p-togglebutton-label"
+                    data-pc-section="label"
+                  >
+                    Filtrar
+                  </span>
+                </span>
+              </p-togglebutton>
+              <span
+                hidden=""
+              >
+                <p-button
+                  pc6=""
+                  pc7=""
+                  ptooltip="Borrar filtros"
+                  severity="secondary"
+                  size="small"
+                  tooltipposition="bottom"
+                >
+                  <button
+                    class="p-ripple p-button p-component p-button-secondary p-button-text p-button-sm"
+                    data-pc-name="button"
+                    data-pc-section="root"
+                    pc8=""
+                    pc9=""
+                    pripple=""
+                    type="button"
+                  >
+                    <fa-icon
+                      class="ng-fa-icon"
+                      icon="delete-left"
+                      size="2x"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-delete-left fa-2x"
+                        data-icon="delete-left"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 640 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M576 128c0-35.3-28.7-64-64-64L205.3 64c-17 0-33.3 6.7-45.3 18.7L9.4 233.4c-6 6-9.4 14.1-9.4 22.6s3.4 16.6 9.4 22.6L160 429.3c12 12 28.3 18.7 45.3 18.7L512 448c35.3 0 64-28.7 64-64l0-256zM284.1 188.1c9.4-9.4 24.6-9.4 33.9 0l33.9 33.9 33.9-33.9c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-33.9 33.9 33.9 33.9c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-33.9-33.9-33.9 33.9c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l33.9-33.9-33.9-33.9c-9.4-9.4-9.4-24.6 0-33.9z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </fa-icon>
+                  </button>
+                </p-button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="p-datatable-table-container"
+          style="overflow: auto;"
+        >
+          <table
+            class="p-datatable-table"
+            id="pn_id_1-table"
+          >
+            <thead
+              class="p-datatable-thead"
+              style="position: sticky;"
+            >
+              <tr>
+                <th
+                  aria-sort="none"
+                  class="border-bottom-3 p-datatable-sortable-column"
+                  tabindex="0"
+                >
+                   id 
+                  <p-sorticon>
+                    <sortalticon
+                      class="p-component p-iconwrapper"
+                      pc12=""
+                    >
+                      <svg
+                        class="p-icon p-sortable-column-icon"
+                        fill="none"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        width="14"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g
+                          clip-path="url(#pui_id_1)"
+                        >
+                          <path
+                            d="M5.64515 3.61291C5.47353 3.61291 5.30192 3.54968 5.16644 3.4142L3.38708 1.63484L1.60773 3.4142C1.34579 3.67613 0.912244 3.67613 0.650309 3.4142C0.388374 3.15226 0.388374 2.71871 0.650309 2.45678L2.90837 0.198712C3.17031 -0.0632236 3.60386 -0.0632236 3.86579 0.198712L6.12386 2.45678C6.38579 2.71871 6.38579 3.15226 6.12386 3.4142C5.98837 3.54968 5.81676 3.61291 5.64515 3.61291Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M3.38714 14C3.01681 14 2.70972 13.6929 2.70972 13.3226V0.677419C2.70972 0.307097 3.01681 0 3.38714 0C3.75746 0 4.06456 0.307097 4.06456 0.677419V13.3226C4.06456 13.6929 3.75746 14 3.38714 14Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M10.6129 14C10.4413 14 10.2697 13.9368 10.1342 13.8013L7.87611 11.5432C7.61418 11.2813 7.61418 10.8477 7.87611 10.5858C8.13805 10.3239 8.5716 10.3239 8.83353 10.5858L10.6129 12.3652L12.3922 10.5858C12.6542 10.3239 13.0877 10.3239 13.3497 10.5858C13.6116 10.8477 13.6116 11.2813 13.3497 11.5432L11.0916 13.8013C10.9561 13.9368 10.7845 14 10.6129 14Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M10.6129 14C10.2426 14 9.93552 13.6929 9.93552 13.3226V0.677419C9.93552 0.307097 10.2426 0 10.6129 0C10.9833 0 11.2904 0.307097 11.2904 0.677419V13.3226C11.2904 13.6929 10.9832 14 10.6129 14Z"
+                            fill="currentColor"
+                          />
+                        </g>
+                        <defs>
+                          <clippath
+                            id="url(#pui_id_1)"
+                          >
+                            <rect
+                              fill="white"
+                              height="14"
+                              width="14"
+                            />
+                          </clippath>
+                        </defs>
+                      </svg>
+                    </sortalticon>
+                  </p-sorticon>
+                </th>
+                <th
+                  aria-sort="none"
+                  class="border-bottom-3 p-datatable-sortable-column"
+                  tabindex="0"
+                >
+                   Name 
+                  <p-sorticon>
+                    <sortalticon
+                      class="p-component p-iconwrapper"
+                      pc13=""
+                    >
+                      <svg
+                        class="p-icon p-sortable-column-icon"
+                        fill="none"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        width="14"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g
+                          clip-path="url(#pui_id_2)"
+                        >
+                          <path
+                            d="M5.64515 3.61291C5.47353 3.61291 5.30192 3.54968 5.16644 3.4142L3.38708 1.63484L1.60773 3.4142C1.34579 3.67613 0.912244 3.67613 0.650309 3.4142C0.388374 3.15226 0.388374 2.71871 0.650309 2.45678L2.90837 0.198712C3.17031 -0.0632236 3.60386 -0.0632236 3.86579 0.198712L6.12386 2.45678C6.38579 2.71871 6.38579 3.15226 6.12386 3.4142C5.98837 3.54968 5.81676 3.61291 5.64515 3.61291Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M3.38714 14C3.01681 14 2.70972 13.6929 2.70972 13.3226V0.677419C2.70972 0.307097 3.01681 0 3.38714 0C3.75746 0 4.06456 0.307097 4.06456 0.677419V13.3226C4.06456 13.6929 3.75746 14 3.38714 14Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M10.6129 14C10.4413 14 10.2697 13.9368 10.1342 13.8013L7.87611 11.5432C7.61418 11.2813 7.61418 10.8477 7.87611 10.5858C8.13805 10.3239 8.5716 10.3239 8.83353 10.5858L10.6129 12.3652L12.3922 10.5858C12.6542 10.3239 13.0877 10.3239 13.3497 10.5858C13.6116 10.8477 13.6116 11.2813 13.3497 11.5432L11.0916 13.8013C10.9561 13.9368 10.7845 14 10.6129 14Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M10.6129 14C10.2426 14 9.93552 13.6929 9.93552 13.3226V0.677419C9.93552 0.307097 10.2426 0 10.6129 0C10.9833 0 11.2904 0.307097 11.2904 0.677419V13.3226C11.2904 13.6929 10.9832 14 10.6129 14Z"
+                            fill="currentColor"
+                          />
+                        </g>
+                        <defs>
+                          <clippath
+                            id="url(#pui_id_2)"
+                          >
+                            <rect
+                              fill="white"
+                              height="14"
+                              width="14"
+                            />
+                          </clippath>
+                        </defs>
+                      </svg>
+                    </sortalticon>
+                  </p-sorticon>
+                </th>
+                <th
+                  aria-sort="none"
+                  class="border-bottom-3 p-datatable-sortable-column"
+                  tabindex="0"
+                >
+                   Real Name 
+                  <p-sorticon>
+                    <sortalticon
+                      class="p-component p-iconwrapper"
+                      pc14=""
+                    >
+                      <svg
+                        class="p-icon p-sortable-column-icon"
+                        fill="none"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        width="14"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g
+                          clip-path="url(#pui_id_3)"
+                        >
+                          <path
+                            d="M5.64515 3.61291C5.47353 3.61291 5.30192 3.54968 5.16644 3.4142L3.38708 1.63484L1.60773 3.4142C1.34579 3.67613 0.912244 3.67613 0.650309 3.4142C0.388374 3.15226 0.388374 2.71871 0.650309 2.45678L2.90837 0.198712C3.17031 -0.0632236 3.60386 -0.0632236 3.86579 0.198712L6.12386 2.45678C6.38579 2.71871 6.38579 3.15226 6.12386 3.4142C5.98837 3.54968 5.81676 3.61291 5.64515 3.61291Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M3.38714 14C3.01681 14 2.70972 13.6929 2.70972 13.3226V0.677419C2.70972 0.307097 3.01681 0 3.38714 0C3.75746 0 4.06456 0.307097 4.06456 0.677419V13.3226C4.06456 13.6929 3.75746 14 3.38714 14Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M10.6129 14C10.4413 14 10.2697 13.9368 10.1342 13.8013L7.87611 11.5432C7.61418 11.2813 7.61418 10.8477 7.87611 10.5858C8.13805 10.3239 8.5716 10.3239 8.83353 10.5858L10.6129 12.3652L12.3922 10.5858C12.6542 10.3239 13.0877 10.3239 13.3497 10.5858C13.6116 10.8477 13.6116 11.2813 13.3497 11.5432L11.0916 13.8013C10.9561 13.9368 10.7845 14 10.6129 14Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M10.6129 14C10.2426 14 9.93552 13.6929 9.93552 13.3226V0.677419C9.93552 0.307097 10.2426 0 10.6129 0C10.9833 0 11.2904 0.307097 11.2904 0.677419V13.3226C11.2904 13.6929 10.9832 14 10.6129 14Z"
+                            fill="currentColor"
+                          />
+                        </g>
+                        <defs>
+                          <clippath
+                            id="url(#pui_id_3)"
+                          >
+                            <rect
+                              fill="white"
+                              height="14"
+                              width="14"
+                            />
+                          </clippath>
+                        </defs>
+                      </svg>
+                    </sortalticon>
+                  </p-sorticon>
+                </th>
+              </tr>
+              <tr
+                hidden=""
+              >
+                <th>
+                  <p-columnfilter
+                    pc15=""
+                  >
+                    <div
+                      class="p-datatable-filter p-datatable-inline-filter"
+                    >
+                      <p-columnfilterformelement
+                        class="p-fluid"
+                      >
+                        <input
+                          aria-label="Filtrar por id"
+                          class="p-inputtext p-component"
+                          pc16=""
+                          pinputtext=""
+                          placeholder="Buscar por id"
+                          type="text"
+                        />
+                      </p-columnfilterformelement>
+                    </div>
+                  </p-columnfilter>
+                </th>
+                <th>
+                  <p-columnfilter
+                    pc17=""
+                  >
+                    <div
+                      class="p-datatable-filter p-datatable-inline-filter"
+                    >
+                      <p-columnfilterformelement
+                        class="p-fluid"
+                      >
+                        <input
+                          aria-label="Filtrar por Name"
+                          class="p-inputtext p-component"
+                          pc18=""
+                          pinputtext=""
+                          placeholder="Buscar por Name"
+                          type="text"
+                        />
+                      </p-columnfilterformelement>
+                    </div>
+                  </p-columnfilter>
+                </th>
+                <th>
+                  <p-columnfilter
+                    pc19=""
+                  >
+                    <div
+                      class="p-datatable-filter p-datatable-inline-filter"
+                    >
+                      <p-columnfilterformelement
+                        class="p-fluid"
+                      >
+                        <input
+                          aria-label="Filtrar por Real Name"
+                          class="p-inputtext p-component"
+                          pc20=""
+                          pinputtext=""
+                          placeholder="Buscar por Real Name"
+                          type="text"
+                        />
+                      </p-columnfilterformelement>
+                    </div>
+                  </p-columnfilter>
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="p-datatable-tbody"
+            >
+              <tr
+                class="p-datatable-selectable-row"
+                data-p-selectable-row="true"
+                tabindex="0"
+              >
+                <td>
+                </td>
+                <td>
+                   William Shakespeare 
+                </td>
+                <td>
+                   William Shakespeare 
+                </td>
+              </tr>
+              <tr
+                class="p-datatable-selectable-row"
+                data-p-selectable-row="true"
+                tabindex="0"
+              >
+                <td>
+                </td>
+                <td>
+                   Miguel de Cervantes 
+                </td>
+                <td>
+                   Miguel de Cervantes Saavedra 
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </p-table>
+  </section>
+</app-list-table>
+`;

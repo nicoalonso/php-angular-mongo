@@ -1,0 +1,243 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`LayoutComponent should create 1`] = `
+<app-layout
+  eventTypes={[Function Array]}
+  isNavigating={[Function Function]}
+  menuAside={[Function Function]}
+  menuUser={[Function Function]}
+  router={[Function _Router]}
+>
+  <p-toast
+    key="tr"
+    pc1=""
+    position="top-right"
+  >
+    <div
+      class="p-toast p-component p-toast-top-right"
+      style="position: fixed; top: 20px; right: 20px;"
+    >
+    </div>
+  </p-toast><p-toast
+    key="tc"
+    pc2=""
+    position="top-center"
+  >
+    <div
+      class="p-toast p-component p-toast-top-center"
+      style="position: fixed; top: 20px; left: 50%;"
+    >
+    </div>
+  </p-toast><p-toast
+    key="br"
+    pc3=""
+    position="bottom-right"
+  >
+    <div
+      class="p-toast p-component p-toast-bottom-right"
+      style="position: fixed; right: 20px; bottom: 20px;"
+    >
+    </div>
+  </p-toast><p-toast
+    key="bc"
+    pc4=""
+    position="bottom-center"
+  >
+    <div
+      class="p-toast p-component p-toast-bottom-center"
+      style="position: fixed; bottom: 20px; left: 50%;"
+    >
+    </div>
+  </p-toast><app-header>
+    <p-menubar
+      pc5=""
+    >
+      <div
+        class="p-menubar p-component"
+        data-pc-name="menubar"
+        data-pc-section="root"
+      >
+        <div
+          class="p-menubar-start"
+        >
+          <div
+            class="flex flex-row align-items-center mx-4"
+          >
+            <p-button
+              pc9=""
+              variant="text"
+            >
+              <button
+                class="p-ripple p-button p-component p-button-text"
+                data-pc-name="button"
+                data-pc-section="root"
+                pc11=""
+                pc12=""
+                pripple=""
+                type="button"
+              >
+                <fa-icon
+                  class="ng-fa-icon"
+                  icon="bars"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-bars"
+                    data-icon="bars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </fa-icon>
+              </button>
+            </p-button>
+            <p-button
+              label="Biblioteca"
+              pc10=""
+              tabindex="0"
+              variant="text"
+            >
+              <button
+                class="p-ripple p-button p-component p-button-link p-button-text"
+                data-pc-name="button"
+                data-pc-section="root"
+                pc13=""
+                pc14=""
+                pripple=""
+                type="button"
+              >
+                <span
+                  class="p-button-label"
+                  data-pc-section="label"
+                >
+                  Biblioteca
+                </span>
+              </button>
+            </p-button>
+          </div>
+        </div>
+        <p-menubarsub
+          pc6=""
+        >
+          <ul
+            class="p-menubar-root-list"
+            data-pc-section="menu"
+            id="pn_id_5"
+            role="menubar"
+            tabindex="0"
+          >
+          </ul>
+        </p-menubarsub>
+        <div
+          class="p-menubar-end"
+        >
+          <div
+            class="flex flex-row align-items-center mx-4"
+          >
+            <p-button
+              pc15=""
+              pc16=""
+              size="small"
+              variant="text"
+            >
+              <button
+                class="p-ripple p-button p-component p-button-text p-button-sm"
+                data-pc-name="button"
+                data-pc-section="root"
+                pc19=""
+                pc20=""
+                pripple=""
+                type="button"
+              >
+                <fa-icon
+                  class="ng-fa-icon"
+                  icon="circle-half-stroke"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-circle-half-stroke"
+                    data-icon="circle-half-stroke"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M448 256c0-106-86-192-192-192l0 384c106 0 192-86 192-192zM0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </fa-icon>
+              </button>
+            </p-button>
+            <p-button
+              pc17=""
+              pc18=""
+              ptooltip="Mostrar panel de Usuario"
+              size="small"
+              tooltipposition="bottom"
+              variant="text"
+            >
+              <button
+                class="p-ripple p-button p-component p-button-text p-button-sm"
+                data-pc-name="button"
+                data-pc-section="root"
+                pc21=""
+                pc22=""
+                pripple=""
+                type="button"
+              >
+                <fa-icon
+                  class="ng-fa-icon"
+                  icon="user"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-user"
+                    data-icon="user"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240zm-29.7 56C95.8 304 16 383.8 16 482.3 16 498.7 29.3 512 45.7 512l356.6 0c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3l-59.4 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </fa-icon>
+              </button>
+            </p-button>
+          </div>
+        </div>
+      </div>
+    </p-menubar>
+  </app-header><app-menu-aside>
+    <p-drawer
+      header="Biblioteca"
+      pc7=""
+      position="left"
+    >
+    </p-drawer>
+  </app-menu-aside><app-user-panel>
+    <p-drawer
+      pc8=""
+      position="right"
+    >
+    </p-drawer>
+  </app-user-panel><main
+    class="p-container-fluid"
+  >
+    <router-outlet />
+  </main>
+</app-layout>
+`;

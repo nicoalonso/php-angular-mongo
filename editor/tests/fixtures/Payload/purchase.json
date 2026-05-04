@@ -1,0 +1,20 @@
+{
+  "providerId": "d6e20876-6f65-5181-a656-b34086d68b4f",
+  "purchasedAt": "2024-06-01",
+  "invoice": {
+    "number": "INV-001",
+    "amount": 100.0,
+    "taxes": 20.0,
+    "total": 120.0
+  },
+  "lines": [
+    {
+      "lineId": "d6e20876-6f65-5181-a656-b34086d68b4f",
+      "bookId": "d6e20876-6f65-5181-a656-b34086d68b4f",
+      "quantity": 2,
+      "unitPrice": 10.0,
+      "discountPercentage": 5.0,
+      "total": 19.0
+    }
+  ]
+}

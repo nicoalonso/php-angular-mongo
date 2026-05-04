@@ -57,6 +57,7 @@ export class MenuAsideComponent {
         separator = false,
       } = item;
       if (separator) {
+        // istanbul ignore next
         return { separator: true };
       }
 

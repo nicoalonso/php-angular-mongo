@@ -38,7 +38,7 @@ export abstract class AbstractEditPage<
           this.goBack();
         }
       },
-      error: (error) => {
+      error: (error) => /* istanbul ignore next */ {
         console.error('Persist error', error);
         const { error: { message = '' } = {} } = error;
         this.toastService.topRight().error({

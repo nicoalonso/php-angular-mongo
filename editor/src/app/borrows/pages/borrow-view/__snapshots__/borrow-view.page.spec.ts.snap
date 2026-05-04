@@ -1,0 +1,647 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`BorrowViewPage should create 1`] = `
+<ng-component
+  borrow={[Function Function]}
+  breadcrumb={[Function Array]}
+  homeBreadcrumb={[Function Object]}
+  isAdmin={[Function Function]}
+  isDue={[Function Function]}
+  isUser={[Function Function]}
+  router={[Function _Router]}
+  today={[Function Date]}
+  userService={[Function UserService]}
+>
+  <div
+    class="flex flex-column surface-section mx-6 hall min-vh-80"
+  >
+    <div
+      class="flex flex-column p-4"
+    >
+      <span
+        class="hall-icon text-400"
+      >
+        <i
+          class="fas fa-briefcase"
+        />
+      </span>
+      <span
+        class="watermark text-400"
+      >
+        <i
+          class="fas fa-briefcase"
+        />
+      </span>
+      <div
+        class="flex flex-row gap-3 justify-content-between"
+      >
+        <div
+          class="flex flex-column gap-2"
+        >
+          <div
+            class="flex"
+          >
+            <p-breadcrumb
+              class="max-w-full"
+              pc1=""
+            >
+              <nav
+                class="p-breadcrumb p-component"
+                data-pc-name="breadcrumb"
+                data-pc-section="root"
+              >
+                <ol
+                  class="p-breadcrumb-list"
+                  data-pc-section="menu"
+                >
+                  <li
+                    class="p-breadcrumb-home-item"
+                    data-pc-section="home"
+                    pc28=""
+                    ptooltip=""
+                  >
+                    <a
+                      class="p-breadcrumb-item-link"
+                      href="/"
+                      tabindex="0"
+                    >
+                      <span
+                        class="p-breadcrumb-item-icon fas fa-home"
+                      />
+                    </a>
+                  </li>
+                  <li
+                    class="p-breadcrumb-separator"
+                    data-pc-section="separator"
+                  >
+                    <chevronrighticon
+                      class="p-component p-iconwrapper"
+                      pc29=""
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="p-icon"
+                        fill="none"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        width="14"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M4.38708 13C4.28408 13.0005 4.18203 12.9804 4.08691 12.9409C3.99178 12.9014 3.9055 12.8433 3.83313 12.7701C3.68634 12.6231 3.60388 12.4238 3.60388 12.2161C3.60388 12.0084 3.68634 11.8091 3.83313 11.6622L8.50507 6.99022L3.83313 2.31827C3.69467 2.16968 3.61928 1.97313 3.62287 1.77005C3.62645 1.56698 3.70872 1.37322 3.85234 1.22959C3.99596 1.08597 4.18972 1.00371 4.3928 1.00012C4.59588 0.996539 4.79242 1.07192 4.94102 1.21039L10.1669 6.43628C10.3137 6.58325 10.3962 6.78249 10.3962 6.99022C10.3962 7.19795 10.3137 7.39718 10.1669 7.54416L4.94102 12.7701C4.86865 12.8433 4.78237 12.9014 4.68724 12.9409C4.59212 12.9804 4.49007 13.0005 4.38708 13Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </chevronrighticon>
+                  </li>
+                  <li
+                    class="p-breadcrumb-item"
+                    data-pc-section="menuitem"
+                    pc30=""
+                    ptooltip=""
+                  >
+                    <a
+                      class="p-breadcrumb-item-link"
+                      href="/borrows"
+                      tabindex="0"
+                    >
+                      <span
+                        class="p-breadcrumb-item-label"
+                      >
+                        Préstamos
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    class="p-breadcrumb-separator"
+                    data-pc-section="separator"
+                  >
+                    <chevronrighticon
+                      class="p-component p-iconwrapper"
+                      pc31=""
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="p-icon"
+                        fill="none"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        width="14"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M4.38708 13C4.28408 13.0005 4.18203 12.9804 4.08691 12.9409C3.99178 12.9014 3.9055 12.8433 3.83313 12.7701C3.68634 12.6231 3.60388 12.4238 3.60388 12.2161C3.60388 12.0084 3.68634 11.8091 3.83313 11.6622L8.50507 6.99022L3.83313 2.31827C3.69467 2.16968 3.61928 1.97313 3.62287 1.77005C3.62645 1.56698 3.70872 1.37322 3.85234 1.22959C3.99596 1.08597 4.18972 1.00371 4.3928 1.00012C4.59588 0.996539 4.79242 1.07192 4.94102 1.21039L10.1669 6.43628C10.3137 6.58325 10.3962 6.78249 10.3962 6.99022C10.3962 7.19795 10.3137 7.39718 10.1669 7.54416L4.94102 12.7701C4.86865 12.8433 4.78237 12.9014 4.68724 12.9409C4.59212 12.9804 4.49007 13.0005 4.38708 13Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </chevronrighticon>
+                  </li>
+                  <li
+                    class="text-xl font-bold p-breadcrumb-item"
+                    data-pc-section="menuitem"
+                    pc32=""
+                    ptooltip=""
+                  >
+                    <a
+                      class="p-breadcrumb-item-link"
+                      tabindex="0"
+                      target="undefined"
+                    >
+                      <span
+                        class="p-breadcrumb-item-label"
+                      >
+                        Detalle
+                      </span>
+                    </a>
+                  </li>
+                </ol>
+              </nav>
+            </p-breadcrumb>
+          </div>
+          <small>
+            Editado ahora mismo por 
+            <strong>
+              test
+            </strong>
+          </small>
+        </div>
+        <div
+          class="flex flex-row gap-2 align-items-center"
+        >
+          <p-button
+            icon="fas fa-pen"
+            label="Retornar"
+            pc25=""
+            severity="info"
+            size="small"
+            tabindex="0"
+          >
+            <button
+              class="p-ripple p-button p-component p-button-info p-button-outlined p-button-sm"
+              data-pc-name="button"
+              data-pc-section="root"
+              pc26=""
+              pc27=""
+              pripple=""
+              type="button"
+            >
+              <span
+                class="fas fa-pen p-button-icon p-button-icon-left"
+                data-pc-section="icon"
+              />
+              <span
+                aria-hidden="false"
+                class="p-button-label"
+                data-pc-section="label"
+              >
+                Retornar
+              </span>
+            </button>
+          </p-button>
+          <p-button
+            icon="fas fa-xmark"
+            label="Salir"
+            pc2=""
+            severity="secondary"
+            size="small"
+            tabindex="0"
+          >
+            <button
+              class="p-ripple p-button p-component p-button-secondary p-button-text p-button-sm"
+              data-pc-name="button"
+              data-pc-section="root"
+              pc17=""
+              pc18=""
+              pripple=""
+              type="button"
+            >
+              <span
+                class="fas fa-xmark p-button-icon p-button-icon-left"
+                data-pc-section="icon"
+              />
+              <span
+                aria-hidden="false"
+                class="p-button-label"
+                data-pc-section="label"
+              >
+                Salir
+              </span>
+            </button>
+          </p-button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex-1 p-4"
+    >
+      <p-tabs
+        class="tab-selector p-tabs p-component"
+        data-pc-name="tabs"
+        id="pn_id_1"
+        pc3=""
+        value="detail"
+      >
+        <p-tablist
+          class="p-tablist p-component"
+          data-pc-name="tablist"
+          pc4=""
+        >
+          <div
+            class="p-tablist-content"
+          >
+            <div
+              class="p-tablist-tab-list"
+              role="tablist"
+            >
+              <p-tab
+                aria-controls="pn_id_1_tabpanel_detail"
+                aria-selected="true"
+                class="p-ripple flex align-items-center gap-2 p-tab p-tab-active p-component"
+                data-p-active="true"
+                data-p-disabled="false"
+                data-pc-name="tab"
+                id="pn_id_1_tab_detail"
+                pc5=""
+                pc6=""
+                role="tab"
+                tabindex="0"
+                value="detail"
+              >
+                <i
+                  class="fas fa-circle-info"
+                />
+                <span>
+                  Detalle
+                </span>
+              </p-tab>
+              <p-tab
+                aria-controls="pn_id_1_tabpanel_books"
+                aria-selected="false"
+                class="p-ripple flex align-items-center gap-2 p-tab p-component"
+                data-p-active="false"
+                data-p-disabled="false"
+                data-pc-name="tab"
+                id="pn_id_1_tab_books"
+                pc7=""
+                pc8=""
+                role="tab"
+                tabindex="-1"
+                value="books"
+              >
+                <i
+                  class="fas fa-book"
+                />
+                <span>
+                  Libros
+                </span>
+              </p-tab>
+              <p-tab
+                aria-controls="pn_id_1_tabpanel_data"
+                aria-selected="false"
+                class="p-ripple flex align-items-center gap-2 p-tab p-component"
+                data-p-active="false"
+                data-p-disabled="false"
+                data-pc-name="tab"
+                id="pn_id_1_tab_data"
+                pc10=""
+                pc9=""
+                role="tab"
+                tabindex="-1"
+                value="data"
+              >
+                <i
+                  class="fas fa-user-clock"
+                />
+                <span>
+                  Datos
+                </span>
+              </p-tab>
+              <span
+                class="p-tablist-active-bar"
+                data-pc-section="inkbar"
+                role="presentation"
+              />
+            </div>
+          </div>
+          <button
+            aria-label="Next"
+            class="p-ripple p-tablist-nav-button p-tablist-next-button"
+            data-pc-group-section="navigator"
+            pc33=""
+            pripple=""
+            tabindex="0"
+            type="button"
+          >
+            <chevronrighticon
+              class="p-component p-iconwrapper"
+              pc34=""
+            >
+              <svg
+                aria-hidden="true"
+                class="p-icon"
+                fill="none"
+                height="14"
+                viewBox="0 0 14 14"
+                width="14"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4.38708 13C4.28408 13.0005 4.18203 12.9804 4.08691 12.9409C3.99178 12.9014 3.9055 12.8433 3.83313 12.7701C3.68634 12.6231 3.60388 12.4238 3.60388 12.2161C3.60388 12.0084 3.68634 11.8091 3.83313 11.6622L8.50507 6.99022L3.83313 2.31827C3.69467 2.16968 3.61928 1.97313 3.62287 1.77005C3.62645 1.56698 3.70872 1.37322 3.85234 1.22959C3.99596 1.08597 4.18972 1.00371 4.3928 1.00012C4.59588 0.996539 4.79242 1.07192 4.94102 1.21039L10.1669 6.43628C10.3137 6.58325 10.3962 6.78249 10.3962 6.99022C10.3962 7.19795 10.3137 7.39718 10.1669 7.54416L4.94102 12.7701C4.86865 12.8433 4.78237 12.9014 4.68724 12.9409C4.59212 12.9804 4.49007 13.0005 4.38708 13Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </chevronrighticon>
+          </button>
+        </p-tablist>
+        <p-tabpanels
+          class="p-tabpanels p-component"
+          data-pc-name="tabpanels"
+          pc11=""
+          role="presentation"
+        >
+          <p-tabpanel
+            aria-labelledby="pn_id_1_tab_detail"
+            class="p-tabpanel p-component"
+            data-p-active="true"
+            data-pc-name="tabpanel"
+            id="pn_id_1_tabpanel_detail"
+            pc12=""
+            role="tabpanel"
+            value="detail"
+          >
+            <h3
+              class="flex flex-row gap-2 text-800 text-2xl"
+            >
+              <fa-icon
+                class="ng-fa-icon"
+                icon="person"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-person"
+                  data-icon="person"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 384 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M248 24a56 56 0 1 0 -112 0 56 56 0 1 0 112 0zm24 212.7l46.3 62.4c10.5 14.2 30.6 17.2 44.8 6.6s17.2-30.6 6.6-44.8l-70.5-95C274 132 234.3 112 192 112s-82 20-107.2 53.9l-70.5 95c-10.5 14.2-7.6 34.2 6.6 44.8s34.2 7.6 44.8-6.6L112 236.7 112 512c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-8.8 7.2-16 16-16s16 7.2 16 16l0 160c0 17.7 14.3 32 32 32s32-14.3 32-32l0-275.3z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </fa-icon>
+              <span>
+                Cliente
+              </span>
+            </h3>
+            <div
+              class="col-12 grid align-content-start"
+            >
+              <div
+                class="col-12 lg:col-6 flex flex-column gap-2 mb-3"
+              >
+                <span
+                  class="text-base font-bold text-400"
+                >
+                  Nombre
+                </span>
+                <div>
+                  <a
+                    class="text-lg text-orange-600 hover:underline"
+                    href="/customers/972827c0-5cbb-4c68-9ccf-82c98ecc3313"
+                  >
+                     John Doe 
+                  </a>
+                </div>
+              </div>
+              <div
+                class="col-12 lg:col-6 flex flex-column gap-2 mb-3"
+              >
+                <span
+                  class="text-base font-bold text-400"
+                >
+                  Número de socio
+                </span>
+                <app-btn-copy
+                  title="Número de socio"
+                >
+                  <div
+                    class="flex flex-row gap-3 align-items-center"
+                  >
+                    <span
+                      class="text-lg"
+                    >
+                      SN00025
+                    </span>
+                    <p-button
+                      icon="fas fa-copy"
+                      pc19=""
+                      severity="secondary"
+                      size="small"
+                    >
+                      <button
+                        class="p-ripple p-button p-component p-button-icon-only p-button-secondary p-button-text p-button-sm"
+                        data-pc-name="button"
+                        data-pc-section="root"
+                        pc20=""
+                        pc21=""
+                        pripple=""
+                        type="button"
+                      >
+                        <span
+                          class="fas fa-copy p-button-icon"
+                          data-pc-section="icon"
+                        />
+                      </button>
+                    </p-button>
+                  </div>
+                </app-btn-copy>
+              </div>
+            </div>
+            <p-divider
+              aria-orientation="horizontal"
+              class="p-divider p-component p-divider-horizontal p-divider-solid p-divider-left"
+              data-pc-name="divider"
+              pc13=""
+              role="separator"
+              style="justify-content: center;"
+            >
+              <div
+                class="p-divider-content"
+              />
+            </p-divider>
+            <h3
+              class="flex flex-row gap-2 text-800 text-2xl"
+            >
+              <fa-icon
+                class="ng-fa-icon"
+                icon="briefcase"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-briefcase"
+                  data-icon="briefcase"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M200 48l112 0c4.4 0 8 3.6 8 8l0 40-128 0 0-40c0-4.4 3.6-8 8-8zm-56 8l0 40-80 0C28.7 96 0 124.7 0 160l0 96 512 0 0-96c0-35.3-28.7-64-64-64l-80 0 0-40c0-30.9-25.1-56-56-56L200 0c-30.9 0-56 25.1-56 56zM512 304l-192 0 0 16c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32l0-16-192 0 0 112c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-112z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </fa-icon>
+              <span>
+                Préstamo
+              </span>
+            </h3>
+            <div
+              class="col-12 grid align-content-start"
+            >
+              <div
+                class="col-12 lg:col-4 flex flex-column gap-2 mb-3"
+              >
+                <span
+                  class="text-base font-bold text-400"
+                >
+                  Fecha del préstamo
+                </span>
+                <span
+                  class="text-lg"
+                >
+                  31/03/2026
+                </span>
+              </div>
+              <div
+                class="col-12 lg:col-4 flex flex-column gap-2 mb-3"
+              >
+                <span
+                  class="text-base font-bold text-400"
+                >
+                  Fecha de vencimiento
+                </span>
+                <span
+                  class="text-lg font-bold text-red-600"
+                >
+                   15/04/2026 
+                </span>
+              </div>
+              <div
+                class="col-12 lg:col-4 flex flex-column gap-2 mb-3"
+              >
+                <span
+                  class="text-base font-bold text-400"
+                >
+                  Fecha de devolución
+                </span>
+                <span
+                  class="text-lg"
+                >
+                   -- 
+                </span>
+              </div>
+              <div
+                class="col-12 lg:col-4 flex flex-column gap-2 mb-3"
+              >
+                <span
+                  class="text-base font-bold text-400"
+                >
+                  Estado
+                </span>
+                <span
+                  class="text-lg text-yellow-600"
+                >
+                  En préstamo
+                </span>
+              </div>
+              <div
+                class="col-12 lg:col-4 flex flex-column gap-2 mb-3"
+              >
+                <span
+                  class="text-base font-bold text-400"
+                >
+                  Multas
+                </span>
+                <span
+                  class="text-lg text-green-600"
+                >
+                  No
+                </span>
+              </div>
+              <div
+                class="col-12 lg:col-4 flex flex-column gap-2 mb-3"
+              >
+                <span
+                  class="text-base font-bold text-400"
+                >
+                  Número
+                </span>
+                <app-btn-copy
+                  title="Número de entrada"
+                >
+                  <div
+                    class="flex flex-row gap-3 align-items-center"
+                  >
+                    <span
+                      class="text-lg"
+                    >
+                      P-00022
+                    </span>
+                    <p-button
+                      icon="fas fa-copy"
+                      pc22=""
+                      severity="secondary"
+                      size="small"
+                    >
+                      <button
+                        class="p-ripple p-button p-component p-button-icon-only p-button-secondary p-button-text p-button-sm"
+                        data-pc-name="button"
+                        data-pc-section="root"
+                        pc23=""
+                        pc24=""
+                        pripple=""
+                        type="button"
+                      >
+                        <span
+                          class="fas fa-copy p-button-icon"
+                          data-pc-section="icon"
+                        />
+                      </button>
+                    </p-button>
+                  </div>
+                </app-btn-copy>
+              </div>
+            </div>
+          </p-tabpanel>
+          <p-tabpanel
+            aria-labelledby="pn_id_1_tab_books"
+            class="p-tabpanel p-component"
+            data-p-active="false"
+            data-pc-name="tabpanel"
+            id="pn_id_1_tabpanel_books"
+            pc14=""
+            role="tabpanel"
+            value="books"
+          >
+          </p-tabpanel>
+          <p-tabpanel
+            aria-labelledby="pn_id_1_tab_data"
+            class="p-tabpanel p-component"
+            data-p-active="false"
+            data-pc-name="tabpanel"
+            id="pn_id_1_tabpanel_data"
+            pc16=""
+            role="tabpanel"
+            value="data"
+          >
+          </p-tabpanel>
+        </p-tabpanels>
+      </p-tabs>
+    </div>
+  </div>
+</ng-component>
+`;

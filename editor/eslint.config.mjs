@@ -6,6 +6,7 @@ import angular from '@angular-eslint/eslint-plugin';
 import prettier from 'eslint-plugin-prettier';
 import importPlugin from 'eslint-plugin-import';
 import preferArrow from 'eslint-plugin-prefer-arrow';
+import jestPlugin from 'eslint-plugin-jest';
 
 export default [
   {
@@ -18,6 +19,7 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.node,
+        ...jestPlugin.environments.globals.globals,
       },
     },
     plugins: {
@@ -26,6 +28,7 @@ export default [
       prettier,
       import: importPlugin,
       'prefer-arrow': preferArrow,
+      jest: jestPlugin,
     },
     rules: {
       ...js.configs.recommended.rules,

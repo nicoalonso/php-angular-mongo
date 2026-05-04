@@ -65,7 +65,7 @@ export class BookDialogComponent {
 
     effect(() => {
       if (this.visible()) {
-        setTimeout(() => {
+        setTimeout(() => /* istanbul ignore next */ {
           this.titleInput()?.nativeElement.select();
           this.titleInput()?.nativeElement.focus();
         }, 500);

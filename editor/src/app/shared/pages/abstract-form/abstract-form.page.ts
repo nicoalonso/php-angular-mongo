@@ -21,6 +21,7 @@ export abstract class AbstractFormPage {
   }
 
   protected makeForm(): void {
+    // istanbul ignore next
     this.form = new FormGroup({});
   }
 
@@ -48,12 +49,14 @@ export abstract class AbstractFormPage {
   }
 
   protected processForm(data: object): EntityPayload {
+    // istanbul ignore next
     return data as EntityPayload;
   }
 
   hasError(field: string, type: string): boolean {
     const control = this.form.get(field);
     if (!control) {
+      // istanbul ignore next
       return false;
     }
 
@@ -82,6 +85,7 @@ export abstract class AbstractFormPage {
   ): boolean {
     const control = form.at(index).get(field);
     if (!control) {
+      // istanbul ignore next
       return false;
     }
 
@@ -90,6 +94,7 @@ export abstract class AbstractFormPage {
     );
   }
 
+  /* istanbul ignore next */
   protected formDirty(item: AbstractControl | null) {
     if (!item) {
       return;
@@ -116,6 +121,7 @@ export abstract class AbstractFormPage {
   }
 
   protected getBackPath(): string[] {
+    // istanbul ignore next
     return ['/'];
   }
 }

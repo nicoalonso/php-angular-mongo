@@ -62,7 +62,7 @@ export class AuthorDialogComponent {
 
     effect(() => {
       if (this.visible()) {
-        setTimeout(() => {
+        setTimeout(() => /* istanbul ignore next */ {
           this.nameInput()?.nativeElement.select();
           this.nameInput()?.nativeElement.focus();
         }, 500);

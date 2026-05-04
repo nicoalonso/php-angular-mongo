@@ -43,7 +43,7 @@ export abstract class AbstractCreatePage<
         });
         this.goBack();
       },
-      error: (error) => {
+      error: (error) => /* istanbul ignore next */ {
         console.error('Error create', error);
         const { error: { message = '' } = {} } = error;
 
@@ -108,6 +108,7 @@ export abstract class AbstractCreatePage<
   protected checkStep(step: number): boolean {
     const stepControl = this.steps.find(step);
     if (!stepControl) {
+      // istanbul ignore next
       return true;
     }
 

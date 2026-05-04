@@ -48,6 +48,7 @@ export default class SaleViewPage extends AbstractViewPage {
     { label: 'Detalle', styleClass: 'text-xl font-bold' },
   ];
 
+  /* istanbul ignore next */
   override getPathBack(): string[] {
     return ['/sales'];
   }
