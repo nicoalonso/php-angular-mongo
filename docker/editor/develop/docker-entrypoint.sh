@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+# load bashrc config
+source /home/{USER}/.bashrc
+
 # Run command with node if the first argument contains a "-" or is not a system command. The last
 # part inside the "{}" is a workaround for the following bug in ash/dash:
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=874264

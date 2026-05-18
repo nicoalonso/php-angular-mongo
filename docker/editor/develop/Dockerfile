@@ -12,8 +12,14 @@ ARG HOST_GROUP
 ARG HOST_GROUP_ID
 ARG TIMEZONE
 
+RUN apk add bash
+
 COPY ./develop/docker-entrypoint.sh /usr/local/bin/docker-app-entrypoint
+RUN sed -i "s/{USER}/${HOST_USER}/g" /usr/local/bin/docker-app-entrypoint \
+    && chmod +x /usr/local/bin/docker-app-entrypoint
 RUN chmod +x /usr/local/bin/docker-app-entrypoint
+
+SHELL ["/bin/bash", "-c"]
 ENTRYPOINT ["docker-app-entrypoint"]
 
 # see https://stackoverflow.com/questions/49955097/how-do-i-add-a-user-when-im-using-alpine-as-a-base-image
@@ -25,12 +31,14 @@ RUN deluser node \
 RUN apk --no-cache add tzdata \
     && ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
 
-RUN npm install -g pnpm \
-    && npm add -g @angular/cli@19
-
 RUN chown -R ${HOST_USER}:${HOST_GROUP} /app
 
 USER ${HOST_USER}
+
+RUN wget -qO- https://get.pnpm.io/install.sh | PNPM_VERSION="11.1.1" ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
+RUN source $HOME/.bashrc \
+    && pnpm install -g @angular/cli@19 \
+    && echo "alias npm='pnpm'" >> $HOME/.bashrc
 
 # start app
 CMD pnpm run envs && ng serve --host 0.0.0.0 --poll 2000
